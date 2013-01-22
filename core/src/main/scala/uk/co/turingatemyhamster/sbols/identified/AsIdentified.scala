@@ -19,3 +19,11 @@ trait AsIdentified[I] {
    */
   def uri(i: I): URI
 }
+
+object AsIdentified {
+  @inline def asIdentified[I](i: I)(implicit as : AsIdentified[I]) = as
+
+  implicit class IdentifiedOps[I](val i: I) extends AnyVal {
+    @inline def sameEntity[J](j: J)(implicit iAs : AsIdentified[I], jAs : AsIdentified[J]) = iAs.uri(i) == jAs.uri(j)
+  }
+}

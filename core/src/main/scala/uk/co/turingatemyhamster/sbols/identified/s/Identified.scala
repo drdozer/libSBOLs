@@ -28,7 +28,7 @@ object Identified {
     final def uri(i: I) = i.uri
   }
 
-  implicit object identifiedAsIdentified extends IdentifiedAsIdentified[Identified] {}
+  implicit def identifiedAsIdentified[I <:Identified] = new IdentifiedAsIdentified[I] {}
 }
 
 /**

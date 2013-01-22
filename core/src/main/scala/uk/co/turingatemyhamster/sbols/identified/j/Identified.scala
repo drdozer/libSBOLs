@@ -22,11 +22,18 @@ object Identified {
       def uri(i: I) = i.getURI
     }
 
-  implicit object identifiedAsIdentified extends IdentifiedAsIdentified[Identified] {}
+  implicit def identifiedAsIdentified[I <: Identified] = new IdentifiedAsIdentified[I] {}
 }
 
 class IdentifiedImpl(private var uri: URI) extends Identified {
   def this() = this(null)
   def getURI = uri
   def setURI(uri: URI) { this.uri = uri }
+
+  override def equals(obj: Any) = {
+    obj match {
+      case that : Identified => this.getURI == that.getURI
+      case _ => false
+    }
+  }
 }
