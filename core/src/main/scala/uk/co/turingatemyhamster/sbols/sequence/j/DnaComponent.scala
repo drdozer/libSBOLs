@@ -24,7 +24,7 @@ object DnaComponent {
     extends AsDnaComponent[DC, DS, SA] with Described.DescribedAsDescribed[DC]
   {
     final def sequenceType(dc: DC) = dc.getSequenceType.toSet // force an immutable copy
-    final def dnaSequence(dc: DC) = dc.getDnaSequence
+    final def dnaSequence(dc: DC) = Option(dc.getDnaSequence)
     final def annotations(dc: DC) = dc.getAnnotations.toSet // force an immutable copy
   }
 

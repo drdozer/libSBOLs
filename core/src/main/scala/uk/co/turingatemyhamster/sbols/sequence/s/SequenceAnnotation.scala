@@ -15,6 +15,8 @@ trait SequenceAnnotation[SA, DC] extends Identified {
 }
 
 object SequenceAnnotation {
+  trait Canonical extends SequenceAnnotation[Canonical, DnaComponent.Canonical]
+
   trait SequenceAnnotationAsSequenceAnnotation[SA <: SequenceAnnotation[SA, DC], DC]
     extends AsSequenceAnnotation[SA, DC]
     with Identified.IdentifiedAsIdentified[SA]
@@ -25,6 +27,9 @@ object SequenceAnnotation {
     final def precedes(sa: SA) = sa.precedes
     final def subComponent(sa: SA) = sa.subComponent
   }
+
+  implicit def sequenceAnnotationAsSequenceAnnotation[SA <: SequenceAnnotation[SA, DC], DC] =
+    new SequenceAnnotationAsSequenceAnnotation[SA, DC] {}
 }
 
 case class SequenceAnnotationImpl[DC](uri: URI,

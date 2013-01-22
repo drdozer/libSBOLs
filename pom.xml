@@ -100,6 +100,7 @@
         <module>core</module>
         <module>visual</module>
         <module>regulation</module>
+        <module>regulation-examples</module>
     </modules>
 
     <build>

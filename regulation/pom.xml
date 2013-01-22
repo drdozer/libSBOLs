@@ -4,7 +4,7 @@
     <artifactId>libSBOLs-regulation</artifactId>
     <version>${parent.version}</version>
     <name>libSBOls regulation extension</name>
-    <description>Core SBOL data model.</description>
+    <description>Core regulation data model.</description>
     <inceptionYear>2013</inceptionYear>
 
     <parent>
