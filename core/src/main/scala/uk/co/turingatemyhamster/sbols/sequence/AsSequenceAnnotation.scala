@@ -3,13 +3,16 @@ package sequence
 
 import identified.AsIdentified
 
-trait AsSequenceAnnotation[SA, DC] extends AsIdentified[SA] {
+trait AsSequenceAnnotation[SA] extends AsIdentified[SA] {
+  type _DC
+  type _SA
+
   def bioStart(sa: SA): Option[Int]
   def bioEnd(sa: SA): Option[Int]
   def strand(sa: SA): Option[Strand]
 
-  def precedes(sa: SA): Set[SA]
-  def subComponent(sa: SA): DC
+  def precedes(sa: SA): Set[_SA]
+  def subComponent(sa: SA): _DC
 }
 
 sealed trait Strand

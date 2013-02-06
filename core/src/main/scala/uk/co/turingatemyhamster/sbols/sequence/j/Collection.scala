@@ -13,9 +13,17 @@ trait Collection[DC] extends Described {
 }
 
 object Collection {
-  trait CollectionAsCollection[C <: Collection[DC], DC] extends AsCollection[C, DC] with Described.DescribedAsDescribed[C] {
+  abstract class CollectionAsCollection[C <: Collection[DC], DC](implicit asDnaComponent: AsDnaComponent[DC])
+    extends Described.DescribedAsDescribed[C] with AsCollection[C]
+  {
+    type _DC = DC
+    implicit def AsDnaComponent = asDnaComponent
+
     final def components(c: C) = c.getComponents
   }
+
+  implicit def collectionAsCollection[DC](implicit asDnaComponent: AsDnaComponent[DC]) =
+    new CollectionAsCollection[Collection[DC], DC] {}
 }
 
 class CollectionImpl[DC](private var uri: URI,

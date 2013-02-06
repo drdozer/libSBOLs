@@ -38,9 +38,12 @@ object SequenceAnnotation {
   }
 
   trait SequenceAnnotationAsSequenceAnnotation[SA <: SequenceAnnotation[SA, DC], DC]
-    extends AsSequenceAnnotation[SA, DC]
+    extends AsSequenceAnnotation[SA]
     with Identified.IdentifiedAsIdentified[SA]
   {
+    type _DC = DC
+    type _SA = SA
+
     final def bioStart(sa: SA) = Option(sa.getBioStart)
     final def bioEnd(sa: SA) = Option(sa.getBioEnd)
     final def strand(sa: SA) = Option(sa.getStrand) map enumAsStrand

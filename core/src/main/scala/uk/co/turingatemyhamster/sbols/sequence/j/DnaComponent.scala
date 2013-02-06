@@ -21,8 +21,11 @@ trait DnaComponent[DS, SA] extends Described {
 
 object DnaComponent {
   trait DnaComponentAsDnaComponent[DC <: DnaComponent[DS, SA], DS, SA]
-    extends AsDnaComponent[DC, DS, SA] with Described.DescribedAsDescribed[DC]
+    extends AsDnaComponent[DC] with Described.DescribedAsDescribed[DC]
   {
+    type _DS = DS
+    type _SA = SA
+
     final def sequenceType(dc: DC) = dc.getSequenceType.toSet // force an immutable copy
     final def dnaSequence(dc: DC) = Option(dc.getDnaSequence)
     final def annotations(dc: DC) = dc.getAnnotations.toSet // force an immutable copy

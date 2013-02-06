@@ -17,10 +17,13 @@ trait SequenceAnnotation[SA, DC] extends Identified {
 object SequenceAnnotation {
   trait Canonical extends SequenceAnnotation[Canonical, DnaComponent.Canonical]
 
-  trait SequenceAnnotationAsSequenceAnnotation[SA <: SequenceAnnotation[SA, DC], DC]
-    extends AsSequenceAnnotation[SA, DC]
-    with Identified.IdentifiedAsIdentified[SA]
+  abstract class SequenceAnnotationAsSequenceAnnotation[SA <: SequenceAnnotation[SA, DC], DC]
+    extends Identified.IdentifiedAsIdentified[SA]
+    with AsSequenceAnnotation[SA]
   {
+    type _DC = DC
+    type _SA = SA
+
     final def bioStart(sa: SA) = sa.bioStart
     final def bioEnd(sa: SA) = sa.bioEnd
     final def strand(sa: SA) = sa.strand
@@ -29,7 +32,8 @@ object SequenceAnnotation {
   }
 
   implicit def sequenceAnnotationAsSequenceAnnotation[SA <: SequenceAnnotation[SA, DC], DC] =
-    new SequenceAnnotationAsSequenceAnnotation[SA, DC] {}
+    new SequenceAnnotationAsSequenceAnnotation[SA, DC] {
+    }
 }
 
 case class SequenceAnnotationImpl[DC](uri: URI,

@@ -10,10 +10,15 @@ trait DnaSequence extends Identified {
 }
 
 object DnaSequence {
-  trait DnaSequenceAsDnaSequence[DS <: DnaSequence] extends AsDnaSequence[DS] with Identified.IdentifiedAsIdentified[DS] {
+  abstract class DnaSequenceAsDnaSequence[DS <: DnaSequence]
+    extends Identified.IdentifiedAsIdentified[DS]
+    with AsDnaSequence[DS]
+  {
     def nucleotides(ds: DS) = ds.nucleotides
   }
-  implicit object dnaSequenceAsDnaSequence extends DnaSequenceAsDnaSequence[DnaSequence] {}
+
+  implicit def dnaSequenceAsDnaSequence[DS <: DnaSequence]: DnaSequenceAsDnaSequence[DS] =
+    new DnaSequenceAsDnaSequence[DS] {}
 }
 
 case class DnaSequenceImpl(uri: URI, nucleotides: String) extends DnaSequence

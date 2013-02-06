@@ -31,7 +31,10 @@ trait Described extends Identified {
 
 object Described {
 
-  trait DescribedAsDescribed[D <: Described] extends AsDescribed[D] with Identified.IdentifiedAsIdentified[D] {
+  abstract class DescribedAsDescribed[D <: Described]
+    extends Identified.IdentifiedAsIdentified[D]
+    with AsDescribed[D]
+  {
     final def displayId(d: D) = d.displayId
     final def name(d: D) = d.name
     final def description(d: D) = d.description

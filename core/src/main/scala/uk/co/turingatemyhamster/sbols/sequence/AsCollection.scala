@@ -9,6 +9,10 @@ import uk.co.turingatemyhamster.sbols.identified.AsDescribed
  * Time: 00:25
  * To change this template use File | Settings | File Templates.
  */
-trait AsCollection[C, DC] extends AsDescribed[C] {
-  def components(c: C): Seq[DC]
+trait AsCollection[C] extends AsDescribed[C] {
+  type _DC
+
+  implicit def AsDnaComponent : AsDnaComponent[_DC]
+
+  def components(c: C): Seq[_DC]
 }

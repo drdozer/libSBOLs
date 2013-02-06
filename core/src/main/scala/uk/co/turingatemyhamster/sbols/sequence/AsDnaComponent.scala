@@ -4,8 +4,11 @@ package sequence
 import identified.AsDescribed
 import java.net.URI
 
-trait AsDnaComponent[DC, DS, SA] extends AsDescribed[DC] {
+trait AsDnaComponent[DC] extends AsDescribed[DC] {
+  type _DS
+  type _SA
+
   def sequenceType(dc: DC): Set[URI]
-  def dnaSequence(dc: DC): Option[DS]
-  def annotations(dc: DC): Set[SA]
+  def dnaSequence(dc: DC): Option[_DS]
+  def annotations(dc: DC): Set[_SA]
 }
