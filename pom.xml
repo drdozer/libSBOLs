@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>uk.co.turingatemyhamster</groupId>
     <artifactId>libSBOLs</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>2.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
     <description>Scala support for the SBOL data standard.</description>
@@ -27,10 +27,10 @@
 
     <properties>
         <github.global.server>github</github.global.server>
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
         <encoding>UTF-8</encoding>
-        <scala.version>2.10.0</scala.version>
+        <scala.version>2.10.3</scala.version>
         <!--<env.JDK_HOME>/usr/lib/jvm/jdk1.7.0_07</env.JDK_HOME>-->
     </properties>
 
@@ -58,49 +58,55 @@
         </pluginRepository>
     </pluginRepositories>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.specs2</groupId>
+            <artifactId>specs2_2.10</artifactId>
+            <version>1.13</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.scala-lang</groupId>
-                <artifactId>scala-library</artifactId>
-                <version>${scala.version}</version>
-            </dependency>
 
-            <dependency>
-                <groupId>javafx</groupId>
-                <artifactId>javafxrt</artifactId>
-                <version>2.1</version>
-                <scope>system</scope>
-                <systemPath>${java.home}/lib/jfxrt.jar</systemPath>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>javafx</groupId>-->
+                <!--<artifactId>javafxrt</artifactId>-->
+                <!--<version>2.1</version>-->
+                <!--<scope>system</scope>-->
+                <!--<systemPath>${java.home}/lib/jfxrt.jar</systemPath>-->
+            <!--</dependency>-->
 
-            <dependency>
-                <groupId>org.scalafx</groupId>
-                <artifactId>scalafx</artifactId>
-                <version>1.1-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.specs2</groupId>
-                <artifactId>specs2_2.10</artifactId>
-                <version>1.13</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.11</version>
-                <scope>test</scope>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>org.scalafx</groupId>-->
+                <!--<artifactId>scalafx</artifactId>-->
+                <!--<version>1.1-SNAPSHOT</version>-->
+            <!--</dependency>-->
         </dependencies>
     </dependencyManagement>
 
     <modules>
+        <module>rdf-pickler</module>
+        <module>validation</module>
         <module>core</module>
-        <module>visual</module>
-        <module>regulation</module>
-        <module>regulation-examples</module>
+        <module>sequence</module>
+        <module>module</module>
+        <module>model</module>
+        <module>context</module>
     </modules>
 
     <build>
@@ -230,5 +236,29 @@
         </plugin>
       </plugins>
     </reporting>
+    <profiles>
 
+      <profile>
+        <id>graph</id>
+        <pluginRepositories>
+          <pluginRepository>
+            <id>mvnplugins.fusesource.org</id>
+            <url>http://mvnplugins.fusesource.org/repo/release</url>
+            <releases>
+              <enabled>true</enabled>
+            </releases>
+          </pluginRepository>
+        </pluginRepositories>
+        <build>
+          <plugins>
+            <plugin>
+              <groupId>org.fusesource.mvnplugins</groupId>
+              <artifactId>maven-graph-plugin</artifactId>
+              <version>1.4</version>
+            </plugin>
+          </plugins>
+        </build>
+      </profile>
+
+    </profiles>
 </project>
