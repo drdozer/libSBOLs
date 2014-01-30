@@ -103,7 +103,7 @@
         <module>rdf-pickler</module>
         <module>validation</module>
         <module>core</module>
-        <module>sequence</module>
+        <module>component</module>
         <module>module</module>
         <module>model</module>
         <module>context</module>
@@ -254,7 +254,7 @@
             <plugin>
               <groupId>org.fusesource.mvnplugins</groupId>
               <artifactId>maven-graph-plugin</artifactId>
-              <version>1.4</version>
+              <version>1.30</version>
             </plugin>
           </plugins>
         </build>
