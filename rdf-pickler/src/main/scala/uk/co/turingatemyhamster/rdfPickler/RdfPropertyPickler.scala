@@ -12,9 +12,11 @@ trait RdfPropertyPickler[E, P] {
 
 object RdfPropertyPickler {
   implicit class Ops[E, P](val _p: RdfPropertyPickler[E, P]) extends AnyVal {
-    def comap[F](f: F => E): RdfPropertyPickler[F, P] = new RdfPropertyPickler[F, P] {
-      def pickle(m: Model, from: F, to: P) = _p.pickle(m, f(from), to)
-    }
+    def comap[F](f: F => E): RdfPropertyPickler[F, P] = Comap(_p, f)
+  }
+
+  private case class Comap[E, P, F](_p: RdfPropertyPickler[E, P], f: F => E) extends RdfPropertyPickler[F, P] {
+    def pickle(m: Model, from: F, to: P): Unit = _p.pickle(m, f(from), to)
   }
 
   implicit def collectionPropertyPickler[E, P, CP](implicit cp: CP <:< Iterable[P], ep: RdfPropertyPickler[E, P])
