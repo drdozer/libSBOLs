@@ -51,7 +51,7 @@ object SbolDocument {
     new IO {
       def write(document: SbolDocument, rdfOut: Writer) = {
         val model = ModelFactory.createDefaultModel
-        model.setNsPrefix("sbol", Vocabulary.baseUri)
+        model.setNsPrefix("sbol", Vocabulary.base_uri)
         pickler.pickle(model, document)
         write(model, rdfOut)
       }
@@ -63,7 +63,7 @@ object SbolDocument {
         writer.setProperty("tab", "3")
         writer.setProperty("prettyTypes", tlR)
         
-        writer.write(model, rdfOut, Vocabulary.baseUri)
+        writer.write(model, rdfOut, Vocabulary.base_uri)
       }
     }
   }
