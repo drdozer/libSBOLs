@@ -23,6 +23,11 @@
             <artifactId>validation</artifactId>
             <version>${parent.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.specs2</groupId>
+            <artifactId>specs2_2.10</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
