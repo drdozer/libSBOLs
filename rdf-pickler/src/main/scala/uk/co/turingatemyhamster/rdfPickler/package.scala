@@ -1,5 +1,9 @@
 package uk.co.turingatemyhamster
 
+import java.net.URI
+import com.hp.hpl.jena.rdf.model.Model
+import com.hp.hpl.jena.vocabulary.RDF
+
 /**
  *
  *
@@ -14,4 +18,13 @@ package object rdfPickler {
 
     def pickleValue[PM](implicit ep: RdfEntityCardinalityResolver[P]): RdfEntityPickler[E] = ep.resolve comap _f
   }
+
+  def ofType[E](entityType: URI)(implicit rmE: ResourceMaker[E]): RdfEntityPickler[E] = new RdfEntityPickler[E] {
+    override def pickle(m: Model, entity: E) = m.createStatement(
+      rmE.makeResource(m, entity),
+      RDF.`type`,
+      implicitly[ResourceMaker[URI]].makeResource(m, entityType))
+  }
+
+  def sandwiches(entityType: URI) = ???
 }
