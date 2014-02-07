@@ -19,17 +19,14 @@ case class DnaComponent(identity: URI,
                         componentType: URI,
                         functionalType: URI,
                         sequence: Reference[DnaSequence],
-                        sequenceAnnotations: DnaComponent.DnaAnnotation)
+                        sequenceAnnotations: DnaAnnotation)
   extends SequenceComponent[DnaSequence, OrientedAnnotation[SequenceComponent[DnaSequence, DnaComponent]]]
   with TopLevelEntity
 
 object DnaComponent {
-  type DnaAnnotation = OrientedAnnotation[DnaComponent]
-
   implicit def dnaComponentPickler: RdfEntityPickler[DnaComponent] = RdfEntityPickler.all(
-    sandwiches(Vocabulary.dnaComponent.type_uri),
     rdfPickler.ofType(Vocabulary.dnaComponent.type_uri),
-    implicitly[RdfEntityPickler[SequenceComponent[DnaSequence, OrientedAnnotation[DnaComponent]]]]
+    SequenceComponent.sequenceComponentPickler[DnaSequence, DnaAnnotation]
   )
 }
 
@@ -45,4 +42,16 @@ object DnaSequence {
     ofType(Vocabulary.dnaSequence.type_uri),
     implicitly[RdfEntityPickler[Sequence]]
   )
+}
+
+case class DnaAnnotation(identity: URI,
+                         annotations: Seq[Annotation],
+                         bioStart: Int,
+                         bioEnd: Int,
+                         subComponent: Reference[DnaComponent],
+                         orientation: Orientation) extends OrientedAnnotation[DnaComponent]
+
+object DnaAnnotation {
+  implicit def dnaAnnotationPickler: RdfEntityPickler[DnaAnnotation] =
+    implicitly[RdfEntityPickler[OrientedAnnotation[DnaComponent]]]
 }
