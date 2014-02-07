@@ -1,8 +1,7 @@
 package uk.co.turingatemyhamster.sbols.component
 
 import java.net.URI
-import scala.annotation.Annotation
-import uk.co.turingatemyhamster.sbols.core.{TopLevelEntity, Reference}
+import uk.co.turingatemyhamster.sbols.core.{Annotation, TopLevelEntity, Reference}
 import uk.co.turingatemyhamster.rdfPickler._
 import uk.co.turingatemyhamster.rdfPickler
 
@@ -19,8 +18,8 @@ case class DnaComponent(identity: URI,
                         componentType: URI,
                         functionalType: URI,
                         sequence: Reference[DnaSequence],
-                        sequenceAnnotations: DnaAnnotation)
-  extends SequenceComponent[DnaSequence, OrientedAnnotation[SequenceComponent[DnaSequence, DnaComponent]]]
+                        sequenceAnnotations: Seq[DnaAnnotation])
+  extends SequenceComponent[DnaSequence, DnaAnnotation]
   with TopLevelEntity
 
 object DnaComponent {

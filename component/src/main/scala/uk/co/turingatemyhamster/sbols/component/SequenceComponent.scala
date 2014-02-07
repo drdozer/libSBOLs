@@ -3,21 +3,21 @@ package uk.co.turingatemyhamster.sbols.component
 import java.net.URI
 import uk.co.turingatemyhamster.rdfPickler._
 import uk.co.turingatemyhamster.sbols.core.{Identified, Reference, Documented}
-import com.hp.hpl.jena.rdf.model.Model
 
 /**
  *
  *
  * @author Matthew Pocock
  */
-trait SequenceComponent[S <: Sequence, SA <: SequenceAnnotation[SequenceComponent[S, SA]]] extends Component {
+trait SequenceComponent[S <: Sequence, SA] extends Component {
+
   def functionalType: URI
   def sequence: Reference[S]
   def sequenceAnnotations: Seq[SA]
 }
 
 object SequenceComponent {
-  implicit def sequenceComponentPickler[S <: Sequence, SA <: SequenceAnnotation[SequenceComponent[S, SA]]]
+  implicit def sequenceComponentPickler[S <: Sequence, SA]
   (implicit rmP: ResourceMaker[SA], saP: RdfEntityPickler[SA])
   : RdfEntityPickler[SequenceComponent[S, SA]] = RdfEntityPickler.all(
     ((_: SequenceComponent[S, SA]).functionalType)      picklePropertyAs Vocabulary.sequenceComponent.functionType_uri,
