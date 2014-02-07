@@ -1,6 +1,7 @@
 package uk.co.turingatemyhamster.rdfPickler
 
 import com.hp.hpl.jena.rdf.model.Model
+import java.net.URI
 
 /**
  * Created by caroline on 13/01/14.
@@ -19,23 +20,14 @@ object RdfPropertyPickler {
     def pickle(m: Model, from: F, to: P): Unit = _p.pickle(m, f(from), to)
   }
 
-  implicit def collectionPropertyPickler[E, P, CP](implicit cp: CP <:< Iterable[P], ep: RdfPropertyPickler[E, P])
-  : RdfPropertyPickler[E, CP] = new RdfPropertyPickler[E, CP] {
-    def pickle(m: Model, from: E, to: CP) = for(p <- to) ep.pickle(m, from, p)
-  }
 
   def all[E, P](ps: RdfPropertyPickler[E, P]*): RdfPropertyPickler[E, P] = new RdfPropertyPickler[E, P] {
     def pickle(m: Model, from: E, to: P) = for(p <- ps) p.pickle(m, from, to)
   }
 
-  def anObject[E, P](pm: PropertyMaker)(implicit rmE: ResourceMaker[E], rmP: ResourceMaker[P]): RdfPropertyPickler[E, P] = new RdfPropertyPickler[E, P] {
-    def pickle(m: Model, from: E, to: P) = m.createStatement(
-      rmE.makeResource(m, from),
-      pm.propertyFor(m),
-      rmP.makeResource(m, to))
-  }
-
-  def aValue[E, P](pm: PropertyMaker)(implicit rmE: ResourceMaker[E], pv: PicklerValue[P]): RdfPropertyPickler[E, P] = new RdfPropertyPickler[E, P] {
+  implicit def aValue[E, P](pm: PropertyMaker)
+                           (implicit rmE: ResourceMaker[E], pv: PicklerValue[P])
+  : RdfPropertyPickler[E, P] = new RdfPropertyPickler[E, P] {
     def pickle(m: Model, from: E, to: P) = m.createStatement(
       rmE.makeResource(m, from),
       pm.propertyFor(m),
@@ -43,7 +35,40 @@ object RdfPropertyPickler {
     )
   }
 
-  def walkTo[E, P](implicit pp: RdfEntityPickler[P]): RdfPropertyPickler[E, P] = new RdfPropertyPickler[E, P] {
-    def pickle(m: Model, from: E, to: P) = pp.pickle(m, to)
+  implicit def anObject[E, P](pm: PropertyMaker)
+                             (implicit rmE: ResourceMaker[E], rmP: ResourceMaker[P])
+  : RdfPropertyPickler[E, P] = new RdfPropertyPickler[E, P] {
+    def pickle(m: Model, from: E, to: P) = m.createStatement(
+      rmE.makeResource(m, from),
+      pm.propertyFor(m),
+      rmP.makeResource(m, to))
+  }
+}
+
+trait RdfPropertyCardinalityResolver[E, P] {
+  def resolve: RdfPropertyPickler[E, P]
+}
+
+object RdfPropertyCardinalityResolver {
+  implicit def resolveProperty[E, P](pm: PropertyMaker)(implicit ep: PropertyMaker => RdfPropertyPickler[E, P])
+  : RdfPropertyCardinalityResolver[E, P] = new RdfPropertyCardinalityResolver[E, P] {
+    val pp = ep(pm)
+    def resolve = pp
+  }
+
+  implicit def resolveOptionProperty[E, P](pm: PropertyMaker)(implicit ep: PropertyMaker => RdfPropertyPickler[E, P])
+  : RdfPropertyCardinalityResolver[E, Option[P]] = new RdfPropertyCardinalityResolver[E, Option[P]] {
+    val pp = ep(pm)
+    def resolve = new RdfPropertyPickler[E, Option[P]] {
+      override def pickle(m: Model, from: E, to: Option[P]) = to foreach (t => pp.pickle(m, from, t))
+    }
+  }
+
+  implicit def resolveSeqProperty[E, P](pm: PropertyMaker)(implicit ep: PropertyMaker => RdfPropertyPickler[E, P])
+  : RdfPropertyCardinalityResolver[E, Seq[P]] = new RdfPropertyCardinalityResolver[E, Seq[P]] {
+    val pp = ep(pm)
+    def resolve = new RdfPropertyPickler[E, Seq[P]] {
+      override def pickle(m: Model, from: E, to: Seq[P]) = to foreach (t => pp.pickle(m, from, t))
+    }
   }
 }

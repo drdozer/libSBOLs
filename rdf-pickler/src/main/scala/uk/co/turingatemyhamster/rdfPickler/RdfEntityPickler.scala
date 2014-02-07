@@ -18,7 +18,7 @@ object RdfEntityPickler {
     def pickle(m: Model, entity: F): Unit = _p.pickle(m, f(entity))
   }
 
-  def byProperty[E, P](prop: E => P)(implicit pp: RdfPropertyPickler[E, P]): RdfEntityPickler[E] = new RdfEntityPickler[E] {
+  def byProperty[E, P](prop: E => P)(pp: RdfPropertyPickler[E, P]): RdfEntityPickler[E] = new RdfEntityPickler[E] {
     def pickle(m: Model, entity: E) = pp.pickle(m, entity, prop(entity))
   }
 
@@ -28,5 +28,43 @@ object RdfEntityPickler {
     }
   }
 
+  implicit def cast[E, EE](p: RdfEntityPickler[E])(implicit ev: EE <:< E): RdfEntityPickler[EE] = p comap ev
+
+//  implicit def byProperty[E, P, PP](pair: ((E => P), PP))
+//                                   (implicit pp: PP => RdfPropertyPickler[E, P])
+//  : RdfEntityPickler[E] = byProperty(pair._1, pair._2)
+//
+//
+//  implicit class WalkTo[E, P, PP](val _pair: (E => P, PP)) extends AnyVal {
+//    def walkTo(implicit pp: PP => RdfPropertyPickler[E, P], pw: RdfEntityCardinalityResolver[P])
+//      : RdfEntityPickler[E] = all(
+//      byProperty(_pair),
+//      byProperty(_pair._1)(RdfPropertyPickler.walkTo[E, P](pw.resolve))
+//    )
+//  }
 }
 
+trait RdfEntityCardinalityResolver[E] {
+  def resolve: RdfEntityPickler[E]
+}
+
+object RdfEntityCardinalityResolver {
+  implicit def resolveEntity[P](implicit p: RdfEntityPickler[P])
+  : RdfEntityCardinalityResolver[P] = new RdfEntityCardinalityResolver[P] {
+      def resolve = p
+  }
+
+  implicit def resolveOptionEntity[P](implicit ep: RdfEntityPickler[P])
+  : RdfEntityCardinalityResolver[Option[P]] = new RdfEntityCardinalityResolver[Option[P]] {
+    def resolve = new RdfEntityPickler[Option[P]] {
+      override def pickle(m: Model, op: Option[P]) = op foreach (p => ep.pickle(m, p))
+    }
+  }
+
+  implicit def resolveSeqEntity[P](implicit ep: RdfEntityPickler[P])
+  : RdfEntityCardinalityResolver[Seq[P]] = new RdfEntityCardinalityResolver[Seq[P]] {
+    def resolve = new RdfEntityPickler[Seq[P]] {
+      override def pickle(m: Model, po: Seq[P]) = po foreach (p => ep.pickle(m, p))
+    }
+  }
+}

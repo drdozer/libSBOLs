@@ -7,7 +7,7 @@ import java.net.URI
 /**
  * Created by caroline on 13/01/14.
  */
-trait ResourceMaker[R] {
+trait ResourceMaker[-R] {
   def makeResource(m: Model, r: R): Resource
 }
 

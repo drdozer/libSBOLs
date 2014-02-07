@@ -12,7 +12,9 @@ trait PropertyMaker {
 
 
 object PropertyMaker {
-  implicit def fromURI(uri: URI): PropertyMaker = new PropertyMaker {
-    def propertyFor(m: Model) = m.createProperty(uri.toString)
+  implicit def fromURI(uri: URI): PropertyMaker = fromString(uri.toString)
+
+  implicit def fromString(uriString: String): PropertyMaker = new PropertyMaker {
+    def propertyFor(m: Model) = m.createProperty(uriString)
   }
 }
