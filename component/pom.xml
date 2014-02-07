@@ -1,8 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>${parent.groupId}</groupId>
     <artifactId>component</artifactId>
-    <version>${parent.version}</version>
+    <version>${project.parent.version}</version>
     <description>Core SBOL component data model.</description>
 
     <parent>
@@ -13,9 +12,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>${parent.groupId}</groupId>
+            <groupId>${project.parent.groupId}</groupId>
             <artifactId>core</artifactId>
-            <version>${parent.version}</version>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.specs2</groupId>
+            <artifactId>specs2_2.10</artifactId>
         </dependency>
     </dependencies>
 
