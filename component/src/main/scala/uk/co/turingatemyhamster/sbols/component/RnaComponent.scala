@@ -5,6 +5,7 @@ import uk.co.turingatemyhamster.sbols.core.{TopLevelEntity, Reference, Annotatio
 import uk.co.turingatemyhamster.rdfPickler._
 import uk.co.turingatemyhamster.rdfPickler
 import uk.co.turingatemyhamster.sbols.core.Annotation
+import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
 
 case class RnaComponent(identity: URI,
                         annotations: Seq[Annotation],
@@ -28,6 +29,12 @@ object RnaComponent {
   )
 }
 
+class RnaComponentProvider extends TopLevelEntityProvider {
+  override def uri = Vocabulary.rnaComponent.type_uri
+  override def pickler: RdfEntityPickler[TopLevelEntity] =
+    implicitly[RdfEntityPickler[RnaComponent]].safeCast[TopLevelEntity]
+}
+
 case class RnaSequence(identity: URI,
                        annotations: Seq[Annotation],
                        name: Option[String],
@@ -40,4 +47,10 @@ object RnaSequence {
     ofType(Vocabulary.dnaSequence.type_uri),
     implicitly[RdfEntityPickler[Sequence]]
   )
+}
+
+class RnaSequenceProvider extends TopLevelEntityProvider {
+  override def uri = Vocabulary.rnaSequence.type_uri
+  override def pickler: RdfEntityPickler[TopLevelEntity] =
+    implicitly[RdfEntityPickler[RnaSequence]].safeCast[TopLevelEntity]
 }

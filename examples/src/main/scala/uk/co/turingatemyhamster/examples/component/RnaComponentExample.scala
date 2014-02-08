@@ -51,7 +51,7 @@ object RnaComponentExample {
       )
     )
 
-    val doc = SbolDocument.Impl(Seq(rc1, rc2))
+    val doc = SbolDocument.Impl(Seq(rs1, rc1, rc2))
     println(f"The raw document is: $doc")
 
     val out = new StringWriter
