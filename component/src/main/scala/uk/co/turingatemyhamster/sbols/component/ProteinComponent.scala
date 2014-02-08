@@ -5,6 +5,7 @@ import uk.co.turingatemyhamster.sbols.core.{TopLevelEntity, Reference, Annotatio
 import uk.co.turingatemyhamster.rdfPickler._
 import uk.co.turingatemyhamster.rdfPickler
 import uk.co.turingatemyhamster.sbols.core.Annotation
+import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
 
 /**
  *
@@ -16,18 +17,26 @@ case class ProteinComponent(identity: URI,
                         name: Option[String],
                         description: Option[String],
                         displayId: Option[String],
-                        componentType: URI,
                         functionalType: Seq[URI],
                         sequence: Option[Reference[ProteinSequence]],
                         sequenceAnnotations: Seq[SequenceAnnotation.Impl[ProteinComponent]])
   extends SequenceComponent[ProteinSequence, SequenceAnnotation.Impl[ProteinComponent]]
   with TopLevelEntity
+{
+  def componentType: URI = Vocabulary.proteinComponent.componentType_value_uri
+}
 
 object ProteinComponent {
   implicit def proteinComponentPickler: RdfEntityPickler[ProteinComponent] = RdfEntityPickler.all(
     rdfPickler.ofType(Vocabulary.proteinComponent.type_uri),
     SequenceComponent.sequenceComponentPickler[ProteinSequence, SequenceAnnotation.Impl[ProteinComponent]]
   )
+}
+
+class ProteinComponentProvider extends TopLevelEntityProvider {
+  override def uri = Vocabulary.proteinComponent.type_uri
+  override def pickler: RdfEntityPickler[TopLevelEntity] =
+    implicitly[RdfEntityPickler[ProteinComponent]].safeCast[TopLevelEntity]
 }
 
 case class ProteinSequence(identity: URI,
@@ -42,4 +51,10 @@ object ProteinSequence {
     ofType(Vocabulary.proteinSequence.type_uri),
     implicitly[RdfEntityPickler[Sequence]]
   )
+}
+
+class ProteinSequenceProvider extends TopLevelEntityProvider {
+  override def uri = Vocabulary.proteinSequence.type_uri
+  override def pickler: RdfEntityPickler[TopLevelEntity] =
+    implicitly[RdfEntityPickler[ProteinSequence]].safeCast[TopLevelEntity]
 }

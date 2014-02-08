@@ -12,8 +12,6 @@ trait RdfEntityPickler[E] {
 }
 
 object RdfEntityPickler {
-//  private val LOG = Logger.getLogger(RdfEntityPickler.getClass.getName)
-
   implicit class Ops[E](val _p: RdfEntityPickler[E]) extends AnyVal {
     def comap[F](f: F => E): RdfEntityPickler[F] = Comap(_p, f)
     def safeCast[D](implicit ctE: ClassTag[E]): RdfEntityPickler[D] = SafeCast(_p)

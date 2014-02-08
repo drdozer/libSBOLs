@@ -11,11 +11,8 @@ import java.util.logging.Logger
  * @author Matthew Pocock
  */
 package object rdfPickler {
-  private val LOG = Logger.getLogger("BOB")
-
   implicit class ModelOps(val _m: Model) extends AnyVal {
     def addStatement(s: Resource, p: Property, o: RDFNode) {
-      LOG.info(f"Adding statement <$s $p $o>")
       _m.add(_m.createStatement(s, p, o))
     }
   }

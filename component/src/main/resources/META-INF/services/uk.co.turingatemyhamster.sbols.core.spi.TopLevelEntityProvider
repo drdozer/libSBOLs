@@ -2,3 +2,5 @@ uk.co.turingatemyhamster.sbols.component.DnaComponentProvider
 uk.co.turingatemyhamster.sbols.component.DnaSequenceProvider
 uk.co.turingatemyhamster.sbols.component.RnaComponentProvider
 uk.co.turingatemyhamster.sbols.component.RnaSequenceProvider
+uk.co.turingatemyhamster.sbols.component.ProteinComponentProvider
+uk.co.turingatemyhamster.sbols.component.ProteinSequenceProvider
