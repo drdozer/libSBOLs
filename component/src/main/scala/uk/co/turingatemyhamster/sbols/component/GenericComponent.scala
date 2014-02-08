@@ -2,7 +2,7 @@ package uk.co.turingatemyhamster.sbols.component
 
 import uk.co.turingatemyhamster.sbols.core.{Annotation, TopLevelEntity}
 import java.net.URI
-import uk.co.turingatemyhamster.rdfPickler._
+import uk.co.turingatemyhamster.sbols.rdfPickler._
 import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
 
 /**

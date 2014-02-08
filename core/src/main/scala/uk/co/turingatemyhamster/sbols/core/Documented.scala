@@ -1,6 +1,6 @@
 package uk.co.turingatemyhamster.sbols.core
 
-import uk.co.turingatemyhamster.rdfPickler._
+import uk.co.turingatemyhamster.sbols.rdfPickler._
 
 
 trait Documented extends Identified {

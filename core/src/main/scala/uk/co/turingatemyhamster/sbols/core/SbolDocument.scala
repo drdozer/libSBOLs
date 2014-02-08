@@ -1,6 +1,6 @@
 package uk.co.turingatemyhamster.sbols.core
 
-import uk.co.turingatemyhamster.rdfPickler.RdfEntityPickler
+import uk.co.turingatemyhamster.sbols.rdfPickler.RdfEntityPickler
 import com.hp.hpl.jena.rdf.model.{ModelFactory, Model}
 import java.util.ServiceLoader
 import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider

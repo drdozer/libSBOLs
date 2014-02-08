@@ -1,7 +1,7 @@
 package uk.co.turingatemyhamster.sbols.core
 
 import java.{net => jn}
-import uk.co.turingatemyhamster.rdfPickler.ResourceMaker
+import uk.co.turingatemyhamster.sbols.rdfPickler.ResourceMaker
 
 /**
  *

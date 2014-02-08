@@ -2,8 +2,8 @@ package uk.co.turingatemyhamster.sbols.component
 
 import java.net.URI
 import uk.co.turingatemyhamster.sbols.core.{TopLevelEntity, Reference, Annotation}
-import uk.co.turingatemyhamster.rdfPickler._
-import uk.co.turingatemyhamster.rdfPickler
+import uk.co.turingatemyhamster.sbols.rdfPickler._
+import uk.co.turingatemyhamster.sbols.rdfPickler
 import uk.co.turingatemyhamster.sbols.core.Annotation
 import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
 
