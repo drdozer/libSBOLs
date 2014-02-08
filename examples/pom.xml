@@ -58,6 +58,10 @@
                             <mainClass>uk.co.turingatemyhamster.sbols.examples.component.GenericComponentExample</mainClass>
                             <id>generic_component</id>
                         </program>
+                        <program>
+                            <mainClass>uk.co.turingatemyhamster.sbols.examples.model.ModelExample</mainClass>
+                            <id>model</id>
+                        </program>
                     </programs>
                 </configuration>
                 <executions>
