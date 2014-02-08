@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>examples</artifactId>
+    <version>${project.parent.version}</version>
+    <description>Some examples of using the SBOL API.</description>
+
+    <parent>
+        <groupId>uk.co.turingatemyhamster</groupId>
+        <artifactId>libSBOLs</artifactId>
+        <version>2.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>component</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.specs2</groupId>
+            <artifactId>specs2_2.10</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.scala-tools</groupId>
+                <artifactId>maven-scala-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>1.7</version>
+                <configuration>
+                    <programs>
+                        <program>
+                            <mainClass>uk.co.turingatemyhamster.examples.component.DnaComponentExample</mainClass>
+                            <id>dna_component</id>
+                        </program>
+                        <program>
+                            <mainClass>uk.co.turingatemyhamster.examples.component.RnaComponentExample</mainClass>
+                            <id>rna_component</id>
+                        </program>
+                        <program>
+                            <mainClass>uk.co.turingatemyhamster.examples.component.ProteinComponentExample</mainClass>
+                            <id>protein_component</id>
+                        </program>
+                        <program>
+                            <mainClass>uk.co.turingatemyhamster.examples.component.GenericComponentExample</mainClass>
+                            <id>generic_component</id>
+                        </program>
+                    </programs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assemble</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
