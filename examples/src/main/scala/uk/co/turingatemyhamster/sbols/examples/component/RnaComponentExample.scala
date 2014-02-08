@@ -1,4 +1,4 @@
-package uk.co.turingatemyhamster.examples.component
+package uk.co.turingatemyhamster.sbols.examples.component
 
 import uk.co.turingatemyhamster.sbols.component.{RnaSequence, ReverseComplement, OrientedAnnotation, RnaComponent}
 import uk.co.turingatemyhamster.sbols.core.{Reference, SbolDocument, URI}

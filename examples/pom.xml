@@ -37,19 +37,19 @@
                 <configuration>
                     <programs>
                         <program>
-                            <mainClass>uk.co.turingatemyhamster.examples.component.DnaComponentExample</mainClass>
+                            <mainClass>uk.co.turingatemyhamster.sbols.examples.component.DnaComponentExample</mainClass>
                             <id>dna_component</id>
                         </program>
                         <program>
-                            <mainClass>uk.co.turingatemyhamster.examples.component.RnaComponentExample</mainClass>
+                            <mainClass>uk.co.turingatemyhamster.sbols.examples.component.RnaComponentExample</mainClass>
                             <id>rna_component</id>
                         </program>
                         <program>
-                            <mainClass>uk.co.turingatemyhamster.examples.component.ProteinComponentExample</mainClass>
+                            <mainClass>uk.co.turingatemyhamster.sbols.examples.component.ProteinComponentExample</mainClass>
                             <id>protein_component</id>
                         </program>
                         <program>
-                            <mainClass>uk.co.turingatemyhamster.examples.component.GenericComponentExample</mainClass>
+                            <mainClass>uk.co.turingatemyhamster.sbols.examples.component.GenericComponentExample</mainClass>
                             <id>generic_component</id>
                         </program>
                     </programs>

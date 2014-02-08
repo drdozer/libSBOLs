@@ -1,10 +1,10 @@
-package uk.co.turingatemyhamster.examples.component
+package uk.co.turingatemyhamster.sbols.examples.component
 
-import uk.co.turingatemyhamster.sbols.component._
 import uk.co.turingatemyhamster.sbols.core._
 import java.io.StringWriter
 import scala.Some
 import uk.co.turingatemyhamster.sbols.core.Annotation
+import uk.co.turingatemyhamster.sbols.component.GenericComponent
 
 /**
  *
