@@ -53,6 +53,19 @@ object SequenceAnnotation {
     ((_: SequenceAnnotation[SC]).subComponent)  picklePropertyAs Vocabulary.sequenceAnnotation.subComponent_uri,
     implicitly[RdfEntityPickler[Identified]]
   )
+
+  case class Impl[SC](identity: jn.URI,
+                      annotations: Seq[Annotation],
+                      bioStart: Int,
+                      bioEnd: Int,
+                      subComponent: Reference[SC]) extends SequenceAnnotation[SC]
+
+  object Impl {
+    implicit def implPickler[SC]: RdfEntityPickler[Impl[SC]] = RdfEntityPickler.all(
+      ofType(Vocabulary.sequenceAnnotation.type_uri),
+      implicitly[RdfEntityPickler[SequenceAnnotation[SC]]]
+    )
+  }
 }
 
 trait OrientedAnnotation[SC] extends SequenceAnnotation[SC] {
@@ -65,12 +78,19 @@ object OrientedAnnotation {
     implicitly[RdfEntityPickler[SequenceAnnotation[SC]]]
   )
 
-  case class Impl(identity: jn.URI,
+  case class Impl[SC](identity: jn.URI,
                   annotations: Seq[Annotation],
                   bioStart: Int,
                   bioEnd: Int,
-                  subComponent: Reference[DnaComponent],
-                  orientation: Orientation) extends OrientedAnnotation[DnaComponent]
+                  subComponent: Reference[SC],
+                  orientation: Orientation) extends OrientedAnnotation[SC]
+
+  object Impl {
+    implicit def implPickler[SC]: RdfEntityPickler[Impl[SC]] = RdfEntityPickler.all(
+      ofType(Vocabulary.orientedAnnotation.type_uri),
+      implicitly[RdfEntityPickler[OrientedAnnotation[SC]]]
+    )
+  }
 }
 
 sealed trait Orientation

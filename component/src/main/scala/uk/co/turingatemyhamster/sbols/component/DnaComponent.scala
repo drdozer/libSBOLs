@@ -18,8 +18,8 @@ case class DnaComponent(identity: jn.URI,
                         displayId: Option[String],
                         functionalType: Seq[jn.URI],
                         sequence: Option[Reference[DnaSequence]],
-                        sequenceAnnotations: Seq[OrientedAnnotation[DnaComponent]])
-  extends SequenceComponent[DnaSequence, OrientedAnnotation[DnaComponent]]
+                        sequenceAnnotations: Seq[OrientedAnnotation.Impl[DnaComponent]])
+  extends SequenceComponent[DnaSequence, OrientedAnnotation.Impl[DnaComponent]]
   with TopLevelEntity
 {
   def componentType: jn.URI = Vocabulary.dnaComponent.componentType_value_uri
@@ -28,7 +28,7 @@ case class DnaComponent(identity: jn.URI,
 object DnaComponent {
   implicit def dnaComponentPickler: RdfEntityPickler[DnaComponent] = RdfEntityPickler.all(
     rdfPickler.ofType(Vocabulary.dnaComponent.type_uri),
-    SequenceComponent.sequenceComponentPickler[DnaSequence, OrientedAnnotation[DnaComponent]]
+    SequenceComponent.sequenceComponentPickler[DnaSequence, OrientedAnnotation.Impl[DnaComponent]]
   )
 
   def tle(dc: DnaComponent): TopLevelEntity = dc
@@ -36,7 +36,8 @@ object DnaComponent {
 
 class DnaComponentProvider extends TopLevelEntityProvider {
   override def uri = Vocabulary.dnaComponent.type_uri
-  override def pickler: RdfEntityPickler[TopLevelEntity] = implicitly[RdfEntityPickler[DnaComponent]].safeCast[TopLevelEntity]
+  override def pickler: RdfEntityPickler[TopLevelEntity] =
+    implicitly[RdfEntityPickler[DnaComponent]].safeCast[TopLevelEntity]
 }
 
 case class DnaSequence(identity: jn.URI,
@@ -51,4 +52,10 @@ object DnaSequence {
     ofType(Vocabulary.dnaSequence.type_uri),
     implicitly[RdfEntityPickler[Sequence]]
   )
+}
+
+class DnaSequenceProvider extends TopLevelEntityProvider {
+  override def uri = Vocabulary.dnaSequence.type_uri
+  override def pickler: RdfEntityPickler[TopLevelEntity] =
+    implicitly[RdfEntityPickler[DnaSequence]].safeCast[TopLevelEntity]
 }

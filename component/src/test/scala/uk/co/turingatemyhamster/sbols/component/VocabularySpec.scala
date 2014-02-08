@@ -36,8 +36,16 @@ class VocabularySpec extends Specification {
       Vocabulary.sequenceAnnotation.bioEnd_uri must not be null
     }
 
+    "have a non-null value for sequenceAnnotation.type_uri" in {
+      Vocabulary.sequenceAnnotation.type_uri must not be null
+    }
+
     "have a non-null value for sequenceAnnotation.subComponent_uri" in {
       Vocabulary.sequenceAnnotation.subComponent_uri must not be null
+    }
+
+    "have a non-null value for orientedAnnotation.type_uri" in {
+      Vocabulary.orientedAnnotation.type_uri must not be null
     }
 
     "have a non-null value for orientedAnnotation_uri" in {

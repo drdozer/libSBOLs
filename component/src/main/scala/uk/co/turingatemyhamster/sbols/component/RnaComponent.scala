@@ -11,18 +11,20 @@ case class RnaComponent(identity: URI,
                         name: Option[String],
                         description: Option[String],
                         displayId: Option[String],
-                        componentType: URI,
                         functionalType: Seq[URI],
                         sequence: Option[Reference[RnaSequence]],
-                        sequenceAnnotations: Seq[OrientedAnnotation[RnaComponent]])
-  extends SequenceComponent[RnaSequence, OrientedAnnotation[RnaComponent]]
+                        sequenceAnnotations: Seq[OrientedAnnotation.Impl[RnaComponent]])
+  extends SequenceComponent[RnaSequence, OrientedAnnotation.Impl[RnaComponent]]
   with TopLevelEntity
+{
+  def componentType: URI = Vocabulary.rnaComponent.componentType_value_uri
+}
 
 object RnaComponent {
 
   implicit def dnaComponentPickler: RdfEntityPickler[RnaComponent] = RdfEntityPickler.all(
     rdfPickler.ofType(Vocabulary.rnaComponent.type_uri),
-    SequenceComponent.sequenceComponentPickler[RnaSequence, OrientedAnnotation[RnaComponent]]
+    SequenceComponent.sequenceComponentPickler[RnaSequence, OrientedAnnotation.Impl[RnaComponent]]
   )
 }
 

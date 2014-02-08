@@ -19,14 +19,14 @@ case class ProteinComponent(identity: URI,
                         componentType: URI,
                         functionalType: Seq[URI],
                         sequence: Option[Reference[ProteinSequence]],
-                        sequenceAnnotations: Seq[SequenceAnnotation[ProteinComponent]])
-  extends SequenceComponent[ProteinSequence, SequenceAnnotation[ProteinComponent]]
+                        sequenceAnnotations: Seq[SequenceAnnotation.Impl[ProteinComponent]])
+  extends SequenceComponent[ProteinSequence, SequenceAnnotation.Impl[ProteinComponent]]
   with TopLevelEntity
 
 object ProteinComponent {
   implicit def proteinComponentPickler: RdfEntityPickler[ProteinComponent] = RdfEntityPickler.all(
     rdfPickler.ofType(Vocabulary.proteinComponent.type_uri),
-    SequenceComponent.sequenceComponentPickler[ProteinSequence, SequenceAnnotation[ProteinComponent]]
+    SequenceComponent.sequenceComponentPickler[ProteinSequence, SequenceAnnotation.Impl[ProteinComponent]]
   )
 }
 

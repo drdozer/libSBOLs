@@ -43,6 +43,9 @@ class Vocabulary(props: Properties) {
   }
 
   object sequenceAnnotation {
+    val `type` = "SequenceAnnotation.type"
+    val type_uri = lookup(`type`)
+
     val bioStart = "SequenceAnnotation.bioStart"
     val bioStart_uri = lookup(bioStart)
 
@@ -54,6 +57,9 @@ class Vocabulary(props: Properties) {
   }
 
   object orientedAnnotation {
+    val `type` = "OrientedAnnotation.type"
+    val type_uri = lookup(`type`)
+
     val orientation = "OrientedAnnotation.orientation"
     val orientation_uri = lookup(orientation)
   }

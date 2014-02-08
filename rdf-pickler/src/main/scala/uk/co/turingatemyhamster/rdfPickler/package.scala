@@ -15,9 +15,8 @@ package object rdfPickler {
 
   implicit class ModelOps(val _m: Model) extends AnyVal {
     def addStatement(s: Resource, p: Property, o: RDFNode) {
-      LOG.info(f"Adding statement to model of size ${_m.size()}")
+      LOG.info(f"Adding statement <$s $p $o>")
       _m.add(_m.createStatement(s, p, o))
-      LOG.info(f"Added statement to model of size ${_m.size()}")
     }
   }
 
