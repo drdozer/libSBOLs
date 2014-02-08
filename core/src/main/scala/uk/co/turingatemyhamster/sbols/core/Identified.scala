@@ -26,13 +26,13 @@ object Identified {
         val p = m.createProperty(a.predicate.toString)
         a.value match {
           case ReferenceValue(value) =>
-            m.createStatement(iUri, p, uriRM.makeResource(m, value))
+            m.addStatement(iUri, p, uriRM.makeResource(m, value))
           case StringValue(value) =>
-            m.createStatement(iUri, p, value)
+            m.addStatement(iUri, p, implicitly[PicklerValue[String]].toLiteral(m, value))
           case DoubleValue(value) =>
-            m.createStatement(iUri, p, value.toString)
+            m.addStatement(iUri, p, implicitly[PicklerValue[Double]].toLiteral(m, value))
           case IntegerValue(value) =>
-            m.createStatement(iUri, p, value.toString)
+            m.addStatement(iUri, p, implicitly[PicklerValue[Int]].toLiteral(m, value))
         }
       }
     }

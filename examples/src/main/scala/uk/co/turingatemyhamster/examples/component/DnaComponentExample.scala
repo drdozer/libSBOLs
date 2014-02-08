@@ -1,7 +1,7 @@
 package uk.co.turingatemyhamster.examples.component
 
-import uk.co.turingatemyhamster.sbols.component.DnaComponent
-import uk.co.turingatemyhamster.sbols.core.{SbolDocument, URI}
+import uk.co.turingatemyhamster.sbols.component.{ReverseComplement, OrientedAnnotation, DnaComponent}
+import uk.co.turingatemyhamster.sbols.core.{Reference, SbolDocument, URI}
 import java.io.StringWriter
 
 /**
@@ -11,7 +11,7 @@ import java.io.StringWriter
  */
 object DnaComponentExample {
   def main(args: Array[String]) {
-    val dc = DnaComponent(
+    val dc1 = DnaComponent(
         identity = URI("http://turingatemyhamter.co.uk/example#dc1"),
         annotations = Seq(),
         name = Some("DNA Component 1"),
@@ -22,11 +22,32 @@ object DnaComponentExample {
         sequenceAnnotations = Seq()
     )
 
-    println(f"The raw dc object is: $dc")
+    val dc2 = DnaComponent(
+      identity = URI("http://turingatemyhamter.co.uk/example#dc2"),
+      annotations = Seq(),
+      name = Some("DNA Component 2"),
+      description = Some("My second DNA Component"),
+      displayId = Some("dc2"),
+      functionalType = Seq(),
+      sequence = None,
+      sequenceAnnotations = Seq(
+        OrientedAnnotation.Impl(
+          identity = URI("http://turingatemyhamter.co.uk/example#dc2/sa1"),
+          annotations = Seq(),
+          bioStart = 20,
+          bioEnd = 32,
+          subComponent = Reference(dc1.identity),
+          orientation = ReverseComplement
+        )
+      )
+    )
+
+    val doc = SbolDocument.Impl(Seq(dc1, dc2))
+    println(f"The raw document is: $doc")
 
     val out = new StringWriter
 
-    SbolDocument.io().write(SbolDocument.Impl(Seq(dc)), out)
+    SbolDocument.io().write(doc, out)
 
     println(f"The RDF is\n${out.toString}")
   }

@@ -2,6 +2,7 @@ package uk.co.turingatemyhamster.rdfPickler
 
 import com.hp.hpl.jena.rdf.model.Model
 import scala.reflect.ClassTag
+import java.util.logging.Logger
 
 /**
  * Created by caroline on 13/01/14.
@@ -11,6 +12,8 @@ trait RdfEntityPickler[E] {
 }
 
 object RdfEntityPickler {
+  private val LOG = Logger.getLogger(RdfEntityPickler.getClass.getName)
+
   implicit class Ops[E](val _p: RdfEntityPickler[E]) extends AnyVal {
     def comap[F](f: F => E): RdfEntityPickler[F] = Comap(_p, f)
     def safeCast[D](implicit ctE: ClassTag[E]): RdfEntityPickler[D] = SafeCast(_p)
@@ -21,9 +24,16 @@ object RdfEntityPickler {
   }
 
   private case class SafeCast[E, D](_p: RdfEntityPickler[E])(implicit ctE: ClassTag[E]) extends RdfEntityPickler[D] {
-    override def pickle(m: Model, entity: D) = ctE.runtimeClass.isInstance(entity) match {
-      case true => ctE.runtimeClass.cast(entity)
-      case false =>
+    LOG.info(f"Created instance of SafeCast for $ctE")
+    override def pickle(m: Model, entity: D) = {
+      LOG.info(f"Attempting to pickle $entity as $ctE")
+      ctE.runtimeClass.isInstance(entity) match {
+        case true =>
+          LOG.info(f"SafeCast pickling instance of $ctE")
+          _p.pickle(m, ctE.runtimeClass.cast(entity).asInstanceOf[E])
+        case false =>
+          LOG.info(f"SafeCast skipping instance of $ctE")
+      }
     }
   }
 
@@ -32,9 +42,13 @@ object RdfEntityPickler {
   }
 
   def all[E](ps: RdfEntityPickler[E]*): RdfEntityPickler[E] = new RdfEntityPickler[E] {
-    def pickle(m: Model, entity: E) = new RdfEntityPickler[E] {
-      def pickle(m: Model, entity: E) = for(p <- ps) p.pickle(m, entity)
+    def pickle(m: Model, entity: E) {
+      LOG.info(f"Pickling with ${ps.size} picklers")
+      for(p <- ps) p.pickle(m, entity)
+      LOG.info("Pickled with all")
     }
+
+    override def toString = f"All($ps)"
   }
 
   implicit def cast[E, EE](p: RdfEntityPickler[E])(implicit ev: EE <:< E): RdfEntityPickler[EE] = p comap ev

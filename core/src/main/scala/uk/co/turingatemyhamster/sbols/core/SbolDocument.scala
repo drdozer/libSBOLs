@@ -6,6 +6,7 @@ import java.util.ServiceLoader
 import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
 import java.io.Writer
 import java.{net => jn}
+import java.util.logging.Logger
 
 /**
  *
@@ -17,12 +18,17 @@ trait SbolDocument {
 }
 
 object SbolDocument {
+  private val LOG = Logger.getLogger(SbolDocument.getClass.getName)
+
   case class Impl(topLevelEntities: Iterable[TopLevelEntity]) extends SbolDocument
 
   def providers(cl: ClassLoader): Seq[TopLevelEntityProvider] = {
+    LOG.info("Searching for providers")
     val sl = ServiceLoader.load(classOf[TopLevelEntityProvider], cl)
     import scala.collection.JavaConversions._
-    sl.iterator.to[Seq]
+    val ps = sl.iterator.to[Seq]
+    LOG.info(f"Found ${ps.size} providers")
+    ps
   }
 
 
@@ -31,7 +37,11 @@ object SbolDocument {
 
     new RdfEntityPickler[SbolDocument] {
       override def pickle(m: Model, entity: SbolDocument) =
-        for(tle <- entity.topLevelEntities) pickler.pickle(m, tle)
+        for(tle <- entity.topLevelEntities) {
+          LOG.info(f"Pickling $tle with $pickler")
+          pickler.pickle(m, tle)
+          LOG.info(f"Pickled")
+        }
     }
   }
 

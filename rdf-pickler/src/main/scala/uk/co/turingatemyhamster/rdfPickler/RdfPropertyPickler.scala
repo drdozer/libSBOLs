@@ -28,17 +28,17 @@ object RdfPropertyPickler {
   implicit def aValue[E, P](pm: PropertyMaker)
                            (implicit rmE: ResourceMaker[E], pv: PicklerValue[P])
   : RdfPropertyPickler[E, P] = new RdfPropertyPickler[E, P] {
-    def pickle(m: Model, from: E, to: P) = m.createStatement(
+    def pickle(m: Model, from: E, to: P) = m.addStatement(
       rmE.makeResource(m, from),
       pm.propertyFor(m),
-      pv.stringify(to)
+      pv.toLiteral(m, to)
     )
   }
 
   implicit def anObject[E, P](pm: PropertyMaker)
                              (implicit rmE: ResourceMaker[E], rmP: ResourceMaker[P])
   : RdfPropertyPickler[E, P] = new RdfPropertyPickler[E, P] {
-    def pickle(m: Model, from: E, to: P) = m.createStatement(
+    def pickle(m: Model, from: E, to: P) = m.addStatement(
       rmE.makeResource(m, from),
       pm.propertyFor(m),
       rmP.makeResource(m, to))
