@@ -3,7 +3,6 @@ package uk.co.turingatemyhamster.sbols.component
 import java.net.URI
 import uk.co.turingatemyhamster.sbols.core.{TopLevelEntity, Reference, Annotation}
 import uk.co.turingatemyhamster.rdfPickler._
-import uk.co.turingatemyhamster.rdfPickler
 import uk.co.turingatemyhamster.sbols.core.Annotation
 import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
 
@@ -28,7 +27,7 @@ case class ProteinComponent(identity: URI,
 
 object ProteinComponent {
   implicit def proteinComponentPickler: RdfEntityPickler[ProteinComponent] = RdfEntityPickler.all(
-    rdfPickler.ofType(Vocabulary.proteinComponent.type_uri),
+    ofType(Vocabulary.proteinComponent.type_uri),
     SequenceComponent.sequenceComponentPickler[ProteinSequence, SequenceAnnotation.Impl[ProteinComponent]]
   )
 }

@@ -9,7 +9,7 @@ import uk.co.turingatemyhamster.rdfPickler._
  *
  * @author Matthew Pocock
  */
-trait Component extends Identified with Documented {
+trait Component extends Documented {
   def componentType: URI
 }
 

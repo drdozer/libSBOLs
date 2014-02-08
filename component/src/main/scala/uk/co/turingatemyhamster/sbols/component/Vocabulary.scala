@@ -26,6 +26,11 @@ class Vocabulary(props: Properties) {
     val componentType_uri = lookup(componentType)
   }
 
+  object genericComponent {
+    val `type` = "GenericComponent.type"
+    val type_uri = lookup(`type`)
+  }
+
   object sequenceComponent {
     val functionType = "SequenceComponent.functionType"
     val functionType_uri = lookup(functionType)

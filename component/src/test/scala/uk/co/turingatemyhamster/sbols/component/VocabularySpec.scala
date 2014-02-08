@@ -12,6 +12,10 @@ class VocabularySpec extends Specification {
       Vocabulary.component.componentType_uri must not be null
     }
 
+    "have a non-null value for genericComponent.type_uri" in {
+      Vocabulary.genericComponent.type_uri must not be null
+    }
+
     "have a non-null value for sequenceComponent.functionType_uri" in {
       Vocabulary.sequenceComponent.functionType_uri must not be null
     }
