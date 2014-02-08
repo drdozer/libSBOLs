@@ -1,7 +1,7 @@
 package uk.co.turingatemyhamster.sbols.component
 
 import java.util.Properties
-import java.net.URI
+import uk.co.turingatemyhamster.sbols.core.URI
 
 /**
  *
@@ -18,7 +18,7 @@ class Vocabulary(props: Properties) {
   private def lookup(p: String) = {
     val value = props getProperty p
     assert(value != null, f"Vocabulary for `$p` not defined")
-    new URI(value)
+    URI(value)
   }
 
   object component {
@@ -69,6 +69,9 @@ class Vocabulary(props: Properties) {
   object dnaComponent {
     val `type` = "DnaComponent.type"
     val type_uri = lookup(`type`)
+
+    val componentType_value = "DnaComponent.componentType_value"
+    val componentType_value_uri = lookup(componentType_value)
   }
 
   object dnaSequence {
@@ -79,6 +82,9 @@ class Vocabulary(props: Properties) {
   object rnaComponent {
     val `type` = "RnaComponent.type"
     val type_uri = lookup(`type`)
+
+    val componentType_value = "RnaComponent.componentType_value"
+    val componentType_value_uri = lookup(componentType_value)
   }
 
   object rnaSequence {
@@ -89,6 +95,9 @@ class Vocabulary(props: Properties) {
   object proteinComponent {
     val `type` = "ProteinComponent.type"
     val type_uri = lookup(`type`)
+
+    val componentType_value = "ProteinComponent.componentType_value"
+    val componentType_value_uri = lookup(componentType_value)
   }
 
   object proteinSequence {

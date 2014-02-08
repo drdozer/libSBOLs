@@ -94,13 +94,14 @@
     </dependencyManagement>
 
     <modules>
+        <module>component</module>
+        <module>context</module>
+        <module>core</module>
+        <module>examples</module>
+        <module>model</module>
+        <module>module</module>
         <module>rdf-pickler</module>
         <module>validation</module>
-        <module>core</module>
-        <module>component</module>
-        <module>module</module>
-        <module>model</module>
-        <module>context</module>
     </modules>
 
     <build>

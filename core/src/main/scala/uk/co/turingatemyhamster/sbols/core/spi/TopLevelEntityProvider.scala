@@ -9,7 +9,7 @@ import java.net.URI
  *
  * @author Matthew Pocock
  */
-trait TopLevelEntryProvider {
+trait TopLevelEntityProvider {
   def pickler: RdfEntityPickler[TopLevelEntity]
   def uri: URI
 }

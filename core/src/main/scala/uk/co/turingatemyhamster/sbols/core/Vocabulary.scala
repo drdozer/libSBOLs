@@ -1,7 +1,6 @@
 package uk.co.turingatemyhamster.sbols.core
 
 import java.util.Properties
-import java.net.URI
 
 /**
  *
@@ -15,7 +14,11 @@ object Vocabulary extends Vocabulary({
 })
 
 class Vocabulary(props: Properties) {
-  private def lookup(p: String) = props getProperty p
+  private def lookup(p: String) = {
+    val value = props getProperty p
+    assert(value != null, f"Vocabulary for `$p` not defined")
+    URI(value)
+  }
 
   val base = "baseUri"
   val base_uri = lookup(base)

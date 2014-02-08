@@ -1,6 +1,7 @@
 package uk.co.turingatemyhamster.rdfPickler
 
 import com.hp.hpl.jena.rdf.model.Model
+import scala.reflect.ClassTag
 
 /**
  * Created by caroline on 13/01/14.
@@ -12,10 +13,18 @@ trait RdfEntityPickler[E] {
 object RdfEntityPickler {
   implicit class Ops[E](val _p: RdfEntityPickler[E]) extends AnyVal {
     def comap[F](f: F => E): RdfEntityPickler[F] = Comap(_p, f)
+    def safeCast[D](implicit ctE: ClassTag[E]): RdfEntityPickler[D] = SafeCast(_p)
   }
 
   private case class Comap[E, F](_p: RdfEntityPickler[E], f: F => E) extends RdfEntityPickler[F] {
     def pickle(m: Model, entity: F): Unit = _p.pickle(m, f(entity))
+  }
+
+  private case class SafeCast[E, D](_p: RdfEntityPickler[E])(implicit ctE: ClassTag[E]) extends RdfEntityPickler[D] {
+    override def pickle(m: Model, entity: D) = ctE.runtimeClass.isInstance(entity) match {
+      case true => ctE.runtimeClass.cast(entity)
+      case false =>
+    }
   }
 
   def byProperty[E, P](prop: E => P)(pp: RdfPropertyPickler[E, P]): RdfEntityPickler[E] = new RdfEntityPickler[E] {
@@ -29,19 +38,6 @@ object RdfEntityPickler {
   }
 
   implicit def cast[E, EE](p: RdfEntityPickler[E])(implicit ev: EE <:< E): RdfEntityPickler[EE] = p comap ev
-
-//  implicit def byProperty[E, P, PP](pair: ((E => P), PP))
-//                                   (implicit pp: PP => RdfPropertyPickler[E, P])
-//  : RdfEntityPickler[E] = byProperty(pair._1, pair._2)
-//
-//
-//  implicit class WalkTo[E, P, PP](val _pair: (E => P, PP)) extends AnyVal {
-//    def walkTo(implicit pp: PP => RdfPropertyPickler[E, P], pw: RdfEntityCardinalityResolver[P])
-//      : RdfEntityPickler[E] = all(
-//      byProperty(_pair),
-//      byProperty(_pair._1)(RdfPropertyPickler.walkTo[E, P](pw.resolve))
-//    )
-//  }
 }
 
 trait RdfEntityCardinalityResolver[E] {

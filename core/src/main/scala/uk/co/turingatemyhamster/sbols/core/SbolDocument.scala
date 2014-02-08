@@ -3,9 +3,9 @@ package uk.co.turingatemyhamster.sbols.core
 import uk.co.turingatemyhamster.rdfPickler.RdfEntityPickler
 import com.hp.hpl.jena.rdf.model.{ModelFactory, Model}
 import java.util.ServiceLoader
-import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntryProvider
+import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
 import java.io.Writer
-import java.net.URI
+import java.{net => jn}
 
 /**
  *
@@ -13,13 +13,14 @@ import java.net.URI
  * @author Matthew Pocock
  */
 trait SbolDocument {
-  def topLevelEntrys: Iterable[TopLevelEntity]
+  def topLevelEntities: Iterable[TopLevelEntity]
 }
 
 object SbolDocument {
-  
-  def providers(cl: ClassLoader): Seq[TopLevelEntryProvider] = {
-    val sl = ServiceLoader.load(classOf[TopLevelEntryProvider], cl)
+  case class Impl(topLevelEntities: Iterable[TopLevelEntity]) extends SbolDocument
+
+  def providers(cl: ClassLoader): Seq[TopLevelEntityProvider] = {
+    val sl = ServiceLoader.load(classOf[TopLevelEntityProvider], cl)
     import scala.collection.JavaConversions._
     sl.iterator.to[Seq]
   }
@@ -30,11 +31,11 @@ object SbolDocument {
 
     new RdfEntityPickler[SbolDocument] {
       override def pickle(m: Model, entity: SbolDocument) =
-        for(tle <- entity.topLevelEntrys) pickler.pickle(m, tle)
+        for(tle <- entity.topLevelEntities) pickler.pickle(m, tle)
     }
   }
 
-  def topLevelEntities(cl: ClassLoader): Seq[URI] = {
+  def topLevelEntities(cl: ClassLoader): Seq[jn.URI] = {
     providers(cl) map (_.uri)
   }
 
@@ -51,7 +52,7 @@ object SbolDocument {
     new IO {
       def write(document: SbolDocument, rdfOut: Writer) = {
         val model = ModelFactory.createDefaultModel
-        model.setNsPrefix("sbol", Vocabulary.base_uri)
+        model.setNsPrefix("sbol", Vocabulary.base_uri.toString)
         pickler.pickle(model, document)
         write(model, rdfOut)
       }
@@ -61,9 +62,9 @@ object SbolDocument {
 
         val writer = model.getWriter(format)
         writer.setProperty("tab", "3")
-        writer.setProperty("prettyTypes", tlR)
+        writer.setProperty("prettyTypes", tlR.to[Array])
         
-        writer.write(model, rdfOut, Vocabulary.base_uri)
+        writer.write(model, rdfOut, Vocabulary.base_uri.toString)
       }
     }
   }

@@ -1,35 +1,45 @@
 package uk.co.turingatemyhamster.sbols.component
 
-import java.net.URI
+import java.{net => jn}
 import uk.co.turingatemyhamster.sbols.core.{Annotation, TopLevelEntity, Reference}
 import uk.co.turingatemyhamster.rdfPickler._
 import uk.co.turingatemyhamster.rdfPickler
+import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
 
 /**
  *
  *
  * @author Matthew Pocock
  */
-case class DnaComponent(identity: URI,
+case class DnaComponent(identity: jn.URI,
                         annotations: Seq[Annotation],
                         name: Option[String],
                         description: Option[String],
                         displayId: Option[String],
-                        componentType: URI,
-                        functionalType: URI,
-                        sequence: Reference[DnaSequence],
-                        sequenceAnnotations: Seq[DnaAnnotation])
-  extends SequenceComponent[DnaSequence, DnaAnnotation]
+                        functionalType: Seq[jn.URI],
+                        sequence: Option[Reference[DnaSequence]],
+                        sequenceAnnotations: Seq[OrientedAnnotation[DnaComponent]])
+  extends SequenceComponent[DnaSequence, OrientedAnnotation[DnaComponent]]
   with TopLevelEntity
+{
+  def componentType: jn.URI = Vocabulary.dnaComponent.componentType_value_uri
+}
 
 object DnaComponent {
   implicit def dnaComponentPickler: RdfEntityPickler[DnaComponent] = RdfEntityPickler.all(
     rdfPickler.ofType(Vocabulary.dnaComponent.type_uri),
-    SequenceComponent.sequenceComponentPickler[DnaSequence, DnaAnnotation]
+    SequenceComponent.sequenceComponentPickler[DnaSequence, OrientedAnnotation[DnaComponent]]
   )
+
+  def tle(dc: DnaComponent): TopLevelEntity = dc
 }
 
-case class DnaSequence(identity: URI,
+class DnaComponentProvider extends TopLevelEntityProvider {
+  override def uri = Vocabulary.dnaComponent.type_uri
+  override def pickler: RdfEntityPickler[TopLevelEntity] = implicitly[RdfEntityPickler[DnaComponent]].safeCast[TopLevelEntity]
+}
+
+case class DnaSequence(identity: jn.URI,
                        annotations: Seq[Annotation],
                        name: Option[String],
                        description: Option[String],
@@ -41,16 +51,4 @@ object DnaSequence {
     ofType(Vocabulary.dnaSequence.type_uri),
     implicitly[RdfEntityPickler[Sequence]]
   )
-}
-
-case class DnaAnnotation(identity: URI,
-                         annotations: Seq[Annotation],
-                         bioStart: Int,
-                         bioEnd: Int,
-                         subComponent: Reference[DnaComponent],
-                         orientation: Orientation) extends OrientedAnnotation[DnaComponent]
-
-object DnaAnnotation {
-  implicit def dnaAnnotationPickler: RdfEntityPickler[DnaAnnotation] =
-    implicitly[RdfEntityPickler[OrientedAnnotation[DnaComponent]]]
 }

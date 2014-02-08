@@ -1,8 +1,8 @@
 package uk.co.turingatemyhamster.sbols.component
 
-import java.net.URI
+import java.{net => jn}
 import uk.co.turingatemyhamster.rdfPickler._
-import uk.co.turingatemyhamster.sbols.core.{Identified, Reference, Documented}
+import uk.co.turingatemyhamster.sbols.core.{Annotation, Identified, Reference, Documented}
 
 /**
  *
@@ -11,8 +11,8 @@ import uk.co.turingatemyhamster.sbols.core.{Identified, Reference, Documented}
  */
 trait SequenceComponent[S <: Sequence, SA] extends Component {
 
-  def functionalType: URI
-  def sequence: Reference[S]
+  def functionalType: Seq[jn.URI]
+  def sequence: Option[Reference[S]]
   def sequenceAnnotations: Seq[SA]
 }
 
@@ -64,6 +64,13 @@ object OrientedAnnotation {
     ((_ : OrientedAnnotation[SC]).orientation)  picklePropertyAs Vocabulary.orientedAnnotation.orientation_uri,
     implicitly[RdfEntityPickler[SequenceAnnotation[SC]]]
   )
+
+  case class Impl(identity: jn.URI,
+                  annotations: Seq[Annotation],
+                  bioStart: Int,
+                  bioEnd: Int,
+                  subComponent: Reference[DnaComponent],
+                  orientation: Orientation) extends OrientedAnnotation[DnaComponent]
 }
 
 sealed trait Orientation
@@ -71,7 +78,7 @@ case object Inline extends Orientation
 case object ReverseComplement extends Orientation
 
 object Orientation {
-  implicit val orientationResourceMaker: ResourceMaker[Orientation] = implicitly[ResourceMaker[URI]] comap {
+  implicit val orientationResourceMaker: ResourceMaker[Orientation] = implicitly[ResourceMaker[jn.URI]] comap {
     case Inline => Vocabulary.orientation.inline_uri
     case ReverseComplement => Vocabulary.orientation.reverseComplement_uri
   }

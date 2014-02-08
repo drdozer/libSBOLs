@@ -56,6 +56,10 @@ class VocabularySpec extends Specification {
       Vocabulary.dnaComponent.type_uri must not be null
     }
 
+    "have a non-null value for dnaComponent.componentTypeConstant" in {
+      Vocabulary.dnaComponent.componentType_value_uri must not be null
+    }
+
     "have a non-null value for dnaSequence.type_uri" in {
       Vocabulary.dnaSequence.type_uri must not be null
     }
@@ -64,12 +68,20 @@ class VocabularySpec extends Specification {
       Vocabulary.rnaComponent.type_uri must not be null
     }
 
+    "have a non-null value for rnaComponent.componentTypeConstant" in {
+      Vocabulary.rnaComponent.componentType_value_uri must not be null
+    }
+
     "have a non-null value for rnaSequence.type_uri" in {
       Vocabulary.rnaSequence.type_uri must not be null
     }
 
     "have a non-null value for proteinComponent.type_uri" in {
       Vocabulary.proteinComponent.type_uri must not be null
+    }
+
+    "have a non-null value for proteinComponent.componentTypeConstant" in {
+      Vocabulary.proteinComponent.componentType_value_uri must not be null
     }
 
     "have a non-null value for proteinSequence.type_uri" in {
