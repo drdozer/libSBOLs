@@ -12,13 +12,13 @@ import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
  * @author Matthew Pocock
  */
 case class DnaComponent(identity: jn.URI,
-                        annotations: Seq[Annotation],
-                        name: Option[String],
-                        description: Option[String],
-                        displayId: Option[String],
-                        functionalType: Seq[jn.URI],
-                        sequence: Option[Reference[DnaSequence]],
-                        sequenceAnnotations: Seq[OrientedAnnotation.Impl[DnaComponent]])
+                        annotations: Seq[Annotation] = Seq(),
+                        name: Option[String] = None,
+                        description: Option[String] = None,
+                        displayId: Option[String] = None,
+                        functionalType: Seq[jn.URI] = Seq(),
+                        sequence: Option[Reference[DnaSequence]] = None,
+                        sequenceAnnotations: Seq[OrientedAnnotation.Impl[DnaComponent]] = Seq())
   extends SequenceComponent[DnaSequence, OrientedAnnotation.Impl[DnaComponent]]
   with TopLevelEntity
 {
@@ -41,10 +41,10 @@ class DnaComponentProvider extends TopLevelEntityProvider {
 }
 
 case class DnaSequence(identity: jn.URI,
-                       annotations: Seq[Annotation],
-                       name: Option[String],
-                       description: Option[String],
-                       displayId: Option[String],
+                       annotations: Seq[Annotation] = Seq(),
+                       name: Option[String] = None,
+                       description: Option[String] = None,
+                       displayId: Option[String] = None,
                        primarySequence: String) extends Sequence with TopLevelEntity
 
 object DnaSequence {

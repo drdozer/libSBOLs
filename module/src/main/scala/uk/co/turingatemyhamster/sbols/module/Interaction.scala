@@ -10,11 +10,11 @@ import uk.co.turingatemyhamster.sbols.rdfPickler._
  * @author Matthew Pocock
  */
 case class Interaction(identity: URI,
-                       annotations: Seq[Annotation],
-                       name: Option[String],
-                       description: Option[String],
-                       displayId: Option[String],
-                       participations: Seq[Participation]
+                       annotations: Seq[Annotation] = Seq(),
+                       name: Option[String] = None,
+                       description: Option[String] = None,
+                       displayId: Option[String] = None,
+                       participations: Seq[Participation] = Seq()
                         ) extends Documented
 
 object Interaction {
@@ -26,7 +26,7 @@ object Interaction {
 }
 
 case class Participation(identity: URI,
-                         annotations: Seq[Annotation],
+                         annotations: Seq[Annotation] = Seq(),
                          role: URI,
                          participant: Reference[Signal]
                           ) extends Identified

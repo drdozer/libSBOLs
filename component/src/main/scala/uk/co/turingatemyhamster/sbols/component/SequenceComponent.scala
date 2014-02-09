@@ -55,7 +55,7 @@ object SequenceAnnotation {
   )
 
   case class Impl[SC](identity: jn.URI,
-                      annotations: Seq[Annotation],
+                      annotations: Seq[Annotation] = Seq(),
                       bioStart: Int,
                       bioEnd: Int,
                       subComponent: Reference[SC]) extends SequenceAnnotation[SC]
@@ -79,7 +79,7 @@ object OrientedAnnotation {
   )
 
   case class Impl[SC](identity: jn.URI,
-                  annotations: Seq[Annotation],
+                  annotations: Seq[Annotation] = Seq(),
                   bioStart: Int,
                   bioEnd: Int,
                   subComponent: Reference[SC],

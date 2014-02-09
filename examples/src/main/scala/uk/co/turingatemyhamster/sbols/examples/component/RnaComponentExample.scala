@@ -13,36 +13,25 @@ object RnaComponentExample {
   def main(args: Array[String]) {
     val rs1 = RnaSequence(
       identity = URI("http://turingatemyhamster.co.uk/example#rs1"),
-      annotations = Seq(),
-      name = None,
-      description = None,
-      displayId = None,
       primarySequence = "uagcuagcugcu"
     )
 
     val rc1 = RnaComponent(
         identity = URI("http://turingatemyhamter.co.uk/example#rc1"),
-        annotations = Seq(),
         name = Some("RNA Component 1"),
         description = Some("My first RNA Component"),
         displayId = Some("rc1"),
-        functionalType = Seq(),
-        sequence = Some(Reference(rs1.identity)),
-        sequenceAnnotations = Seq()
+        sequence = Some(Reference(rs1.identity))
     )
 
     val rc2 = RnaComponent(
       identity = URI("http://turingatemyhamter.co.uk/example#rc2"),
-      annotations = Seq(),
       name = Some("RNA Component 2"),
       description = Some("My second RNA Component"),
       displayId = Some("rc2"),
-      functionalType = Seq(),
-      sequence = None,
       sequenceAnnotations = Seq(
         OrientedAnnotation.Impl(
           identity = URI("http://turingatemyhamter.co.uk/example#rc2/sa1"),
-          annotations = Seq(),
           bioStart = 20,
           bioEnd = 32,
           subComponent = Reference(rc1.identity),

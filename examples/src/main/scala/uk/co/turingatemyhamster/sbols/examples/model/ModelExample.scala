@@ -13,7 +13,6 @@ object ModelExample {
   def main(args: Array[String]) {
     val m1 = Model(
       identity = URI("http://turingatemyhamter.co.uk/example#model1"),
-      annotations = Seq(),
       name = Some("Model 1"),
       description = Some("My first model, intended for model composition"),
       displayId = Some("m1"),

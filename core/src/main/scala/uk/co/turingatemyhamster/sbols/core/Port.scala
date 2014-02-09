@@ -10,7 +10,7 @@ import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
  * @author Matthew Pocock
  */
 case class Port[P <: Identified](identity: jn.URI,
-                                 annotations: Seq[Annotation],
+                                 annotations: Seq[Annotation] = Seq(),
                                  exposes: Reference[P],
                                  directionality: Directionality
                                   ) extends Identified

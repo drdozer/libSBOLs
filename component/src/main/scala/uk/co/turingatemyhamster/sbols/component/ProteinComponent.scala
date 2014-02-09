@@ -12,13 +12,13 @@ import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
  * @author Matthew Pocock
  */
 case class ProteinComponent(identity: URI,
-                        annotations: Seq[Annotation],
-                        name: Option[String],
-                        description: Option[String],
-                        displayId: Option[String],
-                        functionalType: Seq[URI],
-                        sequence: Option[Reference[ProteinSequence]],
-                        sequenceAnnotations: Seq[SequenceAnnotation.Impl[ProteinComponent]])
+                        annotations: Seq[Annotation] = Seq(),
+                        name: Option[String] = None,
+                        description: Option[String] = None,
+                        displayId: Option[String] = None,
+                        functionalType: Seq[URI] = Seq(),
+                        sequence: Option[Reference[ProteinSequence]] = None,
+                        sequenceAnnotations: Seq[SequenceAnnotation.Impl[ProteinComponent]] = Seq())
   extends SequenceComponent[ProteinSequence, SequenceAnnotation.Impl[ProteinComponent]]
   with TopLevelEntity
 {
@@ -39,10 +39,10 @@ class ProteinComponentProvider extends TopLevelEntityProvider {
 }
 
 case class ProteinSequence(identity: URI,
-                       annotations: Seq[Annotation],
-                       name: Option[String],
-                       description: Option[String],
-                       displayId: Option[String],
+                       annotations: Seq[Annotation] = Seq(),
+                       name: Option[String] = None,
+                       description: Option[String] = None,
+                       displayId: Option[String] = None,
                        primarySequence: String) extends Sequence with TopLevelEntity
 
 object ProteinSequence {

@@ -8,15 +8,15 @@ import uk.co.turingatemyhamster.sbols.core.Annotation
 import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
 
 case class RnaComponent(identity: URI,
-                        annotations: Seq[Annotation],
-                        name: Option[String],
-                        description: Option[String],
-                        displayId: Option[String],
-                        functionalType: Seq[URI],
-                        sequence: Option[Reference[RnaSequence]],
-                        sequenceAnnotations: Seq[OrientedAnnotation.Impl[RnaComponent]])
-  extends SequenceComponent[RnaSequence, OrientedAnnotation.Impl[RnaComponent]]
-  with TopLevelEntity
+                        annotations: Seq[Annotation] = Seq(),
+                        name: Option[String] = None,
+                        description: Option[String] = None,
+                        displayId: Option[String] = None,
+                        functionalType: Seq[URI] = Seq(),
+                        sequence: Option[Reference[RnaSequence]] = None,
+                        sequenceAnnotations: Seq[OrientedAnnotation.Impl[RnaComponent]] = Seq()
+                         ) extends SequenceComponent[RnaSequence, OrientedAnnotation.Impl[RnaComponent]]
+                           with TopLevelEntity
 {
   def componentType: URI = Vocabulary.rnaComponent.componentType_value_uri
 }
@@ -36,11 +36,12 @@ class RnaComponentProvider extends TopLevelEntityProvider {
 }
 
 case class RnaSequence(identity: URI,
-                       annotations: Seq[Annotation],
-                       name: Option[String],
-                       description: Option[String],
-                       displayId: Option[String],
-                       primarySequence: String) extends Sequence with TopLevelEntity
+                       annotations: Seq[Annotation] = Seq(),
+                       name: Option[String] = None,
+                       description: Option[String] = None,
+                       displayId: Option[String] = None,
+                       primarySequence: String
+                        ) extends Sequence with TopLevelEntity
 
 object RnaSequence {
   implicit def dnaSequencePickler: RdfEntityPickler[RnaSequence] = RdfEntityPickler.all(

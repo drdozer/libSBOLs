@@ -25,7 +25,6 @@ object GenericComponentExample {
           )
         ),
         name = Some("beta-D-glucose"),
-        description = None,
         displayId = Some("β-D-glucose"),
         componentType = URI("http://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:15903")
     )

@@ -15,16 +15,16 @@ import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
  * @author Matthew Pocock
  */
 case class Module(identity: URI,
-                  annotations: Seq[Annotation],
-                  name: Option[String],
-                  description: Option[String],
-                  displayId: Option[String],
-                  signals: Seq[Signal],
-                  subModules: Seq[SubModule],
-                  interactions: Seq[Interaction],
-                  ports: Seq[Port[Signal]],
-                  contexts: Seq[Reference[Context]],
-                  models: Seq[Reference[Model]]
+                  annotations: Seq[Annotation] = Seq(),
+                  name: Option[String] = None,
+                  description: Option[String] = None,
+                  displayId: Option[String] = None,
+                  signals: Seq[Signal] = Seq(),
+                  subModules: Seq[SubModule] = Seq(),
+                  interactions: Seq[Interaction] = Seq(),
+                  ports: Seq[Port[Signal]] = Seq(),
+                  contexts: Seq[Reference[Context]] = Seq(),
+                  models: Seq[Reference[Model]] = Seq()
                    ) extends Documented with TopLevelEntity
 
 object Module {
@@ -52,7 +52,7 @@ class ModuleProvider extends TopLevelEntityProvider {
 }
 
 case class Signal(identity: URI,
-                  annotations: Seq[Annotation],
+                  annotations: Seq[Annotation] = Seq(),
                   instantiated: URI
                    ) extends Identified with Instantiation[Component]
 
@@ -65,7 +65,7 @@ object Signal {
 }
 
 case class SubModule(identity: URI,
-                     annotations: Seq[Annotation],
+                     annotations: Seq[Annotation] = Seq(),
                      instantiated: URI) extends Identified with Instantiation[Module]
 
 object SubModule {

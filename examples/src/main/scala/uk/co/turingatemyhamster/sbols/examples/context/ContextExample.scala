@@ -13,7 +13,6 @@ object ContextExample {
   def main(args: Array[String]) {
     val c1 = Context(
       identity = URI("http://turingatemyhamter.co.uk/example#context1"),
-      annotations = Seq(),
       name = Some("Context 1"),
       description = Some("My first context"),
       displayId = Some("c1")

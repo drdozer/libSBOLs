@@ -6,10 +6,10 @@ import uk.co.turingatemyhamster.sbols.rdfPickler._
 import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
 
 case class Model(identity: URI,
-                 annotations: Seq[Annotation],
-                 name: Option[String],
-                 description: Option[String],
-                 displayId: Option[String],
+                 annotations: Seq[Annotation] = Seq(),
+                 name: Option[String] = None,
+                 description: Option[String] = None,
+                 displayId: Option[String] = None,
                  source: URI,
                  language: URI,
                  framework: URI,
