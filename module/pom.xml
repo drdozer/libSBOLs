@@ -13,9 +13,27 @@
 
     <dependencies>
         <dependency>
-            <groupId>${parent.groupId}</groupId>
-            <artifactId>core</artifactId>
-            <version>${parent.version}</version>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>component</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>context</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>model</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.specs2</groupId>
+            <artifactId>specs2_2.10</artifactId>
         </dependency>
     </dependencies>
 

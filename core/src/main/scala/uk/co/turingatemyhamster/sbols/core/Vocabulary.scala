@@ -13,13 +13,7 @@ object Vocabulary extends Vocabulary({
   props
 })
 
-class Vocabulary(props: Properties) {
-  private def lookup(p: String) = {
-    val value = props getProperty p
-    assert(value != null, f"Vocabulary for `$p` not defined")
-    URI(value)
-  }
-
+class Vocabulary(props: Properties) extends VocabularyBase(props) {
   val base = "baseUri"
   val base_uri = lookup(base)
   
@@ -32,5 +26,32 @@ class Vocabulary(props: Properties) {
 
     val description = "Documented.description"
     val description_uri = lookup(description)
+  }
+
+  object port {
+    val `type` = "Port.type"
+    val type_uri = lookup(`type`)
+
+    val exposes = "Port.exposes"
+    val exposes_uri = lookup(exposes)
+
+    val directionality = "Port.directionality"
+    val directionality_uri = lookup(directionality)
+  }
+
+  object directionality {
+    val in = "Directionality.in"
+    val in_uri = lookup(in)
+
+    val out = "Directionality.out"
+    val out_uri = lookup(out)
+
+    val in_out = "Directionality.in_out"
+    val in_out_uri = lookup(in_out)
+  }
+
+  object instantiation {
+    val instantiated = "Instantiation.instantiated"
+    val instantiated_uri = lookup(instantiated)
   }
 }
