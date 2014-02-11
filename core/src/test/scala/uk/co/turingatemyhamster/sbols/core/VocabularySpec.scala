@@ -10,12 +10,16 @@ class VocabularySpec extends Specification {
   "Vocabulary" should {
 
     // base
-    "have a non-null value for base_uri" in {
-      Vocabulary.base_uri must not be null
+    "have a non-null value for basePrefix_value" in {
+      Vocabulary.basePrefix_value must not be null
     }
 
-    "have a valid base_uri" in {
-      Vocabulary.base_uri.toString endsWith "#"
+    "have a non-null value for baseNamespace_uri" in {
+      Vocabulary.baseNamespace_uri must not be null
+    }
+
+    "have a valid baseNamespace_uri" in {
+      Vocabulary.baseNamespace_uri.toString endsWith "#"
     }
 
     // documented

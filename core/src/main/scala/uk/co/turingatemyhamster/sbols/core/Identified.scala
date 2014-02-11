@@ -3,6 +3,8 @@ package uk.co.turingatemyhamster.sbols.core
 import java.{net => jn}
 import uk.co.turingatemyhamster.sbols.rdfPickler._
 import com.hp.hpl.jena.rdf.model.Model
+import uk.co.turingatemyhamster.validation._
+import Validator._
 
 /**
  *
@@ -37,12 +39,55 @@ object Identified {
       }
     }
   }
+
+  implicit def identifiedValidator: Validator[Identified] =
+    (((_: Identified).identity) as "identity" validateWith notNull) |&&|
+      (((_: Identified).annotations) as "annotations" validateWith
+        (notNull |&&| each(notNull |&&| implicitly[Validator[Annotation]])))
+
 }
 
 case class Annotation(predicate: jn.URI, value: AnnotationValue)
 
+object Annotation {
+  implicit def annotationValidator: Validator[Annotation] =
+    (((_: Annotation).predicate) as "predicate" validateWith notNull) |&&|
+      (((_: Annotation).value) as "value" validateWith
+        (notNull |&&| implicitly[Validator[AnnotationValue]]))
+}
+
 sealed trait AnnotationValue
+object AnnotationValue {
+  implicit def annotationValueValidator: Validator[AnnotationValue] = Validator {
+    (av: AnnotationValue) => av match {
+      case rv : ReferenceValue  => implicitly[Validator[ReferenceValue]].validate(rv)
+      case sv : StringValue     => implicitly[Validator[StringValue   ]].validate(sv)
+      case dv : DoubleValue     => implicitly[Validator[DoubleValue   ]].validate(dv)
+      case iv : IntegerValue    => implicitly[Validator[IntegerValue  ]].validate(iv)
+    }
+  }
+}
+
 case class ReferenceValue(value: jn.URI) extends AnnotationValue
+object ReferenceValue {
+  implicit def referenceValueValidator: Validator[ReferenceValue] =
+    ((_: ReferenceValue).value) as "value" validateWith notNull
+}
+
 case class StringValue(value: String) extends AnnotationValue
+object StringValue {
+  implicit def stringValueValidator: Validator[StringValue] =
+    ((_: StringValue).value) as "value" validateWith notNull
+}
+
 case class DoubleValue(value: Double) extends AnnotationValue
+object DoubleValue {
+  implicit def doubleValueValidator: Validator[DoubleValue] =
+    ((_: DoubleValue).value) as "value" validateWith notNull
+}
+
 case class IntegerValue(value: Int) extends AnnotationValue
+object IntegerValue {
+  implicit def integerValueValidator: Validator[IntegerValue] =
+    ((_: IntegerValue).value) as "value" validateWith notNull
+}

@@ -30,4 +30,5 @@ class ModelProvider extends TopLevelEntityProvider {
   override def uri = Vocabulary.model.type_uri
   override def pickler: RdfEntityPickler[TopLevelEntity] =
     implicitly[RdfEntityPickler[Model]].safeCast[TopLevelEntity]
+  override def prefixes = Seq(Vocabulary.modelPrefix_value -> Vocabulary.modelNamespace_uri)
 }

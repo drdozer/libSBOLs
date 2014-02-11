@@ -29,4 +29,5 @@ class GenericComponentProvider extends TopLevelEntityProvider {
   override def uri = Vocabulary.genericComponent.type_uri
   override def pickler: RdfEntityPickler[TopLevelEntity] =
     implicitly[RdfEntityPickler[GenericComponent]].safeCast[TopLevelEntity]
+  override def prefixes = Seq(Vocabulary.componentPrefix_value -> Vocabulary.componentNamespace_uri)
 }

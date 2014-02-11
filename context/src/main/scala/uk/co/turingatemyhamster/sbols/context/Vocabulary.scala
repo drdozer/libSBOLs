@@ -1,7 +1,7 @@
 package uk.co.turingatemyhamster.sbols.context
 
 import java.util.Properties
-import uk.co.turingatemyhamster.sbols.core.URI
+import uk.co.turingatemyhamster.sbols.core.{VocabularyBase, URI}
 
 /**
  *
@@ -14,12 +14,12 @@ object Vocabulary extends Vocabulary({
   props
 })
 
-class Vocabulary(props: Properties) {
-  private def lookup(p: String) = {
-    val value = props getProperty p
-    assert(value != null, f"Vocabulary for `$p` not defined")
-    URI(value)
-  }
+class Vocabulary(props: Properties) extends VocabularyBase(props) {
+  val contextPrefix = "contextPrefix"
+  val contextPrefix_value = lookupRaw(contextPrefix)
+
+  val contextNamespace = "contextNamespace"
+  val contextNamespace_uri = lookup(contextNamespace)
 
   object context {
     val `type` = "Context.type"

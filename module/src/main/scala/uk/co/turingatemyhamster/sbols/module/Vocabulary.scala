@@ -15,6 +15,11 @@ object Vocabulary extends Vocabulary({
 })
 
 class Vocabulary(props: Properties) extends VocabularyBase(props) {
+  val modulePrefix = "modulePrefix"
+  val modulePrefix_value = lookupRaw(modulePrefix)
+
+  val moduleNamespace = "moduleNamespace"
+  val moduleNamespace_uri = lookup(moduleNamespace)
 
   object module {
     val `type` = "Module.type"

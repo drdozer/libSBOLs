@@ -8,6 +8,13 @@ import org.junit.runner.RunWith
 class VocabularySpec extends Specification {
 
   "Vocabulary" should {
+    "have a non-null value for modulePrefix_value" in {
+      Vocabulary.modulePrefix_value must not be null
+    }
+
+    "have a non-null value for moduleNamespace_uri" in {
+      Vocabulary.moduleNamespace_uri must not be null
+    }
 
     // Module
     "have a non-null value for module.type_uri" in {

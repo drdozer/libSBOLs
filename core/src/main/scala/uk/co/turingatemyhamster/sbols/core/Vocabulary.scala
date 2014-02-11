@@ -14,8 +14,11 @@ object Vocabulary extends Vocabulary({
 })
 
 class Vocabulary(props: Properties) extends VocabularyBase(props) {
-  val base = "baseUri"
-  val base_uri = lookup(base)
+  val basePrefix = "basePrefix"
+  val basePrefix_value = lookupRaw(basePrefix)
+
+  val baseNamespace = "baseNamespace"
+  val baseNamespace_uri = lookup(baseNamespace)
   
   object documented {
     val name = "Documented.name"

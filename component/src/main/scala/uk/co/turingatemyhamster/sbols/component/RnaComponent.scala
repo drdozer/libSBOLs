@@ -33,6 +33,7 @@ class RnaComponentProvider extends TopLevelEntityProvider {
   override def uri = Vocabulary.rnaComponent.type_uri
   override def pickler: RdfEntityPickler[TopLevelEntity] =
     implicitly[RdfEntityPickler[RnaComponent]].safeCast[TopLevelEntity]
+  override def prefixes = Seq(Vocabulary.componentPrefix_value -> Vocabulary.componentNamespace_uri)
 }
 
 case class RnaSequence(identity: URI,
@@ -54,4 +55,5 @@ class RnaSequenceProvider extends TopLevelEntityProvider {
   override def uri = Vocabulary.rnaSequence.type_uri
   override def pickler: RdfEntityPickler[TopLevelEntity] =
     implicitly[RdfEntityPickler[RnaSequence]].safeCast[TopLevelEntity]
+  override def prefixes = Seq(Vocabulary.componentPrefix_value -> Vocabulary.componentNamespace_uri)
 }

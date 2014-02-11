@@ -1,6 +1,8 @@
 package uk.co.turingatemyhamster.sbols.core
 
 import uk.co.turingatemyhamster.sbols.rdfPickler._
+import uk.co.turingatemyhamster.validation._
+import Validator._
 
 
 trait Documented extends Identified {
@@ -20,4 +22,10 @@ object Documented {
     ((_: Documented).description) picklePropertyAs Vocabulary.documented.description_uri,
     ((_: Documented).displayId)   picklePropertyAs Vocabulary.documented.displayId_uri,
     implicitly[RdfEntityPickler[Identified]])
+
+  implicit val documentedValidator: Validator[Documented] =
+    (((_: Documented).name) as "name" validateWith (is_eq(None: Option[String]) |<>| Validator.some(notNull))) |&&|
+      (((_: Documented).description) as "description" validateWith (is_eq(None: Option[String]) |<>| Validator.some(notNull))) |&&|
+      (((_: Documented).displayId) as "displayId" validateWith (is_eq(None: Option[String]) |<>| Validator.some(notNull))) |&&|
+      implicitly[Validator[Identified]]
 }

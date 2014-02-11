@@ -49,6 +49,7 @@ class ModuleProvider extends TopLevelEntityProvider {
   override def uri = Vocabulary.module.type_uri
   override def pickler: RdfEntityPickler[TopLevelEntity] =
     implicitly[RdfEntityPickler[Module]].safeCast
+  override def prefixes = Seq(Vocabulary.modulePrefix_value -> Vocabulary.moduleNamespace_uri)
 }
 
 case class Signal(identity: URI,

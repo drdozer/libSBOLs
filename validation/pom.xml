@@ -1,9 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>${parent.groupId}</groupId>
     <artifactId>validation</artifactId>
-    <version>${parent.version}</version>
-    <description>Core SBOL data model.</description>
+    <version>${project.parent.version}</version>
+    <description>Data Validation</description>
 
     <parent>
         <groupId>uk.co.turingatemyhamster</groupId>
@@ -12,6 +11,10 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>org.specs2</groupId>
+            <artifactId>specs2_2.10</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

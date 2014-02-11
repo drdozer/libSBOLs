@@ -39,8 +39,14 @@ object SbolDocument {
     }
   }
 
+
   def topLevelEntities(cl: ClassLoader): Seq[jn.URI] = {
     providers(cl) map (_.uri)
+  }
+
+
+  def prefixes(cl: ClassLoader): Seq[(String, jn.URI)] = {
+    providers(cl) flatMap (_.prefixes)
   }
 
   trait IO {
@@ -56,7 +62,10 @@ object SbolDocument {
     new IO {
       def write(document: SbolDocument, rdfOut: Writer) = {
         val model = ModelFactory.createDefaultModel
-        model.setNsPrefix("sbol", Vocabulary.base_uri.toString)
+        model.setNsPrefix(Vocabulary.basePrefix_value, Vocabulary.baseNamespace_uri.toString)
+        for((pfx, URI(ns)) <- prefixes(cl)) {
+          model.setNsPrefix(pfx, ns)
+        }
         pickler.pickle(model, document)
         write(model, rdfOut)
       }
@@ -68,7 +77,7 @@ object SbolDocument {
         writer.setProperty("tab", "3")
         writer.setProperty("prettyTypes", tlR.to[Array])
         
-        writer.write(model, rdfOut, Vocabulary.base_uri.toString)
+        writer.write(model, rdfOut, null) // all URIs must be absolute
       }
     }
   }

@@ -2,6 +2,8 @@ package uk.co.turingatemyhamster.sbols.core
 
 import java.{net => jn}
 import uk.co.turingatemyhamster.sbols.rdfPickler._
+import uk.co.turingatemyhamster.validation._
+import Validator._
 
 /**
  *
@@ -21,4 +23,7 @@ object Instantiation {
 
   implicit def instantiationPickler[I <: Identified]: RdfEntityPickler[Instantiation[I]] =
     ((_: Instantiation[I]).instantiated) picklePropertyAs Vocabulary.instantiation.instantiated_uri
+
+  implicit def intantiationValidator[I <: Identified]: Validator[Instantiation[I]] =
+    ((_: Instantiation[I]).instantiated) as "instantiated" validateWith notNull
 }

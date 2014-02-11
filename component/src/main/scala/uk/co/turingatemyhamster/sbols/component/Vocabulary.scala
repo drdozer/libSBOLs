@@ -1,7 +1,7 @@
 package uk.co.turingatemyhamster.sbols.component
 
 import java.util.Properties
-import uk.co.turingatemyhamster.sbols.core.URI
+import uk.co.turingatemyhamster.sbols.core.{VocabularyBase, URI}
 
 /**
  *
@@ -14,12 +14,12 @@ object Vocabulary extends Vocabulary({
   props
 })
 
-class Vocabulary(props: Properties) {
-  private def lookup(p: String) = {
-    val value = props getProperty p
-    assert(value != null, f"Vocabulary for `$p` not defined")
-    URI(value)
-  }
+class Vocabulary(props: Properties) extends VocabularyBase(props) {
+  val componentPrefix = "componentPrefix"
+  val componentPrefix_value = lookupRaw(componentPrefix)
+
+  val componentNamespace = "componentNamespace"
+  val componentNamespace_uri = lookup(componentNamespace)
 
   object component {
     val componentType = "Component.componentType"

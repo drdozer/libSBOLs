@@ -12,4 +12,5 @@ import java.net.URI
 trait TopLevelEntityProvider {
   def pickler: RdfEntityPickler[TopLevelEntity]
   def uri: URI
+  def prefixes: Seq[(String, URI)]
 }

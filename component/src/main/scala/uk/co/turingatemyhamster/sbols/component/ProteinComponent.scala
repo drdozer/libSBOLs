@@ -36,6 +36,7 @@ class ProteinComponentProvider extends TopLevelEntityProvider {
   override def uri = Vocabulary.proteinComponent.type_uri
   override def pickler: RdfEntityPickler[TopLevelEntity] =
     implicitly[RdfEntityPickler[ProteinComponent]].safeCast[TopLevelEntity]
+  override def prefixes = Seq(Vocabulary.componentPrefix_value -> Vocabulary.componentNamespace_uri)
 }
 
 case class ProteinSequence(identity: URI,
@@ -56,4 +57,5 @@ class ProteinSequenceProvider extends TopLevelEntityProvider {
   override def uri = Vocabulary.proteinSequence.type_uri
   override def pickler: RdfEntityPickler[TopLevelEntity] =
     implicitly[RdfEntityPickler[ProteinSequence]].safeCast[TopLevelEntity]
+  override def prefixes = Seq(Vocabulary.componentPrefix_value -> Vocabulary.componentNamespace_uri)
 }
