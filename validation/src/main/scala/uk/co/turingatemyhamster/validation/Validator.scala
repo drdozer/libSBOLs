@@ -51,12 +51,15 @@ object Validator {
     (oS.lt(_: S, a)) orFail f"value must be less than $a"
   def lteq[S](a: S)(implicit oS: Ordering[S]): Validator[S] =
     (oS.lteq(_: S, a)) orFail f"value must be less than or equal to $a"
+  def lteq_pair[S](implicit oS: Ordering[S]): Validator[(S, S)] =
+    (oS.lteq _).tupled orFail f"first value must be less than or equal to second value"
   def gt[S](a: S)(implicit oS: Ordering[S]): Validator[S] =
     (oS.gt(_: S, a)) orFail f"value must be greater than $a"
   def gteq[S](a: S)(implicit oS: Ordering[S]): Validator[S] =
     (oS.gteq(_: S, a)) orFail f"value must be greater than or equal to $a"
 
-  def some[S](v: Validator[S]): Validator[Option[S]] = v comap ((_: Option[S]).get)
+  def isNone[S]: Validator[Option[S]] = is_eq(None)
+  def isSome[S](v: Validator[S]): Validator[Option[S]] = v comap ((_: Option[S]).get)
 
   def each[S](v: Validator[S]): Validator[Seq[S]] = new Validator[Seq[S]] {
     override def validate(ss: Seq[S]) = (ss map v.validate).sequence

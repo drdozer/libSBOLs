@@ -4,6 +4,8 @@ import uk.co.turingatemyhamster.sbols.core.{Annotation, Documented, TopLevelEnti
 import java.net.URI
 import uk.co.turingatemyhamster.sbols.rdfPickler._
 import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
+import uk.co.turingatemyhamster.validation._
+import Validator._
 
 case class Model(identity: URI,
                  annotations: Seq[Annotation] = Seq(),
@@ -16,7 +18,7 @@ case class Model(identity: URI,
                  role: URI) extends Documented with TopLevelEntity
 
 object Model {
-  implicit def modelPickler: RdfEntityPickler[Model] = RdfEntityPickler.all(
+  implicit val modelPickler: RdfEntityPickler[Model] = RdfEntityPickler.all(
     ofType(Vocabulary.model.type_uri),
     ((_: Model).source) picklePropertyAs Vocabulary.model.source_uri,
     ((_: Model).language) picklePropertyAs Vocabulary.model.language_uri,
@@ -24,6 +26,13 @@ object Model {
     ((_: Model).role) picklePropertyAs Vocabulary.model.role_uri,
     implicitly[RdfEntityPickler[Documented]]
   )
+
+  implicit val modelValidator: Validator[Model] =
+    (((_: Model).source) as "source" validateWith notNull) |&&|
+      (((_: Model).language) as "language" validateWith notNull) |&&|
+      (((_: Model).framework) as "framework" validateWith notNull) |&&|
+      (((_: Model).role) as "role" validateWith notNull) |&&|
+      implicitly[Validator[Documented]]
 }
 
 class ModelProvider extends TopLevelEntityProvider {

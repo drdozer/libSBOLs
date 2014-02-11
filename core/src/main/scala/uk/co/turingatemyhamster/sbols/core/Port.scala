@@ -2,7 +2,8 @@ package uk.co.turingatemyhamster.sbols.core
 
 import java.{net => jn}
 import uk.co.turingatemyhamster.sbols.rdfPickler._
-import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
+import uk.co.turingatemyhamster.validation._
+import Validator._
 
 /**
  *
@@ -22,6 +23,10 @@ object Port {
     ((_: Port[P]).directionality)  picklePropertyAs Vocabulary.port.directionality_uri,
     implicitly[RdfEntityPickler[Identified]]
   )
+
+  implicit def portValidator[P <: Identified]: Validator[Port[P]] =
+    (((_: Port[P]).directionality) as "directionality" validateWith notNull) |&&|
+      implicitly[Validator[Identified]]
 }
 
 sealed trait Directionality

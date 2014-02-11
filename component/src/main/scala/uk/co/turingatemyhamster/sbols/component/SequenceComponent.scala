@@ -3,6 +3,8 @@ package uk.co.turingatemyhamster.sbols.component
 import java.{net => jn}
 import uk.co.turingatemyhamster.sbols.rdfPickler._
 import uk.co.turingatemyhamster.sbols.core.{Annotation, Identified, Reference, Documented}
+import uk.co.turingatemyhamster.validation._
+import Validator._
 
 /**
  *
@@ -26,6 +28,13 @@ object SequenceComponent {
     ((_: SequenceComponent[S, SA]).sequenceAnnotations).pickleValue,
     implicitly[RdfEntityPickler[Component]]
   )
+
+  implicit def sequenceComponentValidator[S <: Sequence, SA]
+  (implicit saV: Validator[SA]): Validator[SequenceComponent[S, SA]] =
+    (((_: SequenceComponent[S, SA]).functionalType) as "functionalType" validateWith notNull) |&&|
+      (((_: SequenceComponent[S, SA]).sequence) as "sequence" validateWith(isNone |<>| isSome(implicitly[Validator[Reference[S]]]))) |&&|
+      (((_: SequenceComponent[S, SA]).sequenceAnnotations) as "sequenceAnnotations" validateWith each(notNull |&&| saV)) |&&|
+      implicitly[Validator[Component]]
 }
 
 trait Sequence extends Documented {
@@ -37,6 +46,10 @@ object Sequence {
     ((_: Sequence).primarySequence) picklePropertyAs Vocabulary.sequence.primarySequence_uri,
     implicitly[RdfEntityPickler[Documented]]
   )
+
+  implicit def sequenceValidator: Validator[Sequence] =
+    (((_: Sequence).primarySequence) as "primarySequence" validateWith notNull) |&&|
+      implicitly[Validator[Documented]]
 }
 
 trait SequenceAnnotation[SC] extends Identified {
@@ -48,11 +61,18 @@ trait SequenceAnnotation[SC] extends Identified {
 
 object SequenceAnnotation {
   implicit def sequenceAnnotationPickler[SC]: RdfEntityPickler[SequenceAnnotation[SC]] = RdfEntityPickler.all(
-    ((_: SequenceAnnotation[SC]).bioStart)      picklePropertyAs Vocabulary.sequenceAnnotation.bioStart_uri,
-    ((_: SequenceAnnotation[SC]).bioEnd)        picklePropertyAs Vocabulary.sequenceAnnotation.bioEnd_uri,
     ((_: SequenceAnnotation[SC]).subComponent)  picklePropertyAs Vocabulary.sequenceAnnotation.subComponent_uri,
+    ((_: SequenceAnnotation[SC]).bioEnd)        picklePropertyAs Vocabulary.sequenceAnnotation.bioEnd_uri,
+    ((_: SequenceAnnotation[SC]).bioStart)      picklePropertyAs Vocabulary.sequenceAnnotation.bioStart_uri,
     implicitly[RdfEntityPickler[Identified]]
   )
+
+  implicit def sequenceAnnotationValidator[SC]: Validator[SequenceAnnotation[SC]] =
+    (((_: SequenceAnnotation[SC]).subComponent) as "subComponent" validateWith (notNull |&&| implicitly[Validator[Reference[SC]]])) |&&|
+      (((_: SequenceAnnotation[SC]).bioStart) as "bioStart" validateWith (notNull |&&| gteq(1))) |&&|
+      (((_: SequenceAnnotation[SC]).bioEnd) as "bioEnd" validateWith (notNull |&&| gteq(1))) |&&|
+      (((sa: SequenceAnnotation[SC]) => (sa.bioStart, sa.bioEnd)) as "(bioStart, bioEnd)" validateWith lteq_pair) |&&|
+      implicitly[Validator[Identified]]
 
   case class Impl[SC](identity: jn.URI,
                       annotations: Seq[Annotation] = Seq(),
@@ -65,6 +85,9 @@ object SequenceAnnotation {
       ofType(Vocabulary.sequenceAnnotation.type_uri),
       implicitly[RdfEntityPickler[SequenceAnnotation[SC]]]
     )
+
+    implicit def implValidator[SC]: Validator[Impl[SC]] =
+      implicitly[Validator[SequenceAnnotation[SC]]]
   }
 }
 
@@ -78,6 +101,10 @@ object OrientedAnnotation {
     implicitly[RdfEntityPickler[SequenceAnnotation[SC]]]
   )
 
+  implicit def orientedAnnotationValidator[SC]: Validator[OrientedAnnotation[SC]] =
+    (((_: OrientedAnnotation[SC]).orientation) as "orientation" validateWith notNull) |&&|
+      implicitly[Validator[SequenceAnnotation[SC]]]
+
   case class Impl[SC](identity: jn.URI,
                   annotations: Seq[Annotation] = Seq(),
                   bioStart: Int,
@@ -90,6 +117,9 @@ object OrientedAnnotation {
       ofType(Vocabulary.orientedAnnotation.type_uri),
       implicitly[RdfEntityPickler[OrientedAnnotation[SC]]]
     )
+
+    implicit def implValidator[SC]: Validator[Impl[SC]] =
+      implicitly[Validator[OrientedAnnotation[SC]]]
   }
 }
 

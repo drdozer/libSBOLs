@@ -4,6 +4,7 @@ import uk.co.turingatemyhamster.sbols.core.{Annotation, TopLevelEntity}
 import java.net.URI
 import uk.co.turingatemyhamster.sbols.rdfPickler._
 import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
+import uk.co.turingatemyhamster.validation.Validator
 
 /**
  *
@@ -23,6 +24,9 @@ object GenericComponent {
     ofType(Vocabulary.genericComponent.type_uri),
     implicitly[RdfEntityPickler[Component]]
   )
+
+  implicit val genericComponentValidator: Validator[GenericComponent] =
+    implicitly[Validator[Component]]
 }
 
 class GenericComponentProvider extends TopLevelEntityProvider {

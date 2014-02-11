@@ -4,6 +4,8 @@ import uk.co.turingatemyhamster.sbols.core.{Annotation, Documented, TopLevelEnti
 import java.net.URI
 import uk.co.turingatemyhamster.sbols.rdfPickler._
 import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
+import uk.co.turingatemyhamster.validation._
+import Validator._
 
 /**
  *
@@ -18,10 +20,13 @@ case class Context(identity: URI,
                     ) extends Documented with TopLevelEntity
 
 object Context {
-  implicit def contextPickler: RdfEntityPickler[Context] = RdfEntityPickler.all(
+  implicit val contextPickler: RdfEntityPickler[Context] = RdfEntityPickler.all(
     ofType(Vocabulary.context.type_uri),
     implicitly[RdfEntityPickler[Documented]]
   )
+
+  implicit val contextValidator: Validator[Context] =
+    implicitly[Validator[Documented]]
 }
 
 class ContextProvider extends TopLevelEntityProvider {

@@ -5,6 +5,7 @@ import uk.co.turingatemyhamster.sbols.core.{Annotation, TopLevelEntity, Referenc
 import uk.co.turingatemyhamster.sbols.rdfPickler._
 import uk.co.turingatemyhamster.sbols.rdfPickler
 import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
+import uk.co.turingatemyhamster.validation.Validator
 
 /**
  *
@@ -26,12 +27,13 @@ case class DnaComponent(identity: jn.URI,
 }
 
 object DnaComponent {
-  implicit def dnaComponentPickler: RdfEntityPickler[DnaComponent] = RdfEntityPickler.all(
+  implicit val dnaComponentPickler: RdfEntityPickler[DnaComponent] = RdfEntityPickler.all(
     rdfPickler.ofType(Vocabulary.dnaComponent.type_uri),
     SequenceComponent.sequenceComponentPickler[DnaSequence, OrientedAnnotation.Impl[DnaComponent]]
   )
 
-  def tle(dc: DnaComponent): TopLevelEntity = dc
+  implicit val dnaComponentValidator: Validator[DnaComponent] =
+    implicitly[Validator[SequenceComponent[DnaSequence, OrientedAnnotation.Impl[DnaComponent]]]]
 }
 
 class DnaComponentProvider extends TopLevelEntityProvider {
@@ -49,10 +51,13 @@ case class DnaSequence(identity: jn.URI,
                        primarySequence: String) extends Sequence with TopLevelEntity
 
 object DnaSequence {
-  implicit def dnaSequencePickler: RdfEntityPickler[DnaSequence] = RdfEntityPickler.all(
+  implicit val dnaSequencePickler: RdfEntityPickler[DnaSequence] = RdfEntityPickler.all(
     ofType(Vocabulary.dnaSequence.type_uri),
     implicitly[RdfEntityPickler[Sequence]]
   )
+
+  implicit val dnaSequenceValidator: Validator[DnaSequence] =
+    implicitly[Validator[Sequence]]
 }
 
 class DnaSequenceProvider extends TopLevelEntityProvider {

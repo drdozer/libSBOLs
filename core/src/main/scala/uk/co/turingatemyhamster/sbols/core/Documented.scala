@@ -24,8 +24,8 @@ object Documented {
     implicitly[RdfEntityPickler[Identified]])
 
   implicit val documentedValidator: Validator[Documented] =
-    (((_: Documented).name) as "name" validateWith (is_eq(None: Option[String]) |<>| Validator.some(notNull))) |&&|
-      (((_: Documented).description) as "description" validateWith (is_eq(None: Option[String]) |<>| Validator.some(notNull))) |&&|
-      (((_: Documented).displayId) as "displayId" validateWith (is_eq(None: Option[String]) |<>| Validator.some(notNull))) |&&|
+    (((_: Documented).name) as "name" validateWith (is_eq(None: Option[String]) |<>| Validator.isSome(notNull))) |&&|
+      (((_: Documented).description) as "description" validateWith (is_eq(None: Option[String]) |<>| Validator.isSome(notNull))) |&&|
+      (((_: Documented).displayId) as "displayId" validateWith (is_eq(None: Option[String]) |<>| Validator.isSome(notNull))) |&&|
       implicitly[Validator[Identified]]
 }
