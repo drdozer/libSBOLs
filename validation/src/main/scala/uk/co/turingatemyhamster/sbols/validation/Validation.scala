@@ -5,7 +5,7 @@ package uk.co.turingatemyhamster.sbols.validation
  *
  * @author Matthew Pocock
  */
-trait Validation[S, F]
+sealed trait Validation[S, F]
 
 case class Success[S, F](value: S) extends Validation[S, F]
 case class Failure[S, F](value: F) extends Validation[S, F]

@@ -59,6 +59,10 @@
                             <id>dna_component</id>
                         </program>
                         <program>
+                            <mainClass>uk.co.turingatemyhamster.sbols.examples.component.MalformedDnaComponentExample</mainClass>
+                            <id>malformed_dna_component</id>
+                        </program>
+                        <program>
                             <mainClass>uk.co.turingatemyhamster.sbols.examples.component.RnaComponentExample</mainClass>
                             <id>rna_component</id>
                         </program>

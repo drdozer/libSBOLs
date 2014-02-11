@@ -31,7 +31,9 @@ package object validation //extends MonoidSyntax //with ValidationSyntax //with 
   }
 
   implicit class SeqValidationOps[S, F](val _sx: Seq[Validation[S, F]]) extends AnyVal {
-    def sequence(implicit fM: Monoid[F]): Validation[Seq[S], F] = {
+    def sequence(implicit fM: Monoid[F]): Validation[Seq[S], F] = if(_sx.isEmpty) {
+      Seq[S]().success
+    } else {
       val ss = _sx map ((_: Validation[S, F]) map (Seq apply _))
       val x = ss reduce (_ |+| _)
       x
