@@ -1,4 +1,4 @@
-package uk.co.turingatemyhamster.validation
+package uk.co.turingatemyhamster.sbols.validation
 
 /**
  *

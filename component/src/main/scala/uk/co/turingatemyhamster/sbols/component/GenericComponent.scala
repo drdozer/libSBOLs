@@ -4,7 +4,7 @@ import uk.co.turingatemyhamster.sbols.core.{Annotation, TopLevelEntity}
 import java.net.URI
 import uk.co.turingatemyhamster.sbols.rdfPickler._
 import uk.co.turingatemyhamster.sbols.core.spi.TopLevelEntityProvider
-import uk.co.turingatemyhamster.validation.Validator
+import uk.co.turingatemyhamster.sbols.validation.Validator
 
 /**
  *

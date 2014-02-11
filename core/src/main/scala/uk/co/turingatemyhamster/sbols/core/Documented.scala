@@ -1,7 +1,7 @@
 package uk.co.turingatemyhamster.sbols.core
 
 import uk.co.turingatemyhamster.sbols.rdfPickler._
-import uk.co.turingatemyhamster.validation._
+import uk.co.turingatemyhamster.sbols.validation._
 import Validator._
 
 

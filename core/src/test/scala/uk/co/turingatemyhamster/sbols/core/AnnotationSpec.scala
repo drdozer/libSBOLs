@@ -4,7 +4,7 @@ import org.junit.runner.RunWith
 import org.specs2.runner.JUnitRunner
 import org.specs2.mutable.Specification
 
-import uk.co.turingatemyhamster.validation._
+import uk.co.turingatemyhamster.sbols.validation._
 import org.specs2.matcher.Matcher
 
 /**

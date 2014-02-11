@@ -23,7 +23,7 @@ object DnaComponentExample {
         description = Some("My first DNA Component"),
         displayId = Some("dc1"),
         functionalType = Seq(URI("http://purl.org/so#promoter")),
-        sequence = Some(Reference(ds1.identity))
+        sequence = Some(Reference(ds1))
     )
 
     val dc2 = DnaComponent(
@@ -36,7 +36,7 @@ object DnaComponentExample {
           identity = URI("http://turingatemyhamter.co.uk/example#dc2/sa1"),
           bioStart = 20,
           bioEnd = 32,
-          subComponent = Reference(dc1.identity),
+          subComponent = Reference(dc1),
           orientation = ReverseComplement
         )
       )

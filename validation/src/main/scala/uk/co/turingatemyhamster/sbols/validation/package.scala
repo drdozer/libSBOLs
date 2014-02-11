@@ -1,4 +1,4 @@
-package uk.co.turingatemyhamster
+package uk.co.turingatemyhamster.sbols
 
 /**
  *

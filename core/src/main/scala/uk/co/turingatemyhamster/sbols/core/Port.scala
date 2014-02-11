@@ -2,7 +2,7 @@ package uk.co.turingatemyhamster.sbols.core
 
 import java.{net => jn}
 import uk.co.turingatemyhamster.sbols.rdfPickler._
-import uk.co.turingatemyhamster.validation._
+import uk.co.turingatemyhamster.sbols.validation._
 import Validator._
 
 /**

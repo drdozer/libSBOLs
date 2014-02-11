@@ -3,7 +3,7 @@ package uk.co.turingatemyhamster.sbols.component
 import java.{net => jn}
 import uk.co.turingatemyhamster.sbols.rdfPickler._
 import uk.co.turingatemyhamster.sbols.core.{Annotation, Identified, Reference, Documented}
-import uk.co.turingatemyhamster.validation._
+import uk.co.turingatemyhamster.sbols.validation._
 import Validator._
 
 /**

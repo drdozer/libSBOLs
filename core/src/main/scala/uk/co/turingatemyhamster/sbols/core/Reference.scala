@@ -2,7 +2,7 @@ package uk.co.turingatemyhamster.sbols.core
 
 import java.{net => jn}
 import uk.co.turingatemyhamster.sbols.rdfPickler.ResourceMaker
-import uk.co.turingatemyhamster.validation._
+import uk.co.turingatemyhamster.sbols.validation._
 import Validator._
 
 /**
@@ -13,6 +13,9 @@ import Validator._
 case class Reference[T](identity: jn.URI)
 
 object Reference {
+
+  def apply[I <: Identified](i: I): Reference[I] = Reference(i.identity)
+
   implicit def referenceResourceMaker[T]: ResourceMaker[Reference[T]] =
     implicitly[ResourceMaker[jn.URI]] comap ((_: Reference[T]).identity)
 
