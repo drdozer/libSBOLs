@@ -75,7 +75,7 @@ package object validation //extends MonoidSyntax //with ValidationSyntax //with 
 
   implicit class ValidatorBuilder[S, T](f: S => T) extends AnyRef {
     def as(s: String) = new {
-      def validateWith(v: Validator[T]): Validator[S] = v comap f mapFailure (errs => SubError(s, errs).errors)
+      def validateWith(v: Validator[T]): Validator[S] = v comap f mapFailure { errs => Errors(Vector(SubError(s, errs))) }
     }
   }
 }
