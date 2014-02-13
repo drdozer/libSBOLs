@@ -40,7 +40,7 @@ object Identified {
     }
   }
 
-  implicit def identifiedValidator: Validator[Identified] =
+  implicit val identifiedValidator: Validator[Identified] =
     (((_: Identified).identity) as "identity" validateWith notNull) |&&|
       (((_: Identified).annotations) as "annotations" validateWith
         (notNull |&&| each(notNull |&&| implicitly[Validator[Annotation]])))
@@ -50,7 +50,7 @@ object Identified {
 case class Annotation(predicate: jn.URI, value: AnnotationValue)
 
 object Annotation {
-  implicit def annotationValidator: Validator[Annotation] =
+  implicit val annotationValidator: Validator[Annotation] =
     (((_: Annotation).predicate) as "predicate" validateWith notNull) |&&|
       (((_: Annotation).value) as "value" validateWith
         (notNull |&&| implicitly[Validator[AnnotationValue]]))
@@ -58,7 +58,7 @@ object Annotation {
 
 sealed trait AnnotationValue
 object AnnotationValue {
-  implicit def annotationValueValidator: Validator[AnnotationValue] = Validator {
+  implicit val annotationValueValidator: Validator[AnnotationValue] = Validator {
     (av: AnnotationValue) => av match {
       case rv : ReferenceValue  => implicitly[Validator[ReferenceValue]].validate(rv)
       case sv : StringValue     => implicitly[Validator[StringValue   ]].validate(sv)
@@ -76,18 +76,18 @@ object ReferenceValue {
 
 case class StringValue(value: String) extends AnnotationValue
 object StringValue {
-  implicit def stringValueValidator: Validator[StringValue] =
+  implicit val stringValueValidator: Validator[StringValue] =
     ((_: StringValue).value) as "value" validateWith notNull
 }
 
 case class DoubleValue(value: Double) extends AnnotationValue
 object DoubleValue {
-  implicit def doubleValueValidator: Validator[DoubleValue] =
+  implicit val doubleValueValidator: Validator[DoubleValue] =
     ((_: DoubleValue).value) as "value" validateWith notNull
 }
 
 case class IntegerValue(value: Int) extends AnnotationValue
 object IntegerValue {
-  implicit def integerValueValidator: Validator[IntegerValue] =
+  implicit val integerValueValidator: Validator[IntegerValue] =
     ((_: IntegerValue).value) as "value" validateWith notNull
 }

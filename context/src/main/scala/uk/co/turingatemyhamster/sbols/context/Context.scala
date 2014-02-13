@@ -30,8 +30,8 @@ object Context {
 }
 
 class ContextProvider extends TopLevelEntityProvider {
-  override def uri = Vocabulary.context.type_uri
-  override def pickler: RdfEntityPickler[TopLevelEntity] =
+  override val uri = Vocabulary.context.type_uri
+  override val pickler: RdfEntityPickler[TopLevelEntity] =
     implicitly[RdfEntityPickler[Context]].safeCast[TopLevelEntity]
-  override def prefixes = Seq(Vocabulary.contextPrefix_value -> Vocabulary.contextNamespace_uri)
+  override val prefixes = Seq(Vocabulary.contextPrefix_value -> Vocabulary.contextNamespace_uri)
 }

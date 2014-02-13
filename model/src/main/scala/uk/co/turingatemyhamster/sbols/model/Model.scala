@@ -20,10 +20,10 @@ case class Model(identity: URI,
 object Model {
   implicit val modelPickler: RdfEntityPickler[Model] = RdfEntityPickler.all(
     ofType(Vocabulary.model.type_uri),
-    ((_: Model).source) picklePropertyAs Vocabulary.model.source_uri,
-    ((_: Model).language) picklePropertyAs Vocabulary.model.language_uri,
-    ((_: Model).framework) picklePropertyAs Vocabulary.model.framework_uri,
     ((_: Model).role) picklePropertyAs Vocabulary.model.role_uri,
+    ((_: Model).framework) picklePropertyAs Vocabulary.model.framework_uri,
+    ((_: Model).language) picklePropertyAs Vocabulary.model.language_uri,
+    ((_: Model).source) picklePropertyAs Vocabulary.model.source_uri,
     implicitly[RdfEntityPickler[Documented]]
   )
 
@@ -36,8 +36,8 @@ object Model {
 }
 
 class ModelProvider extends TopLevelEntityProvider {
-  override def uri = Vocabulary.model.type_uri
-  override def pickler: RdfEntityPickler[TopLevelEntity] =
+  override val uri = Vocabulary.model.type_uri
+  override val pickler: RdfEntityPickler[TopLevelEntity] =
     implicitly[RdfEntityPickler[Model]].safeCast[TopLevelEntity]
-  override def prefixes = Seq(Vocabulary.modelPrefix_value -> Vocabulary.modelNamespace_uri)
+  override val prefixes = Seq(Vocabulary.modelPrefix_value -> Vocabulary.modelNamespace_uri)
 }

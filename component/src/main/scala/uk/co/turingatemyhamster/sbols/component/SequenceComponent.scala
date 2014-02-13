@@ -22,10 +22,10 @@ object SequenceComponent {
   implicit def sequenceComponentPickler[S <: Sequence, SA]
   (implicit rmP: ResourceMaker[SA], saP: RdfEntityPickler[SA])
   : RdfEntityPickler[SequenceComponent[S, SA]] = RdfEntityPickler.all(
-    ((_: SequenceComponent[S, SA]).functionalType)      picklePropertyAs Vocabulary.sequenceComponent.functionType_uri,
-    ((_: SequenceComponent[S, SA]).sequence)            picklePropertyAs Vocabulary.sequenceComponent.sequence_uri,
     ((_: SequenceComponent[S, SA]).sequenceAnnotations) picklePropertyAs Vocabulary.sequenceComponent.sequenceAnnotation_uri,
     ((_: SequenceComponent[S, SA]).sequenceAnnotations).pickleValue,
+    ((_: SequenceComponent[S, SA]).sequence)            picklePropertyAs Vocabulary.sequenceComponent.sequence_uri,
+    ((_: SequenceComponent[S, SA]).functionalType)      picklePropertyAs Vocabulary.sequenceComponent.functionType_uri,
     implicitly[RdfEntityPickler[Component]]
   )
 
@@ -42,12 +42,12 @@ trait Sequence extends Documented {
 }
 
 object Sequence {
-  implicit def sequencePickler: RdfEntityPickler[Sequence] = RdfEntityPickler.all(
+  implicit val sequencePickler: RdfEntityPickler[Sequence] = RdfEntityPickler.all(
     ((_: Sequence).primarySequence) picklePropertyAs Vocabulary.sequence.primarySequence_uri,
     implicitly[RdfEntityPickler[Documented]]
   )
 
-  implicit def sequenceValidator: Validator[Sequence] =
+  implicit val sequenceValidator: Validator[Sequence] =
     (((_: Sequence).primarySequence) as "primarySequence" validateWith notNull) |&&|
       implicitly[Validator[Documented]]
 }

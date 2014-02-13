@@ -37,10 +37,10 @@ object DnaComponent {
 }
 
 class DnaComponentProvider extends TopLevelEntityProvider {
-  override def uri = Vocabulary.dnaComponent.type_uri
-  override def pickler: RdfEntityPickler[TopLevelEntity] =
+  override val uri = Vocabulary.dnaComponent.type_uri
+  override val pickler: RdfEntityPickler[TopLevelEntity] =
     implicitly[RdfEntityPickler[DnaComponent]].safeCast[TopLevelEntity]
-  override def prefixes = Seq(Vocabulary.componentPrefix_value -> Vocabulary.componentNamespace_uri)
+  override val prefixes = Seq(Vocabulary.componentPrefix_value -> Vocabulary.componentNamespace_uri)
 }
 
 case class DnaSequence(identity: jn.URI,
@@ -61,8 +61,8 @@ object DnaSequence {
 }
 
 class DnaSequenceProvider extends TopLevelEntityProvider {
-  override def uri = Vocabulary.dnaSequence.type_uri
-  override def pickler: RdfEntityPickler[TopLevelEntity] =
+  override val uri = Vocabulary.dnaSequence.type_uri
+  override val pickler: RdfEntityPickler[TopLevelEntity] =
     implicitly[RdfEntityPickler[DnaSequence]].safeCast[TopLevelEntity]
-  override def prefixes = Seq(Vocabulary.componentPrefix_value -> Vocabulary.componentNamespace_uri)
+  override val prefixes = Seq(Vocabulary.componentPrefix_value -> Vocabulary.componentNamespace_uri)
 }
