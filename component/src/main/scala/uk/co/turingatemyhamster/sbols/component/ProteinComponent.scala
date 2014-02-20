@@ -13,13 +13,13 @@ import uk.co.turingatemyhamster.sbols.validation.Validator
  * @author Matthew Pocock
  */
 case class ProteinComponent(identity: URI,
-                        annotations: Seq[Annotation] = Seq(),
-                        name: Option[String] = None,
-                        description: Option[String] = None,
-                        displayId: Option[String] = None,
-                        functionalType: Seq[URI] = Seq(),
-                        sequence: Option[Reference[ProteinSequence]] = None,
-                        sequenceAnnotations: Seq[SequenceAnnotation.Impl[ProteinComponent]] = Seq())
+                            annotations: Seq[Annotation] = Seq(),
+                            name: Option[String] = None,
+                            description: Option[String] = None,
+                            displayId: Option[String] = None,
+                            functionalType: Seq[URI] = Seq(),
+                            sequence: Option[Reference[ProteinSequence]] = None,
+                            sequenceAnnotations: Seq[SequenceAnnotation.Impl[ProteinComponent]] = Seq())
   extends SequenceComponent[ProteinSequence, SequenceAnnotation.Impl[ProteinComponent]]
   with TopLevelEntity
 {

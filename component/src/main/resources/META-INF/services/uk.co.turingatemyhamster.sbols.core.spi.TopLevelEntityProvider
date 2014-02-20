@@ -5,3 +5,6 @@ uk.co.turingatemyhamster.sbols.component.RnaComponentProvider
 uk.co.turingatemyhamster.sbols.component.RnaSequenceProvider
 uk.co.turingatemyhamster.sbols.component.ProteinComponentProvider
 uk.co.turingatemyhamster.sbols.component.ProteinSequenceProvider
+uk.co.turingatemyhamster.sbols.component.GenericSequenceComponentProvider
+uk.co.turingatemyhamster.sbols.component.GenericSequenceProvider
+uk.co.turingatemyhamster.sbols.component.GenericOrientedSequenceComponentProvider

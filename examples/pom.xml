@@ -71,6 +71,14 @@
                             <id>protein_component</id>
                         </program>
                         <program>
+                            <mainClass>uk.co.turingatemyhamster.sbols.examples.component.GenericSequenceComponentExample</mainClass>
+                            <id>generic_sequence</id>
+                        </program>
+                        <program>
+                            <mainClass>uk.co.turingatemyhamster.sbols.examples.component.GenericOrientedSequenceComponentExample</mainClass>
+                            <id>generic_oriented_sequence</id>
+                        </program>
+                        <program>
                             <mainClass>uk.co.turingatemyhamster.sbols.examples.component.GenericComponentExample</mainClass>
                             <id>generic_component</id>
                         </program>

@@ -1,0 +1,4 @@
+for F in $( ls examples/target/appassembler/bin/ | grep -v "\." ); do
+  echo Running $F
+  sh examples/target/appassembler/bin/$F > exampleOut/$F.txt
+done

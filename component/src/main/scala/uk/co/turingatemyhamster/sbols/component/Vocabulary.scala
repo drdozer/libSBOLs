@@ -77,6 +77,32 @@ class Vocabulary(props: Properties) extends VocabularyBase(props) {
     val reverseComplement_uri = lookup(reverseComplement)
   }
 
+  object proteinComponent {
+    val `type` = "ProteinComponent.type"
+    val type_uri = lookup(`type`)
+
+    val componentType_value = "ProteinComponent.componentType_value"
+    val componentType_value_uri = lookup(componentType_value)
+  }
+
+  object proteinSequence {
+    val `type` = "ProteinSequence.type"
+    val type_uri = lookup(`type`)
+  }
+
+  object genericSequenceComponent {
+    val `type` = "GenericComponent.type"
+    val type_uri = lookup(`type`)
+  }
+
+  object genericSequence {
+    val `type` = "GenericSequence.type"
+    val type_uri = lookup(`type`)
+
+    val legalCharacters = "GenericSequence.legalCharacters"
+    val legalCharacters_uri = lookup(legalCharacters)
+  }
+
   object dnaComponent {
     val `type` = "DnaComponent.type"
     val type_uri = lookup(`type`)
@@ -103,16 +129,8 @@ class Vocabulary(props: Properties) extends VocabularyBase(props) {
     val type_uri = lookup(`type`)
   }
 
-  object proteinComponent {
-    val `type` = "ProteinComponent.type"
-    val type_uri = lookup(`type`)
-
-    val componentType_value = "ProteinComponent.componentType_value"
-    val componentType_value_uri = lookup(componentType_value)
-  }
-
-  object proteinSequence {
-    val `type` = "ProteinSequence.type"
+  object genericOrientedSequenceComponent {
+    val `type` = "GenericOrientedSequenceComponent.type"
     val type_uri = lookup(`type`)
   }
 }
