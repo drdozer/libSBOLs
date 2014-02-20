@@ -42,6 +42,17 @@ class Vocabulary(props: Properties) extends VocabularyBase(props) {
     val directionality_uri = lookup(directionality)
   }
 
+  object portMap {
+    val `type` = "PortMap.type"
+    val type_uri = lookup(`type`)
+
+    val mappedTo = "PortMap.mappedTo"
+    val mappedTo_uri = lookup(mappedTo)
+
+    val mappedPort = "PortMap.mappedPort"
+    val mappedPort_uri = lookup(mappedPort)
+  }
+
   object directionality {
     val in = "Directionality.in"
     val in_uri = lookup(in)

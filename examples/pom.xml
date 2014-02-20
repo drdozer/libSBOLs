@@ -79,6 +79,10 @@
                             <id>generic_oriented_sequence</id>
                         </program>
                         <program>
+                            <mainClass>uk.co.turingatemyhamster.sbols.examples.component.MultipleSequencesExample</mainClass>
+                            <id>multiple_sequences</id>
+                        </program>
+                        <program>
                             <mainClass>uk.co.turingatemyhamster.sbols.examples.component.GenericComponentExample</mainClass>
                             <id>generic_component</id>
                         </program>
@@ -93,6 +97,10 @@
                         <program>
                             <mainClass>uk.co.turingatemyhamster.sbols.examples.module.ModuleExample</mainClass>
                             <id>module</id>
+                        </program>
+                        <program>
+                            <mainClass>uk.co.turingatemyhamster.sbols.examples.module.ModuleCompositionExample</mainClass>
+                            <id>module_composition</id>
                         </program>
                     </programs>
                 </configuration>

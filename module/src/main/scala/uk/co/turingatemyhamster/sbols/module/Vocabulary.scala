@@ -37,6 +37,9 @@ class Vocabulary(props: Properties) extends VocabularyBase(props) {
     val port = "Module.port"
     val port_uri = lookup(port)
 
+    val portMap = "Module.portMap"
+    val portMap_uri = lookup(portMap)
+
     val context = "Module.context"
     val context_uri = lookup(context)
 

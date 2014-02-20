@@ -23,6 +23,7 @@ case class Module(identity: URI,
                   subModules: Seq[SubModule] = Seq(),
                   interactions: Seq[Interaction] = Seq(),
                   ports: Seq[Port[Signal]] = Seq(),
+                  portMaps: Seq[PortMap[Signal, Signal, Component]] = Seq(),
                   contexts: Seq[Reference[Context]] = Seq(),
                   models: Seq[Reference[Model]] = Seq()
                    ) extends Documented with TopLevelEntity
@@ -30,15 +31,16 @@ case class Module(identity: URI,
 object Module {
   implicit def modulePickler: RdfEntityPickler[Module] = RdfEntityPickler.all(
     ofType(Vocabulary.module.type_uri),
-    ((_: Module).subModules)    picklePropertyAs Vocabulary.module.subModule_uri,
-    ((_: Module).subModules)    pickleValue,
+    ((_: Module).models)        picklePropertyAs Vocabulary.module.model_uri,
+    ((_: Module).contexts)      picklePropertyAs Vocabulary.module.context_uri,
+    ((_: Module).portMaps)      picklePropertyAs Vocabulary.module.portMap_uri,
+    ((_: Module).portMaps)      pickleValue,
+    ((_: Module).ports)         picklePropertyAs Vocabulary.module.port_uri,
     ((_: Module).interactions)  picklePropertyAs Vocabulary.module.interaction_uri,
     ((_: Module).interactions)  pickleValue,
-    ((_: Module).ports)         picklePropertyAs Vocabulary.module.port_uri,
     ((_: Module).ports)         pickleValue,
-    ((_: Module).contexts)      picklePropertyAs Vocabulary.module.context_uri,
-    ((_: Module).models)        picklePropertyAs Vocabulary.module.model_uri,
-    // signals must be after ports to ensure signals are not nested within ports that refer to them
+    ((_: Module).subModules)    picklePropertyAs Vocabulary.module.subModule_uri,
+    ((_: Module).subModules)    pickleValue,
     ((_: Module).signals)       picklePropertyAs Vocabulary.module.signal_uri,
     ((_: Module).signals)       pickleValue,
     implicitly[RdfEntityPickler[Documented]]
