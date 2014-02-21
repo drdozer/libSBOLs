@@ -102,6 +102,10 @@
                             <mainClass>uk.co.turingatemyhamster.sbols.examples.module.ModuleCompositionExample</mainClass>
                             <id>module_composition</id>
                         </program>
+                        <program>
+                            <mainClass>uk.co.turingatemyhamster.sbols.examples.module.SubtilinReceiverExample</mainClass>
+                            <id>subtilin_receiver</id>
+                        </program>
                     </programs>
                 </configuration>
                 <executions>

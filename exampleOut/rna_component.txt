@@ -1,0 +1,39 @@
+The raw document is: Impl(List(RnaSequence(http://turingatemyhamster.co.uk/example#rs1,List(),None,None,None,uagcuagcugcu), RnaComponent(http://turingatemyhamter.co.uk/example#rc1,List(),Some(RNA Component 1),Some(My first RNA Component),Some(rc1),List(),Some(Reference(http://turingatemyhamster.co.uk/example#rs1)),List()), RnaComponent(http://turingatemyhamter.co.uk/example#rc2,List(),Some(RNA Component 2),Some(My second RNA Component),Some(rc2),List(),None,List(Impl(http://turingatemyhamter.co.uk/example#rc2/sa1,List(),20,32,Reference(http://turingatemyhamter.co.uk/example#rc1),ReverseComplement)))))
+The RDF is
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:model="http://sbols.org/v2/model#"
+    xmlns:sbol="http://sbols.org/v2/core#"
+    xmlns:module="http://sbols.org/v2/module#"
+    xmlns:component="http://sbols.org/v2/component#"
+    xmlns:context="http://sbols.org/v2/context#">
+   <component:RnaComponent rdf:about="http://turingatemyhamter.co.uk/example#rc2">
+      <sbol:name>RNA Component 2</sbol:name>
+      <sbol:displayId>rc2</sbol:displayId>
+      <sbol:description>My second RNA Component</sbol:description>
+      <component:componentType rdf:resource="http://sbols.org/v2/component#RNA"/>
+      <component:sequenceAnnotation>
+         <component:OrientedAnnotation rdf:about="http://turingatemyhamter.co.uk/example#rc2/sa1">
+            <component:bioStart>20</component:bioStart>
+            <component:bioEnd>32</component:bioEnd>
+            <component:subComponent>
+               <component:RnaComponent rdf:about="http://turingatemyhamter.co.uk/example#rc1"/>
+            </component:subComponent>
+            <component:orientation rdf:resource="http://sbols.org/v2/component#reverseComplement"/>
+         </component:OrientedAnnotation>
+      </component:sequenceAnnotation>
+   </component:RnaComponent>
+   <component:RnaComponent rdf:about="http://turingatemyhamter.co.uk/example#rc1">
+      <sbol:name>RNA Component 1</sbol:name>
+      <sbol:displayId>rc1</sbol:displayId>
+      <sbol:description>My first RNA Component</sbol:description>
+      <component:componentType rdf:resource="http://sbols.org/v2/component#RNA"/>
+      <component:sequence>
+         <component:RnaSequence rdf:about="http://turingatemyhamster.co.uk/example#rs1"/>
+      </component:sequence>
+   </component:RnaComponent>
+   <component:RnaSequence rdf:about="http://turingatemyhamster.co.uk/example#rs1">
+      <component:primarySequence>uagcuagcugcu</component:primarySequence>
+   </component:RnaSequence>
+</rdf:RDF>
+

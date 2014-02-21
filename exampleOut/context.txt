@@ -1,0 +1,16 @@
+The raw document is: Impl(List(Context(http://turingatemyhamter.co.uk/example#context1,List(),Some(Context 1),Some(My first context),Some(c1))))
+The RDF is
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:model="http://sbols.org/v2/model#"
+    xmlns:sbol="http://sbols.org/v2/core#"
+    xmlns:module="http://sbols.org/v2/module#"
+    xmlns:component="http://sbols.org/v2/component#"
+    xmlns:context="http://sbols.org/v2/context#">
+   <context:Context rdf:about="http://turingatemyhamter.co.uk/example#context1">
+      <sbol:name>Context 1</sbol:name>
+      <sbol:displayId>c1</sbol:displayId>
+      <sbol:description>My first context</sbol:description>
+   </context:Context>
+</rdf:RDF>
+

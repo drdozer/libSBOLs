@@ -1,0 +1,38 @@
+The raw document is: Impl(List(GenericSequence(http://turingatemyhamster.co.uk/example#gs1,List(),None,None,None,xooxoxxo,xo), GenericOrientedSequenceComponent(http://turingatemyhamter.co.uk/example#gc1,List(),Some(Generic Oriented Component 1),Some(My first oriented Polymer Component),Some(gc1),http://turingatemyhamster.co.uk/example#random_oriented_polymer,List(),Some(Reference(http://turingatemyhamster.co.uk/example#gs1)),List()), GenericOrientedSequenceComponent(http://turingatemyhamter.co.uk/example#gc2,List(),Some(Generic Oriented Component 2),Some(My second oriented Component),Some(rc2),http://turingatemyhamster.co.uk/example#random_oriented_polymer,List(),None,List(Impl(http://turingatemyhamter.co.uk/example#gc2/sa1,List(),20,32,Reference(http://turingatemyhamter.co.uk/example#gc1),Inline)))))
+The RDF is
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:model="http://sbols.org/v2/model#"
+    xmlns:sbol="http://sbols.org/v2/core#"
+    xmlns:module="http://sbols.org/v2/module#"
+    xmlns:component="http://sbols.org/v2/component#"
+    xmlns:context="http://sbols.org/v2/context#">
+   <component:GenericComponent rdf:about="http://turingatemyhamster.co.uk/example#gs1">
+      <component:primarySequence>xooxoxxo</component:primarySequence>
+      <component:legalCharacters>xo</component:legalCharacters>
+   </component:GenericComponent>
+   <component:GenericOrientedSequenceComponent rdf:about="http://turingatemyhamter.co.uk/example#gc2">
+      <sbol:name>Generic Oriented Component 2</sbol:name>
+      <sbol:displayId>rc2</sbol:displayId>
+      <sbol:description>My second oriented Component</sbol:description>
+      <component:componentType rdf:resource="http://turingatemyhamster.co.uk/example#random_oriented_polymer"/>
+      <component:sequenceAnnotation>
+         <component:OrientedAnnotation rdf:about="http://turingatemyhamter.co.uk/example#gc2/sa1">
+            <component:bioStart>20</component:bioStart>
+            <component:bioEnd>32</component:bioEnd>
+            <component:subComponent>
+               <component:GenericOrientedSequenceComponent rdf:about="http://turingatemyhamter.co.uk/example#gc1"/>
+            </component:subComponent>
+            <component:orientation rdf:resource="http://sbols.org/v2/component#inline"/>
+         </component:OrientedAnnotation>
+      </component:sequenceAnnotation>
+   </component:GenericOrientedSequenceComponent>
+   <component:GenericOrientedSequenceComponent rdf:about="http://turingatemyhamter.co.uk/example#gc1">
+      <sbol:name>Generic Oriented Component 1</sbol:name>
+      <sbol:displayId>gc1</sbol:displayId>
+      <sbol:description>My first oriented Polymer Component</sbol:description>
+      <component:componentType rdf:resource="http://turingatemyhamster.co.uk/example#random_oriented_polymer"/>
+      <component:sequence rdf:resource="http://turingatemyhamster.co.uk/example#gs1"/>
+   </component:GenericOrientedSequenceComponent>
+</rdf:RDF>
+

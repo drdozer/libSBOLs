@@ -1,0 +1,19 @@
+The raw document is: Impl(List(GenericComponent(http://turingatemyhamter.co.uk/example#glucose,List(Annotation(http://turingatemyhamster.co.uk/examples#chebi_id,StringValue(CHEBI:15903)), Annotation(http://turingatemyhamster.co.uk/examples#InChi,StringValue(nChI=1S/C6H12O6/c7-1-2-3(8)4(9)5(10)6(11)12-2/h2-11H,1H2/t2-,3-,4+,5-,6-/m1/s1))),Some(beta-D-glucose),None,Some(β-D-glucose),http://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:15903)))
+The RDF is
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://turingatemyhamster.co.uk/examples#"
+    xmlns:model="http://sbols.org/v2/model#"
+    xmlns:sbol="http://sbols.org/v2/core#"
+    xmlns:module="http://sbols.org/v2/module#"
+    xmlns:component="http://sbols.org/v2/component#"
+    xmlns:context="http://sbols.org/v2/context#">
+   <component:GenericComponent rdf:about="http://turingatemyhamter.co.uk/example#glucose">
+      <j.0:InChi>nChI=1S/C6H12O6/c7-1-2-3(8)4(9)5(10)6(11)12-2/h2-11H,1H2/t2-,3-,4+,5-,6-/m1/s1</j.0:InChi>
+      <j.0:chebi_id>CHEBI:15903</j.0:chebi_id>
+      <sbol:name>beta-D-glucose</sbol:name>
+      <sbol:displayId>β-D-glucose</sbol:displayId>
+      <component:componentType rdf:resource="http://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:15903"/>
+   </component:GenericComponent>
+</rdf:RDF>
+

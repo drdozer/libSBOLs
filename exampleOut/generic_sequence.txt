@@ -1,0 +1,39 @@
+The raw document is: Impl(List(GenericSequence(http://turingatemyhamster.co.uk/example#gs1,List(),None,None,None,lalala,la), GenericSequenceComponent(http://turingatemyhamter.co.uk/example#gc1,List(),Some(Generic Component 1),Some(My first Random Polymer Component),Some(gc1),http://turingatemyhamster.co.uk/example#random_polymer,List(),Some(Reference(http://turingatemyhamster.co.uk/example#gs1)),List()), GenericSequenceComponent(http://turingatemyhamter.co.uk/example#gc2,List(),Some(Generic Component 2),Some(My second Random Polymer Component),Some(rc2),http://turingatemyhamster.co.uk/example#random_polymer,List(),None,List(Impl(http://turingatemyhamter.co.uk/example#gc2/sa1,List(),20,32,Reference(http://turingatemyhamter.co.uk/example#gc1))))))
+The RDF is
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:model="http://sbols.org/v2/model#"
+    xmlns:sbol="http://sbols.org/v2/core#"
+    xmlns:module="http://sbols.org/v2/module#"
+    xmlns:component="http://sbols.org/v2/component#"
+    xmlns:context="http://sbols.org/v2/context#">
+   <component:GenericComponent rdf:about="http://turingatemyhamter.co.uk/example#gc2">
+      <sbol:name>Generic Component 2</sbol:name>
+      <sbol:displayId>rc2</sbol:displayId>
+      <sbol:description>My second Random Polymer Component</sbol:description>
+      <component:componentType rdf:resource="http://turingatemyhamster.co.uk/example#random_polymer"/>
+      <component:sequenceAnnotation>
+         <component:SequenceAnnotation rdf:about="http://turingatemyhamter.co.uk/example#gc2/sa1">
+            <component:bioStart>20</component:bioStart>
+            <component:bioEnd>32</component:bioEnd>
+            <component:subComponent>
+               <component:GenericComponent rdf:about="http://turingatemyhamter.co.uk/example#gc1"/>
+            </component:subComponent>
+         </component:SequenceAnnotation>
+      </component:sequenceAnnotation>
+   </component:GenericComponent>
+   <component:GenericComponent rdf:about="http://turingatemyhamter.co.uk/example#gc1">
+      <sbol:name>Generic Component 1</sbol:name>
+      <sbol:displayId>gc1</sbol:displayId>
+      <sbol:description>My first Random Polymer Component</sbol:description>
+      <component:componentType rdf:resource="http://turingatemyhamster.co.uk/example#random_polymer"/>
+      <component:sequence>
+         <component:GenericComponent rdf:about="http://turingatemyhamster.co.uk/example#gs1"/>
+      </component:sequence>
+   </component:GenericComponent>
+   <component:GenericComponent rdf:about="http://turingatemyhamster.co.uk/example#gs1">
+      <component:primarySequence>lalala</component:primarySequence>
+      <component:legalCharacters>la</component:legalCharacters>
+   </component:GenericComponent>
+</rdf:RDF>
+

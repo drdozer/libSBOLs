@@ -1,0 +1,27 @@
+The raw document is: Impl(List(Module(http://turingatemyhamter.co.uk/example#module_1,List(),Some(Module 1),Some(My first module),Some(mod_1),List(Signal(http://turingatemyhamter.co.uk/example#module_1_s_tf,List(),http://turingatemyhamter.co.uk/example#tf_1)),List(),List(),List(Port(http://turingatemyhamter.co.uk/example#module_1_port_tf,List(),Reference(http://turingatemyhamter.co.uk/example#module_1_s_tf),OUT)),List(),List(),List())))
+The RDF is
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:model="http://sbols.org/v2/model#"
+    xmlns:sbol="http://sbols.org/v2/core#"
+    xmlns:module="http://sbols.org/v2/module#"
+    xmlns:component="http://sbols.org/v2/component#"
+    xmlns:context="http://sbols.org/v2/context#">
+   <module:Module rdf:about="http://turingatemyhamter.co.uk/example#module_1">
+      <sbol:name>Module 1</sbol:name>
+      <sbol:displayId>mod_1</sbol:displayId>
+      <sbol:description>My first module</sbol:description>
+      <module:signal>
+         <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#module_1_s_tf">
+            <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#tf_1"/>
+         </module:Signal>
+      </module:signal>
+      <module:port>
+         <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#module_1_port_tf">
+            <sbol:exposes rdf:resource="http://turingatemyhamter.co.uk/example#module_1_s_tf"/>
+            <sbol:directionality rdf:resource="http://sbols.org/v2/core#OUT"/>
+         </sbol:Port>
+      </module:port>
+   </module:Module>
+</rdf:RDF>
+
