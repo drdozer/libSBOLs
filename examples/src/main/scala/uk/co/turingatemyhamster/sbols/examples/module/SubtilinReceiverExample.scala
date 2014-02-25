@@ -1,5 +1,6 @@
 package uk.co.turingatemyhamster.sbols.examples.module
 
+import java.io.StringWriter
 import uk.co.turingatemyhamster.sbols.module._
 import uk.co.turingatemyhamster.sbols.core._
 import uk.co.turingatemyhamster.sbols.component._
@@ -154,28 +155,28 @@ object SubtilinReceiverExample {
     name = Some("spaS Operon"),
     sequenceAnnotations = Seq(
       OrientedAnnotation.Impl(
-        identity=URI("http://turingatemyhamter.co.uk/example#spaRKOperon/pspaS"),
+        identity=URI("http://turingatemyhamter.co.uk/example#spaSOperon/pspaS"),
         bioStart = 1,
         bioEnd = 2,
         subComponent = Reference(pspaSPromoterComp),
         orientation = Inline
       ),
       OrientedAnnotation.Impl(
-        identity=URI("http://turingatemyhamter.co.uk/example#spaRKOperon/gfp_rbs"),
+        identity=URI("http://turingatemyhamter.co.uk/example#spaSOperon/gfp_rbs"),
         bioStart = 3,
         bioEnd = 4,
         subComponent = Reference(gfp_RBS_Comp),
         orientation = Inline
       ),
       OrientedAnnotation.Impl(
-        identity=URI("http://turingatemyhamter.co.uk/example#spaRKOperon/gfp"),
+        identity=URI("http://turingatemyhamter.co.uk/example#spaSOperon/gfp"),
         bioStart = 5,
         bioEnd = 6,
         subComponent = Reference(gfpCDSComp),
         orientation = Inline
       ),
       OrientedAnnotation.Impl(
-        identity=URI("http://turingatemyhamter.co.uk/example#spaRKOperon/gfp_terminator"),
+        identity=URI("http://turingatemyhamter.co.uk/example#spaSOperon/gfp_terminator"),
         bioStart = 7,
         bioEnd = 8,
         subComponent = Reference(gfpTerminatorComp),
@@ -361,7 +362,6 @@ object SubtilinReceiverExample {
     )
 
 
-
     val gfpProduction_module = Module(
       identity = URI("http://turingatemyhamter.co.uk/example#GFP_production_module"),
       name = Some("GFP production module"),
@@ -400,6 +400,87 @@ object SubtilinReceiverExample {
 
 
     (gfpProduction_module,pspaSPromoterComp_port)
+
+  }
+
+  def spaKspaRProductionModule ={
+
+    val pspaRKPromoterComp_sig = Signal(
+      identity = URI("http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/pspaRK_promoter"),
+      instantiated = pspaRKPromoterComp.identity
+    )
+
+    val pspaRKPromoterComp_port= Port(
+      identity = URI("http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/pspaRK_promoter_port"),
+      exposes = Reference(pspaRKPromoterComp_sig),
+      directionality = IN
+    )
+
+    val spaR=spaRTranslationModule
+
+    val spaRCDS_sig = Signal(
+      identity = URI("http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaR_cds"),
+      instantiated = spaRCDSComp.identity
+    )
+
+    val spaK=spaKTranslationModule
+
+    val spaKCDS_sig = Signal(
+      identity = URI("http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaK_cds"),
+      instantiated = spaKCDSComp.identity
+    )
+
+
+    val spaKSpaRProduction_module = Module(
+      identity = URI("http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module"),
+      name = Some("GFP production module"),
+      signals = Seq(pspaRKPromoterComp_sig, spaKCDS_sig,spaRCDS_sig),
+      interactions = Seq(
+        Interaction(
+          identity = URI("http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription"),
+          participations = Seq(
+            Participation(
+              identity = URI("http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription/promoter"),
+              role = URI("http://purl.obolibrary.org/obo/SO_0000167"),
+              participant = Reference(pspaRKPromoterComp_sig)
+            ),
+            Participation(
+              identity = URI("http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription/spaKcds"),
+              role = URI("http://purl.obolibrary.org/obo/SO_0000316"), // SBO:Product
+              participant = Reference(spaKCDS_sig)
+            ),
+            Participation(
+              identity = URI("http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription/spaRcds"),
+              role = URI("http://purl.obolibrary.org/obo/SO_0000316"), // SBO:Product
+              participant = Reference(spaRCDS_sig)
+            )
+          )
+        )
+      ),
+      ports = Seq(pspaRKPromoterComp_port),
+      subModules = Seq(
+        SubModule(
+          identity = URI("http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaR_translation_module"),
+          instantiated = spaR.m.identity),
+        SubModule(
+          identity = URI("http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaK_translation_module"),
+          instantiated = spaK.m.identity)
+      ),
+      portMaps = Seq(
+        PortMap(
+          identity = URI("http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription/spaKcds:spaKcds"),
+          mappedPort = Reference(spaK.cds),
+          mappedTo = Reference(spaKCDS_sig)
+        ),
+        PortMap(
+          identity = URI("http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription/spaRcds:spaRcds"),
+          mappedPort = Reference(spaR.cds),
+          mappedTo = Reference(spaRCDS_sig)
+        )
+      )
+    )
+
+    (spaKSpaRProduction_module,pspaRKPromoterComp_port,spaK.protein,spaR.protein)
 
   }
 
@@ -573,6 +654,105 @@ object SubtilinReceiverExample {
 
   }
 
+
+  def spaKspaRTwoComponentSystemModule ={
+
+    val spaKSpaRProduction=spaKspaRProductionModule._1
+    val spaKSpaRProduction_SpaR_port=spaKspaRProductionModule._4
+    val spaKSpaRProduction_SpaK_port=spaKspaRProductionModule._3
+
+
+    //val spaRActivation=spaRActivationModule._1.asInstanceOf[Module]
+    val spaRActivation=spaRActivationModule._1
+    val spaRActivation_spaRProteinComp_port=spaRActivationModule._2
+    val spaRActivation_spaR_P_ProteinComp_port=spaRActivationModule._2
+    val spaRActivation_spaKProteinComp_port=spaRActivationModule._4
+
+    val pspaSActivation=pspaSActivationModule._1
+    val pspaSActivation_pspaS_port=pspaSActivationModule._2
+    val pspaSActivation_SpaR_port=pspaSActivationModule._3
+
+
+    val spaKspaRTwoComponentSystem_module = Module(
+      identity = URI("http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module"),
+      name = Some("SpaRK two component system"),
+      subModules = Seq(
+        SubModule(
+          identity = URI("http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module/spaK_spaK_production_module"),
+          instantiated = spaKSpaRProduction.identity),
+        SubModule(
+          identity = URI("http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module/spaR_activation_module"),
+          instantiated = spaRActivation.identity),
+        SubModule(
+          identity = URI("http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module/pspaS_activation_module"),
+          instantiated = pspaSActivation.identity)
+      ),
+      portMaps = Seq(
+        PortMap(
+          identity = URI("http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module/production_SpaR_protein:SpaRActivation_SpaR_protein"),
+          mappedPort = Reference(spaKSpaRProduction_SpaR_port),
+          mappedTo = spaRActivation_spaRProteinComp_port.exposes //mapped to the SpaR signal
+        ),
+        PortMap(
+          identity = URI("http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module/production_SpaR_protein:SpaRActivation_SpaR_protein"),
+          mappedPort = Reference(spaKSpaRProduction_SpaK_port),
+          mappedTo = spaRActivation_spaKProteinComp_port.exposes //mapped to the SpaK signal
+        ),
+        PortMap(
+          identity = URI("http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module/SpaRActivation_SpaR__P_protein:pspaSActivation_SpaR"),
+          mappedPort = Reference(spaRActivation_spaR_P_ProteinComp_port),
+          mappedTo = pspaSActivation_SpaR_port.exposes//mapped to the SpaR signal
+        )
+      )
+    )
+    (spaKspaRTwoComponentSystem_module,pspaSActivation_pspaS_port)
+  }
+
+
+  def subtilinReporterSystemModule ={
+
+    val spaKspaRTwoComponentSystem=spaKspaRTwoComponentSystemModule._1
+    val spaKspaRTwoComponentSystem_pspaS_port=spaKspaRProductionModule._2
+
+    val gfpProduction=gfpProductionModule._1
+    val gfpProduction_pspaS_port=gfpProductionModule._2
+
+
+    val subtilinReporterSystem_module = Module(
+      identity = URI("http://turingatemyhamter.co.uk/example#subtilin_reporter_module"),
+      name = Some("Subtilin Reporter Module"),
+      subModules = Seq(
+        SubModule(
+          identity = URI("http://turingatemyhamter.co.uk/example#subtilin_reporter_module/spaKspaR_two_component_System_module"),
+          instantiated = spaKspaRTwoComponentSystem.identity),
+        SubModule(
+          identity = URI("http://turingatemyhamter.co.uk/example#subtilin_reporter_module/gfp_production_module"),
+          instantiated = gfpProduction.identity)
+      ),
+      portMaps = Seq(
+        PortMap(
+          identity = URI("http://turingatemyhamter.co.uk/example#subtilin_reporter_module/tcs_pspaS_promoter:gfp_production_pspaS_promoter"),
+          mappedPort = Reference(spaKspaRTwoComponentSystem_pspaS_port),
+          mappedTo = gfpProduction_pspaS_port.exposes //mapped to the pspaS signal
+        )
+      )
+    )
+    subtilinReporterSystem_module
+  }
+
+  def main(args: Array[String]) {
+
+    val doc = SbolDocument.Impl(Seq(subtilinReporterSystemModule,spaKspaRTwoComponentSystemModule._1, spaKspaRProductionModule._1,
+      spaKTranslationModule.m,spaRTranslationModule.m, spaRActivationModule._1, pspaSActivationModule._1, gfpProductionModule._1,
+      gfpTranslationModule.m,spaRKOperon,spaSOperon))
+    println(f"The raw document is: $doc")
+
+    val out = new StringWriter
+
+    SbolDocument.io().write(doc, out)
+
+    println(f"The RDF is\n${out.toString}")
+  }
 
 }
 

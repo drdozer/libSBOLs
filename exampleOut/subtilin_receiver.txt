@@ -1,4 +1,4 @@
-The raw document is: Impl(List(Module(http://turingatemyhamter.co.uk/example#composite,List(),Some(Composite of regulator and expression cassette),None,None,List(Signal(http://turingatemyhamter.co.uk/example#composite/promoter,List(),http://turingatemyhamter.co.uk/example#a_promoter)),List(SubModule(http://turingatemyhamter.co.uk/example#composite/represor_module,List(),http://turingatemyhamter.co.uk/example#repressor_module), SubModule(http://turingatemyhamter.co.uk/example#composite/expr_c,List(),http://turingatemyhamter.co.uk/example#expr_c)),List(),List(),List(PortMap(http://turingatemyhamter.co.uk/example#composite/promoter:represor_module/repressed_promoter,List(),Reference(http://turingatemyhamter.co.uk/example#repressor_module/repressedPromoterComp_port),Reference(http://turingatemyhamter.co.uk/example#composite/promoter)), PortMap(http://turingatemyhamter.co.uk/example#composite/promoter:expr_c/a_promoter,List(),Reference(http://turingatemyhamter.co.uk/example#expr_c/a_promoter_port),Reference(http://turingatemyhamter.co.uk/example#composite/promoter))),List(),List()), DnaComponent(http://turingatemyhamter.co.uk/example#a_promoter,List(),None,Some(A really useful catabolite-repressed promoter),None,List(http://purl.obolibrary.org/obo/SO_0000167),None,List()), DnaComponent(http://turingatemyhamter.co.uk/example#gfp_cds,List(),None,None,None,List(http://purl.obolibrary.org/obo/SO_0000316),None,List()), ProteinComponent(http://turingatemyhamter.co.uk/example#gfp_protein,List(),None,None,None,List(http://purl.obolibrary.org/obo/MI_0367),None,List()), Module(http://turingatemyhamter.co.uk/example#expr_c,List(),Some(Expression Cassette),None,Some(expr_c),List(Signal(http://turingatemyhamter.co.uk/example#expr_c/a_promoter,List(),http://turingatemyhamter.co.uk/example#a_promoter), Signal(http://turingatemyhamter.co.uk/example#expr_c/gfp_cds,List(),http://turingatemyhamter.co.uk/example#gfp_cds), Signal(http://turingatemyhamter.co.uk/example#expr_c/gfp_protein,List(),http://turingatemyhamter.co.uk/example#gfp_protein)),List(),List(Interaction(http://turingatemyhamter.co.uk/example#expr_c/gfp_cds_encodes_protein,List(),None,None,None,List(Participation(http://turingatemyhamter.co.uk/example#expr_c/gfp_cds_encodes_protein/gfp_cds,List(),http://turingatemyhamter.co.uk/example#dna_template,Reference(http://turingatemyhamter.co.uk/example#expr_c/gfp_cds)), Participation(http://turingatemyhamter.co.uk/example#expr_c/gfp_cds_encodes_protein/gfp_prot,List(),http://turingatemyhamter.co.uk/example#gene_product,Reference(http://turingatemyhamter.co.uk/example#expr_c/gfp_protein))))),List(Port(http://turingatemyhamter.co.uk/example#expr_c/a_promoter_port,List(),Reference(http://turingatemyhamter.co.uk/example#expr_c/a_promoter),IN)),List(),List(),List()), ProteinComponent(http://turingatemyhamter.co.uk/example#repressor_protein,List(),None,Some(Transcriptional repressor protein, mediated by catabolite repression),None,List(http://purl.obolibrary.org/obo/GO_0045013),None,List()), DnaComponent(http://turingatemyhamter.co.uk/example#repressed_promoter,List(),None,Some(Repressible promoter),None,List(http://purl.obolibrary.org/obo/SO_0000167),None,List()), Module(http://turingatemyhamter.co.uk/example#repressor_module,List(),Some(Transcriptional Repressor),None,Some(t-rep),List(Signal(http://turingatemyhamter.co.uk/example#repressor_module/repressorProteinComp,List(),http://turingatemyhamter.co.uk/example#repressor_protein), Signal(http://turingatemyhamter.co.uk/example#repressor_module/repressedPromoterComp,List(),http://turingatemyhamter.co.uk/example#repressed_promoter)),List(),List(Interaction(http://turingatemyhamter.co.uk/example#repressor_module/repression,List(),None,None,None,List(Participation(http://turingatemyhamter.co.uk/example#repressor_module/repression/repressor,List(),http://www.ebi.ac.uk/sbo/main/SBO:0000020,Reference(http://turingatemyhamter.co.uk/example#repressor_module/repressorProteinComp)), Participation(http://turingatemyhamter.co.uk/example#repressor_module/repression/repressor,List(),http://www.ebi.ac.uk/sbo/main/SBO:0000598,Reference(http://turingatemyhamter.co.uk/example#repressor_module/repressedPromoterComp))))),List(Port(http://turingatemyhamter.co.uk/example#repressor_module/repressedPromoterComp_port,List(),Reference(http://turingatemyhamter.co.uk/example#repressor_module/repressedPromoterComp),OUT)),List(),List(),List())))
+The raw document is: Impl(List(Module(http://turingatemyhamter.co.uk/example#subtilin_reporter_module,List(),Some(Subtilin Reporter Module),None,None,List(),List(SubModule(http://turingatemyhamter.co.uk/example#subtilin_reporter_module/spaKspaR_two_component_System_module,List(),http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module), SubModule(http://turingatemyhamter.co.uk/example#subtilin_reporter_module/gfp_production_module,List(),http://turingatemyhamter.co.uk/example#GFP_production_module)),List(),List(),List(PortMap(http://turingatemyhamter.co.uk/example#subtilin_reporter_module/tcs_pspaS_promoter:gfp_production_pspaS_promoter,List(),Reference(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/pspaRK_promoter_port),Reference(http://turingatemyhamter.co.uk/example#GFP_production_module/pspaS_promoter))),List(),List()), Module(http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module,List(),Some(SpaRK two component system),None,None,List(),List(SubModule(http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module/spaK_spaK_production_module,List(),http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module), SubModule(http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module/spaR_activation_module,List(),http://turingatemyhamter.co.uk/example#spaR_activation_module), SubModule(http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module/pspaS_activation_module,List(),http://turingatemyhamter.co.uk/example#pspaS_activation_module)),List(),List(),List(PortMap(http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module/production_SpaR_protein:SpaRActivation_SpaR_protein,List(),Reference(http://turingatemyhamter.co.uk/example#SpaR_module/spaRProtein_port),Reference(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_protein)), PortMap(http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module/production_SpaR_protein:SpaRActivation_SpaR_protein,List(),Reference(http://turingatemyhamter.co.uk/example#SpaK_module/spaKProtein_port),Reference(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_protein)), PortMap(http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module/SpaRActivation_SpaR__P_protein:pspaSActivation_SpaR,List(),Reference(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_protein_port),Reference(http://turingatemyhamter.co.uk/example#pspaS_activation_module/SpaR_protein))),List(),List()), Module(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module,List(),Some(GFP production module),None,None,List(Signal(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/pspaRK_promoter,List(),http://turingatemyhamter.co.uk/example#pspaRK_promoter), Signal(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaK_cds,List(),http://turingatemyhamter.co.uk/example#SpaK_CDS), Signal(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaR_cds,List(),http://turingatemyhamter.co.uk/example#SpaR_CDS)),List(SubModule(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaR_translation_module,List(),http://turingatemyhamter.co.uk/example#SpaR_module), SubModule(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaK_translation_module,List(),http://turingatemyhamter.co.uk/example#SpaK_module)),List(Interaction(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription,List(),None,None,None,List(Participation(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription/promoter,List(),http://purl.obolibrary.org/obo/SO_0000167,Reference(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/pspaRK_promoter)), Participation(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription/spaKcds,List(),http://purl.obolibrary.org/obo/SO_0000316,Reference(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaK_cds)), Participation(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription/spaRcds,List(),http://purl.obolibrary.org/obo/SO_0000316,Reference(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaR_cds))))),List(Port(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/pspaRK_promoter_port,List(),Reference(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/pspaRK_promoter),IN)),List(PortMap(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription/spaKcds:spaKcds,List(),Reference(http://turingatemyhamter.co.uk/example#SpaK_module/spaKCDS_port),Reference(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaK_cds)), PortMap(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription/spaRcds:spaRcds,List(),Reference(http://turingatemyhamter.co.uk/example#SpaR_module/spaRCDS_port),Reference(http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaR_cds))),List(),List()), Module(http://turingatemyhamter.co.uk/example#SpaK_module,List(),Some(SpaK module),None,None,List(Signal(http://turingatemyhamter.co.uk/example#SpaK_module/SpaK_protein,List(),http://turingatemyhamter.co.uk/example#SpaK_protein), Signal(http://turingatemyhamter.co.uk/example#SpaK_module/SpaK_CDS,List(),http://turingatemyhamter.co.uk/example#SpaK_CDS)),List(),List(Interaction(http://turingatemyhamter.co.uk/example#SpaK_module/protein_encoding,List(),None,None,None,List(Participation(http://turingatemyhamter.co.uk/example#repressor_module/protein_encoding/cds,List(),http://purl.obolibrary.org/obo/SO_0000316,Reference(http://turingatemyhamter.co.uk/example#SpaK_module/SpaK_CDS)), Participation(http://turingatemyhamter.co.uk/example#repressor_module/protein_encoding/gene_product,List(),http://www.ebi.ac.uk/sbo/main/SBO:0000011,Reference(http://turingatemyhamter.co.uk/example#SpaK_module/SpaK_protein))))),List(Port(http://turingatemyhamter.co.uk/example#SpaK_module/spaKProtein_port,List(),Reference(http://turingatemyhamter.co.uk/example#SpaK_module/SpaK_protein),OUT), Port(http://turingatemyhamter.co.uk/example#SpaK_module/spaKCDS_port,List(),Reference(http://turingatemyhamter.co.uk/example#SpaK_module/SpaK_CDS),OUT)),List(),List(),List()), Module(http://turingatemyhamter.co.uk/example#SpaR_module,List(),Some(SpaR module),None,None,List(Signal(http://turingatemyhamter.co.uk/example#SpaR_module/SpaR_protein,List(),http://turingatemyhamter.co.uk/example#SpaR_protein), Signal(http://turingatemyhamter.co.uk/example#SpaR_module/SpaR_CDS,List(),http://turingatemyhamter.co.uk/example#SpaR_CDS)),List(),List(Interaction(http://turingatemyhamter.co.uk/example#SpaR_module/protein_encoding,List(),None,None,None,List(Participation(http://turingatemyhamter.co.uk/example#repressor_module/protein_encoding/cds,List(),http://purl.obolibrary.org/obo/SO_0000316,Reference(http://turingatemyhamter.co.uk/example#SpaR_module/SpaR_CDS)), Participation(http://turingatemyhamter.co.uk/example#repressor_module/protein_encoding/gene_product,List(),http://www.ebi.ac.uk/sbo/main/SBO:0000011,Reference(http://turingatemyhamter.co.uk/example#SpaR_module/SpaR_protein))))),List(Port(http://turingatemyhamter.co.uk/example#SpaR_module/spaRProtein_port,List(),Reference(http://turingatemyhamter.co.uk/example#SpaR_module/SpaR_protein),OUT), Port(http://turingatemyhamter.co.uk/example#SpaR_module/spaRCDS_port,List(),Reference(http://turingatemyhamter.co.uk/example#SpaR_module/SpaR_CDS),OUT)),List(),List(),List()), Module(http://turingatemyhamter.co.uk/example#spaR_activation_module,List(),Some(spaR activation module),None,None,List(Signal(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_protein,List(),http://turingatemyhamter.co.uk/example#SpaR_protein), Signal(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_p_protein,List(),http://turingatemyhamter.co.uk/example#SpaR_protein), Signal(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_protein,List(),http://turingatemyhamter.co.uk/example#SpaK_protein), Signal(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_p_protein,List(),http://turingatemyhamter.co.uk/example#SpaK_protein), Signal(http://turingatemyhamter.co.uk/example#spaR_activation_module/subtilin,List(),http://turingatemyhamter.co.uk/example#subtilin)),List(),List(Interaction(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_activation,List(),None,None,None,List(Participation(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_activation/SpaK,List(),http://purl.obolibrary.org/obo/MI_0843,Reference(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_protein)), Participation(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_activation/SpaK_P,List(),http://purl.obolibrary.org/obo/SBO_0000011,Reference(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_p_protein)), Participation(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_activation/Subtilin,List(),http://purl.obolibrary.org/obo/SBO_0000019,Reference(http://turingatemyhamter.co.uk/example#spaR_activation_module/subtilin)))), Interaction(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_activation,List(),None,None,None,List(Participation(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_activation/SpaK_P,List(),http://purl.obolibrary.org/obo/MI_0842,Reference(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_p_protein)), Participation(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_activation/SpaR,List(),http://purl.obolibrary.org/obo/MI_0843,Reference(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_protein)), Participation(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_activation/SpaK,List(),http://purl.obolibrary.org/obo/SBO_0000011,Reference(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_protein)), Participation(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_activation/SpaR_P,List(),http://purl.obolibrary.org/obo/SBO_0000011,Reference(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_p_protein))))),List(Port(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_protein_port,List(),Reference(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_protein),IN_OUT), Port(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_p_protein_port,List(),Reference(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_p_protein),IN_OUT), Port(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_protein_port,List(),Reference(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_protein),IN_OUT), Port(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_p_protein_port,List(),Reference(http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_p_protein),IN_OUT), Port(http://turingatemyhamter.co.uk/example#spaR_activation_module/subtilin_port,List(),Reference(http://turingatemyhamter.co.uk/example#spaR_activation_module/subtilin),IN)),List(),List(),List()), Module(http://turingatemyhamter.co.uk/example#pspaS_activation_module,List(),Some(pspaS_activation_module),None,None,List(Signal(http://turingatemyhamter.co.uk/example#pspaS_activation_module/pspaS_promoter,List(),http://turingatemyhamter.co.uk/example#pspaS_promoter), Signal(http://turingatemyhamter.co.uk/example#pspaS_activation_module/SpaR_protein,List(),http://turingatemyhamter.co.uk/example#SpaR_protein)),List(),List(Interaction(http://turingatemyhamter.co.uk/example#pspaS_activation_module/transcriptional_activation,List(),None,None,None,List(Participation(http://turingatemyhamter.co.uk/example#pspaS_activation_module/transcription/TF,List(),http://purl.obolibrary.org/obo/SO_0000459,Reference(http://turingatemyhamter.co.uk/example#pspaS_activation_module/SpaR_protein)), Participation(http://turingatemyhamter.co.uk/example#pspaS_activation_module/transcription/promoter,List(),http://purl.obolibrary.org/obo/SO_0000167,Reference(http://turingatemyhamter.co.uk/example#pspaS_activation_module/pspaS_promoter))))),List(Port(http://turingatemyhamter.co.uk/example#pspaS_activation_module/pspaS_promoter_port,List(),Reference(http://turingatemyhamter.co.uk/example#pspaS_activation_module/pspaS_promoter),OUT), Port(http://turingatemyhamter.co.uk/example#pspaS_activation_module/spaRProtein_port,List(),Reference(http://turingatemyhamter.co.uk/example#pspaS_activation_module/SpaR_protein),IN)),List(),List(),List()), Module(http://turingatemyhamter.co.uk/example#GFP_production_module,List(),Some(GFP production module),None,None,List(Signal(http://turingatemyhamter.co.uk/example#GFP_production_module/pspaS_promoter,List(),http://turingatemyhamter.co.uk/example#pspaS_promoter), Signal(http://turingatemyhamter.co.uk/example#GFP_production_module/gfp_cds,List(),http://turingatemyhamter.co.uk/example#GFP_CDS)),List(SubModule(http://turingatemyhamter.co.uk/example#GFP_production_module/gfp_translation_module,List(),http://turingatemyhamter.co.uk/example#GFP_module)),List(Interaction(http://turingatemyhamter.co.uk/example#GFP_production_module/transcription,List(),None,None,None,List(Participation(http://turingatemyhamter.co.uk/example#GFP_production_module/transcription/promoter,List(),http://purl.obolibrary.org/obo/SO_0000167,Reference(http://turingatemyhamter.co.uk/example#GFP_production_module/pspaS_promoter)), Participation(http://turingatemyhamter.co.uk/example#GFP_production_module/transcription/cds,List(),http://purl.obolibrary.org/obo/SO_0000316,Reference(http://turingatemyhamter.co.uk/example#GFP_production_module/gfp_cds))))),List(Port(http://turingatemyhamter.co.uk/example#GFP_production_module/pspaS_promoter_port,List(),Reference(http://turingatemyhamter.co.uk/example#GFP_production_module/pspaS_promoter),IN)),List(PortMap(http://turingatemyhamter.co.uk/example#GFP_production_module/transcription/cds:cds,List(),Reference(http://turingatemyhamter.co.uk/example#GFP_module/gfpCDS_port),Reference(http://turingatemyhamter.co.uk/example#GFP_production_module/gfp_cds))),List(),List()), Module(http://turingatemyhamter.co.uk/example#GFP_module,List(),Some(GFP module),None,None,List(Signal(http://turingatemyhamter.co.uk/example#GFP_module/GFP_protein,List(),http://turingatemyhamter.co.uk/example#GFP_protein), Signal(http://turingatemyhamter.co.uk/example#GFP_module/GFP_CDS,List(),http://turingatemyhamter.co.uk/example#GFP_CDS)),List(),List(Interaction(http://turingatemyhamter.co.uk/example#GFP_module/protein_encoding,List(),None,None,None,List(Participation(http://turingatemyhamter.co.uk/example#repressor_module/protein_encoding/cds,List(),http://purl.obolibrary.org/obo/SO_0000316,Reference(http://turingatemyhamter.co.uk/example#GFP_module/GFP_CDS)), Participation(http://turingatemyhamter.co.uk/example#repressor_module/protein_encoding/gene_product,List(),http://www.ebi.ac.uk/sbo/main/SBO:0000011,Reference(http://turingatemyhamter.co.uk/example#GFP_module/GFP_protein))))),List(Port(http://turingatemyhamter.co.uk/example#GFP_module/gfpProtein_port,List(),Reference(http://turingatemyhamter.co.uk/example#GFP_module/GFP_protein),OUT), Port(http://turingatemyhamter.co.uk/example#GFP_module/gfpCDS_port,List(),Reference(http://turingatemyhamter.co.uk/example#GFP_module/GFP_CDS),OUT)),List(),List(),List()), DnaComponent(http://turingatemyhamter.co.uk/example#spaRKOperon,List(),Some(spaRK Operon),None,None,List(),None,List(Impl(http://turingatemyhamter.co.uk/example#spaRKOperon/pspaRK,List(),1,2,Reference(http://turingatemyhamter.co.uk/example#pspaRK_promoter),Inline), Impl(http://turingatemyhamter.co.uk/example#spaRKOperon/spaK_rbs,List(),3,4,Reference(http://turingatemyhamter.co.uk/example#spaK_RBS_Comp),Inline), Impl(http://turingatemyhamter.co.uk/example#spaRKOperon/spaK,List(),5,6,Reference(http://turingatemyhamter.co.uk/example#SpaK_CDS),Inline), Impl(http://turingatemyhamter.co.uk/example#spaRKOperon/spaR_rbs,List(),7,8,Reference(http://turingatemyhamter.co.uk/example#spaR_RBS_Comp),Inline), Impl(http://turingatemyhamter.co.uk/example#spaRKOperon/spaR,List(),9,10,Reference(http://turingatemyhamter.co.uk/example#SpaR_CDS),Inline), Impl(http://turingatemyhamter.co.uk/example#spaRKOperon/spaRK_Terminator,List(),11,12,Reference(http://turingatemyhamter.co.uk/example#spaRKTerminatorComp),Inline))), DnaComponent(http://turingatemyhamter.co.uk/example#spaSOperon,List(),Some(spaS Operon),None,None,List(),None,List(Impl(http://turingatemyhamter.co.uk/example#spaSOperon/pspaS,List(),1,2,Reference(http://turingatemyhamter.co.uk/example#pspaS_promoter),Inline), Impl(http://turingatemyhamter.co.uk/example#spaSOperon/gfp_rbs,List(),3,4,Reference(http://turingatemyhamter.co.uk/example#gfp_RBS_Comp),Inline), Impl(http://turingatemyhamter.co.uk/example#spaSOperon/gfp,List(),5,6,Reference(http://turingatemyhamter.co.uk/example#GFP_CDS),Inline), Impl(http://turingatemyhamter.co.uk/example#spaSOperon/gfp_terminator,List(),7,8,Reference(http://turingatemyhamter.co.uk/example#gfpTerminatorComp),Inline)))))
 The RDF is
 <rdf:RDF
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -7,118 +7,438 @@ The RDF is
     xmlns:module="http://sbols.org/v2/module#"
     xmlns:component="http://sbols.org/v2/component#"
     xmlns:context="http://sbols.org/v2/context#">
-   <component:DnaComponent rdf:about="http://turingatemyhamter.co.uk/example#a_promoter">
-      <sbol:description>A really useful catabolite-repressed promoter</sbol:description>
+   <component:DnaComponent rdf:about="http://turingatemyhamter.co.uk/example#spaRKOperon">
+      <sbol:name>spaRK Operon</sbol:name>
       <component:componentType rdf:resource="http://sbols.org/v2/component#DNA"/>
-      <component:functionType rdf:resource="http://purl.obolibrary.org/obo/SO_0000167"/>
+      <component:sequenceAnnotation>
+         <component:OrientedAnnotation rdf:about="http://turingatemyhamter.co.uk/example#spaRKOperon/spaRK_Terminator">
+            <component:bioStart>11</component:bioStart>
+            <component:bioEnd>12</component:bioEnd>
+            <component:subComponent rdf:resource="http://turingatemyhamter.co.uk/example#spaRKTerminatorComp"/>
+            <component:orientation rdf:resource="http://sbols.org/v2/component#inline"/>
+         </component:OrientedAnnotation>
+      </component:sequenceAnnotation>
+      <component:sequenceAnnotation>
+         <component:OrientedAnnotation rdf:about="http://turingatemyhamter.co.uk/example#spaRKOperon/spaR">
+            <component:bioStart>9</component:bioStart>
+            <component:bioEnd>10</component:bioEnd>
+            <component:subComponent rdf:resource="http://turingatemyhamter.co.uk/example#SpaR_CDS"/>
+            <component:orientation rdf:resource="http://sbols.org/v2/component#inline"/>
+         </component:OrientedAnnotation>
+      </component:sequenceAnnotation>
+      <component:sequenceAnnotation>
+         <component:OrientedAnnotation rdf:about="http://turingatemyhamter.co.uk/example#spaRKOperon/spaR_rbs">
+            <component:bioStart>7</component:bioStart>
+            <component:bioEnd>8</component:bioEnd>
+            <component:subComponent rdf:resource="http://turingatemyhamter.co.uk/example#spaR_RBS_Comp"/>
+            <component:orientation rdf:resource="http://sbols.org/v2/component#inline"/>
+         </component:OrientedAnnotation>
+      </component:sequenceAnnotation>
+      <component:sequenceAnnotation>
+         <component:OrientedAnnotation rdf:about="http://turingatemyhamter.co.uk/example#spaRKOperon/spaK">
+            <component:bioStart>5</component:bioStart>
+            <component:bioEnd>6</component:bioEnd>
+            <component:subComponent rdf:resource="http://turingatemyhamter.co.uk/example#SpaK_CDS"/>
+            <component:orientation rdf:resource="http://sbols.org/v2/component#inline"/>
+         </component:OrientedAnnotation>
+      </component:sequenceAnnotation>
+      <component:sequenceAnnotation>
+         <component:OrientedAnnotation rdf:about="http://turingatemyhamter.co.uk/example#spaRKOperon/spaK_rbs">
+            <component:bioStart>3</component:bioStart>
+            <component:bioEnd>4</component:bioEnd>
+            <component:subComponent rdf:resource="http://turingatemyhamter.co.uk/example#spaK_RBS_Comp"/>
+            <component:orientation rdf:resource="http://sbols.org/v2/component#inline"/>
+         </component:OrientedAnnotation>
+      </component:sequenceAnnotation>
+      <component:sequenceAnnotation>
+         <component:OrientedAnnotation rdf:about="http://turingatemyhamter.co.uk/example#spaRKOperon/pspaRK">
+            <component:bioStart>1</component:bioStart>
+            <component:bioEnd>2</component:bioEnd>
+            <component:subComponent rdf:resource="http://turingatemyhamter.co.uk/example#pspaRK_promoter"/>
+            <component:orientation rdf:resource="http://sbols.org/v2/component#inline"/>
+         </component:OrientedAnnotation>
+      </component:sequenceAnnotation>
    </component:DnaComponent>
-   <component:DnaComponent rdf:about="http://turingatemyhamter.co.uk/example#gfp_cds">
+   <component:DnaComponent rdf:about="http://turingatemyhamter.co.uk/example#spaSOperon">
+      <sbol:name>spaS Operon</sbol:name>
       <component:componentType rdf:resource="http://sbols.org/v2/component#DNA"/>
-      <component:functionType rdf:resource="http://purl.obolibrary.org/obo/SO_0000316"/>
+      <component:sequenceAnnotation>
+         <component:OrientedAnnotation rdf:about="http://turingatemyhamter.co.uk/example#spaSOperon/gfp_terminator">
+            <component:bioStart>7</component:bioStart>
+            <component:bioEnd>8</component:bioEnd>
+            <component:subComponent rdf:resource="http://turingatemyhamter.co.uk/example#gfpTerminatorComp"/>
+            <component:orientation rdf:resource="http://sbols.org/v2/component#inline"/>
+         </component:OrientedAnnotation>
+      </component:sequenceAnnotation>
+      <component:sequenceAnnotation>
+         <component:OrientedAnnotation rdf:about="http://turingatemyhamter.co.uk/example#spaSOperon/gfp">
+            <component:bioStart>5</component:bioStart>
+            <component:bioEnd>6</component:bioEnd>
+            <component:subComponent rdf:resource="http://turingatemyhamter.co.uk/example#GFP_CDS"/>
+            <component:orientation rdf:resource="http://sbols.org/v2/component#inline"/>
+         </component:OrientedAnnotation>
+      </component:sequenceAnnotation>
+      <component:sequenceAnnotation>
+         <component:OrientedAnnotation rdf:about="http://turingatemyhamter.co.uk/example#spaSOperon/gfp_rbs">
+            <component:bioStart>3</component:bioStart>
+            <component:bioEnd>4</component:bioEnd>
+            <component:subComponent rdf:resource="http://turingatemyhamter.co.uk/example#gfp_RBS_Comp"/>
+            <component:orientation rdf:resource="http://sbols.org/v2/component#inline"/>
+         </component:OrientedAnnotation>
+      </component:sequenceAnnotation>
+      <component:sequenceAnnotation>
+         <component:OrientedAnnotation rdf:about="http://turingatemyhamter.co.uk/example#spaSOperon/pspaS">
+            <component:bioStart>1</component:bioStart>
+            <component:bioEnd>2</component:bioEnd>
+            <component:subComponent rdf:resource="http://turingatemyhamter.co.uk/example#pspaS_promoter"/>
+            <component:orientation rdf:resource="http://sbols.org/v2/component#inline"/>
+         </component:OrientedAnnotation>
+      </component:sequenceAnnotation>
    </component:DnaComponent>
-   <component:DnaComponent rdf:about="http://turingatemyhamter.co.uk/example#repressed_promoter">
-      <sbol:description>Repressible promoter</sbol:description>
-      <component:componentType rdf:resource="http://sbols.org/v2/component#DNA"/>
-      <component:functionType rdf:resource="http://purl.obolibrary.org/obo/SO_0000167"/>
-   </component:DnaComponent>
-   <component:ProteinComponent rdf:about="http://turingatemyhamter.co.uk/example#repressor_protein">
-      <sbol:description>Transcriptional repressor protein, mediated by catabolite repression</sbol:description>
-      <component:componentType rdf:resource="http://sbols.org/v2/component#PROTEIN"/>
-      <component:functionType rdf:resource="http://purl.obolibrary.org/obo/GO_0045013"/>
-   </component:ProteinComponent>
-   <component:ProteinComponent rdf:about="http://turingatemyhamter.co.uk/example#gfp_protein">
-      <component:componentType rdf:resource="http://sbols.org/v2/component#PROTEIN"/>
-      <component:functionType rdf:resource="http://purl.obolibrary.org/obo/MI_0367"/>
-   </component:ProteinComponent>
-   <module:Module rdf:about="http://turingatemyhamter.co.uk/example#composite">
-      <sbol:name>Composite of regulator and expression cassette</sbol:name>
-      <module:signal>
-         <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#composite/promoter">
-            <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#a_promoter"/>
-         </module:Signal>
-      </module:signal>
-      <module:subModule>
-         <module:SubModule rdf:about="http://turingatemyhamter.co.uk/example#composite/expr_c">
-            <sbol:instantiated>
-               <module:Module rdf:about="http://turingatemyhamter.co.uk/example#expr_c"/>
-            </sbol:instantiated>
-         </module:SubModule>
-      </module:subModule>
-      <module:subModule>
-         <module:SubModule rdf:about="http://turingatemyhamter.co.uk/example#composite/represor_module">
-            <sbol:instantiated>
-               <module:Module rdf:about="http://turingatemyhamter.co.uk/example#repressor_module"/>
-            </sbol:instantiated>
-         </module:SubModule>
-      </module:subModule>
+   <module:Module rdf:about="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module">
       <module:portMap>
-         <sbol:PortMap rdf:about="http://turingatemyhamter.co.uk/example#composite/promoter:expr_c/a_promoter">
+         <sbol:PortMap rdf:about="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription/spaRcds:spaRcds">
             <sbol:mappedPort>
-               <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#expr_c/a_promoter_port">
+               <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#SpaR_module/spaRCDS_port">
                   <sbol:exposes>
-                     <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#expr_c/a_promoter">
-                        <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#a_promoter"/>
-                     </module:Signal>
-                  </sbol:exposes>
-                  <sbol:directionality rdf:resource="http://sbols.org/v2/core#IN"/>
-               </sbol:Port>
-            </sbol:mappedPort>
-            <sbol:mappedTo rdf:resource="http://turingatemyhamter.co.uk/example#composite/promoter"/>
-         </sbol:PortMap>
-      </module:portMap>
-      <module:portMap>
-         <sbol:PortMap rdf:about="http://turingatemyhamter.co.uk/example#composite/promoter:represor_module/repressed_promoter">
-            <sbol:mappedPort>
-               <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#repressor_module/repressedPromoterComp_port">
-                  <sbol:exposes>
-                     <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#repressor_module/repressedPromoterComp">
-                        <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#repressed_promoter"/>
+                     <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#SpaR_module/SpaR_CDS">
+                        <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#SpaR_CDS"/>
                      </module:Signal>
                   </sbol:exposes>
                   <sbol:directionality rdf:resource="http://sbols.org/v2/core#OUT"/>
                </sbol:Port>
             </sbol:mappedPort>
-            <sbol:mappedTo rdf:resource="http://turingatemyhamter.co.uk/example#composite/promoter"/>
+            <sbol:mappedTo>
+               <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaR_cds">
+                  <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#SpaR_CDS"/>
+               </module:Signal>
+            </sbol:mappedTo>
+         </sbol:PortMap>
+      </module:portMap>
+      <module:subModule>
+         <module:SubModule rdf:about="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaK_translation_module">
+            <sbol:instantiated>
+               <module:Module rdf:about="http://turingatemyhamter.co.uk/example#SpaK_module"/>
+            </sbol:instantiated>
+         </module:SubModule>
+      </module:subModule>
+      <module:port>
+         <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/pspaRK_promoter_port">
+            <sbol:exposes>
+               <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/pspaRK_promoter">
+                  <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#pspaRK_promoter"/>
+               </module:Signal>
+            </sbol:exposes>
+            <sbol:directionality rdf:resource="http://sbols.org/v2/core#IN"/>
+         </sbol:Port>
+      </module:port>
+      <module:interaction>
+         <module:Interaction rdf:about="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription">
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription/spaRcds"/>
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription/spaKcds"/>
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription/promoter"/>
+         </module:Interaction>
+      </module:interaction>
+      <sbol:name>GFP production module</sbol:name>
+      <module:signal rdf:resource="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaR_cds"/>
+      <module:portMap>
+         <sbol:PortMap rdf:about="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/transcription/spaKcds:spaKcds">
+            <sbol:mappedPort>
+               <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#SpaK_module/spaKCDS_port">
+                  <sbol:exposes>
+                     <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#SpaK_module/SpaK_CDS">
+                        <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#SpaK_CDS"/>
+                     </module:Signal>
+                  </sbol:exposes>
+                  <sbol:directionality rdf:resource="http://sbols.org/v2/core#OUT"/>
+               </sbol:Port>
+            </sbol:mappedPort>
+            <sbol:mappedTo>
+               <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaK_cds">
+                  <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#SpaK_CDS"/>
+               </module:Signal>
+            </sbol:mappedTo>
+         </sbol:PortMap>
+      </module:portMap>
+      <module:subModule>
+         <module:SubModule rdf:about="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaR_translation_module">
+            <sbol:instantiated>
+               <module:Module rdf:about="http://turingatemyhamter.co.uk/example#SpaR_module"/>
+            </sbol:instantiated>
+         </module:SubModule>
+      </module:subModule>
+      <module:signal rdf:resource="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/spaK_cds"/>
+      <module:signal rdf:resource="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/pspaRK_promoter"/>
+   </module:Module>
+   <module:Module rdf:about="http://turingatemyhamter.co.uk/example#spaR_activation_module">
+      <sbol:name>spaR activation module</sbol:name>
+      <module:port>
+         <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_protein_port">
+            <sbol:exposes>
+               <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_protein">
+                  <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#SpaR_protein"/>
+               </module:Signal>
+            </sbol:exposes>
+            <sbol:directionality rdf:resource="http://sbols.org/v2/core#IN_OUT"/>
+         </sbol:Port>
+      </module:port>
+      <module:port>
+         <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#spaR_activation_module/subtilin_port">
+            <sbol:exposes>
+               <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#spaR_activation_module/subtilin">
+                  <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#subtilin"/>
+               </module:Signal>
+            </sbol:exposes>
+            <sbol:directionality rdf:resource="http://sbols.org/v2/core#IN"/>
+         </sbol:Port>
+      </module:port>
+      <module:interaction>
+         <module:Interaction rdf:about="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_activation">
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_activation/Subtilin"/>
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_activation/SpaK_P"/>
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_activation/SpaK"/>
+         </module:Interaction>
+      </module:interaction>
+      <module:signal>
+         <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_p_protein">
+            <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#SpaK_protein"/>
+         </module:Signal>
+      </module:signal>
+      <module:signal rdf:resource="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_protein"/>
+      <module:port>
+         <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_protein_port">
+            <sbol:exposes>
+               <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_protein">
+                  <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#SpaK_protein"/>
+               </module:Signal>
+            </sbol:exposes>
+            <sbol:directionality rdf:resource="http://sbols.org/v2/core#IN_OUT"/>
+         </sbol:Port>
+      </module:port>
+      <module:interaction>
+         <module:Interaction rdf:about="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_activation">
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_activation/SpaR_P"/>
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_activation/SpaK"/>
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_activation/SpaR"/>
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_activation/SpaK_P"/>
+         </module:Interaction>
+      </module:interaction>
+      <module:signal rdf:resource="http://turingatemyhamter.co.uk/example#spaR_activation_module/subtilin"/>
+      <module:signal rdf:resource="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_protein"/>
+      <module:port>
+         <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_p_protein_port">
+            <sbol:exposes>
+               <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_p_protein">
+                  <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#SpaR_protein"/>
+               </module:Signal>
+            </sbol:exposes>
+            <sbol:directionality rdf:resource="http://sbols.org/v2/core#IN_OUT"/>
+         </sbol:Port>
+      </module:port>
+      <module:port>
+         <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_p_protein_port">
+            <sbol:exposes rdf:resource="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_p_protein"/>
+            <sbol:directionality rdf:resource="http://sbols.org/v2/core#IN_OUT"/>
+         </sbol:Port>
+      </module:port>
+      <module:signal rdf:resource="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_p_protein"/>
+   </module:Module>
+   <module:Module rdf:about="http://turingatemyhamter.co.uk/example#SpaR_module">
+      <sbol:name>SpaR module</sbol:name>
+      <module:signal rdf:resource="http://turingatemyhamter.co.uk/example#SpaR_module/SpaR_CDS"/>
+      <module:signal>
+         <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#SpaR_module/SpaR_protein">
+            <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#SpaR_protein"/>
+         </module:Signal>
+      </module:signal>
+      <module:interaction>
+         <module:Interaction rdf:about="http://turingatemyhamter.co.uk/example#SpaR_module/protein_encoding">
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#repressor_module/protein_encoding/gene_product"/>
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#repressor_module/protein_encoding/cds"/>
+         </module:Interaction>
+      </module:interaction>
+      <module:port rdf:resource="http://turingatemyhamter.co.uk/example#SpaR_module/spaRCDS_port"/>
+      <module:port>
+         <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#SpaR_module/spaRProtein_port">
+            <sbol:exposes rdf:resource="http://turingatemyhamter.co.uk/example#SpaR_module/SpaR_protein"/>
+            <sbol:directionality rdf:resource="http://sbols.org/v2/core#OUT"/>
+         </sbol:Port>
+      </module:port>
+   </module:Module>
+   <module:Module rdf:about="http://turingatemyhamter.co.uk/example#GFP_production_module">
+      <sbol:name>GFP production module</sbol:name>
+      <module:signal>
+         <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#GFP_production_module/gfp_cds">
+            <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#GFP_CDS"/>
+         </module:Signal>
+      </module:signal>
+      <module:signal>
+         <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#GFP_production_module/pspaS_promoter">
+            <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#pspaS_promoter"/>
+         </module:Signal>
+      </module:signal>
+      <module:subModule>
+         <module:SubModule rdf:about="http://turingatemyhamter.co.uk/example#GFP_production_module/gfp_translation_module">
+            <sbol:instantiated>
+               <module:Module rdf:about="http://turingatemyhamter.co.uk/example#GFP_module"/>
+            </sbol:instantiated>
+         </module:SubModule>
+      </module:subModule>
+      <module:interaction>
+         <module:Interaction rdf:about="http://turingatemyhamter.co.uk/example#GFP_production_module/transcription">
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#GFP_production_module/transcription/cds"/>
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#GFP_production_module/transcription/promoter"/>
+         </module:Interaction>
+      </module:interaction>
+      <module:port>
+         <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#GFP_production_module/pspaS_promoter_port">
+            <sbol:exposes rdf:resource="http://turingatemyhamter.co.uk/example#GFP_production_module/pspaS_promoter"/>
+            <sbol:directionality rdf:resource="http://sbols.org/v2/core#IN"/>
+         </sbol:Port>
+      </module:port>
+      <module:portMap>
+         <sbol:PortMap rdf:about="http://turingatemyhamter.co.uk/example#GFP_production_module/transcription/cds:cds">
+            <sbol:mappedPort>
+               <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#GFP_module/gfpCDS_port">
+                  <sbol:exposes>
+                     <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#GFP_module/GFP_CDS">
+                        <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#GFP_CDS"/>
+                     </module:Signal>
+                  </sbol:exposes>
+                  <sbol:directionality rdf:resource="http://sbols.org/v2/core#OUT"/>
+               </sbol:Port>
+            </sbol:mappedPort>
+            <sbol:mappedTo rdf:resource="http://turingatemyhamter.co.uk/example#GFP_production_module/gfp_cds"/>
          </sbol:PortMap>
       </module:portMap>
    </module:Module>
-   <module:Module rdf:about="http://turingatemyhamter.co.uk/example#expr_c">
-      <sbol:name>Expression Cassette</sbol:name>
-      <sbol:displayId>expr_c</sbol:displayId>
-      <module:signal>
-         <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#expr_c/gfp_protein">
-            <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#gfp_protein"/>
-         </module:Signal>
-      </module:signal>
-      <module:signal>
-         <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#expr_c/gfp_cds">
-            <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#gfp_cds"/>
-         </module:Signal>
-      </module:signal>
-      <module:signal rdf:resource="http://turingatemyhamter.co.uk/example#expr_c/a_promoter"/>
-      <module:interaction>
-         <module:Interaction rdf:about="http://turingatemyhamter.co.uk/example#expr_c/gfp_cds_encodes_protein">
-            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#expr_c/gfp_cds_encodes_protein/gfp_prot"/>
-            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#expr_c/gfp_cds_encodes_protein/gfp_cds"/>
-         </module:Interaction>
-      </module:interaction>
-      <module:port rdf:resource="http://turingatemyhamter.co.uk/example#expr_c/a_promoter_port"/>
+   <module:Module rdf:about="http://turingatemyhamter.co.uk/example#subtilin_reporter_module">
+      <sbol:name>Subtilin Reporter Module</sbol:name>
+      <module:subModule>
+         <module:SubModule rdf:about="http://turingatemyhamter.co.uk/example#subtilin_reporter_module/gfp_production_module">
+            <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#GFP_production_module"/>
+         </module:SubModule>
+      </module:subModule>
+      <module:subModule>
+         <module:SubModule rdf:about="http://turingatemyhamter.co.uk/example#subtilin_reporter_module/spaKspaR_two_component_System_module">
+            <sbol:instantiated>
+               <module:Module rdf:about="http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module"/>
+            </sbol:instantiated>
+         </module:SubModule>
+      </module:subModule>
+      <module:portMap>
+         <sbol:PortMap rdf:about="http://turingatemyhamter.co.uk/example#subtilin_reporter_module/tcs_pspaS_promoter:gfp_production_pspaS_promoter">
+            <sbol:mappedPort rdf:resource="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module/pspaRK_promoter_port"/>
+            <sbol:mappedTo rdf:resource="http://turingatemyhamter.co.uk/example#GFP_production_module/pspaS_promoter"/>
+         </sbol:PortMap>
+      </module:portMap>
    </module:Module>
-   <module:Module rdf:about="http://turingatemyhamter.co.uk/example#repressor_module">
-      <sbol:name>Transcriptional Repressor</sbol:name>
-      <sbol:displayId>t-rep</sbol:displayId>
-      <module:signal rdf:resource="http://turingatemyhamter.co.uk/example#repressor_module/repressedPromoterComp"/>
+   <module:Module rdf:about="http://turingatemyhamter.co.uk/example#SpaK_module">
+      <sbol:name>SpaK module</sbol:name>
+      <module:signal rdf:resource="http://turingatemyhamter.co.uk/example#SpaK_module/SpaK_CDS"/>
       <module:signal>
-         <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#repressor_module/repressorProteinComp">
-            <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#repressor_protein"/>
+         <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#SpaK_module/SpaK_protein">
+            <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#SpaK_protein"/>
          </module:Signal>
       </module:signal>
       <module:interaction>
-         <module:Interaction rdf:about="http://turingatemyhamter.co.uk/example#repressor_module/repression">
-            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#repressor_module/repression/repressor"/>
+         <module:Interaction rdf:about="http://turingatemyhamter.co.uk/example#SpaK_module/protein_encoding">
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#repressor_module/protein_encoding/gene_product"/>
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#repressor_module/protein_encoding/cds"/>
          </module:Interaction>
       </module:interaction>
-      <module:port rdf:resource="http://turingatemyhamter.co.uk/example#repressor_module/repressedPromoterComp_port"/>
+      <module:port rdf:resource="http://turingatemyhamter.co.uk/example#SpaK_module/spaKCDS_port"/>
+      <module:port>
+         <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#SpaK_module/spaKProtein_port">
+            <sbol:exposes rdf:resource="http://turingatemyhamter.co.uk/example#SpaK_module/SpaK_protein"/>
+            <sbol:directionality rdf:resource="http://sbols.org/v2/core#OUT"/>
+         </sbol:Port>
+      </module:port>
+   </module:Module>
+   <module:Module rdf:about="http://turingatemyhamter.co.uk/example#GFP_module">
+      <sbol:name>GFP module</sbol:name>
+      <module:signal rdf:resource="http://turingatemyhamter.co.uk/example#GFP_module/GFP_CDS"/>
+      <module:signal>
+         <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#GFP_module/GFP_protein">
+            <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#GFP_protein"/>
+         </module:Signal>
+      </module:signal>
+      <module:interaction>
+         <module:Interaction rdf:about="http://turingatemyhamter.co.uk/example#GFP_module/protein_encoding">
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#repressor_module/protein_encoding/gene_product"/>
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#repressor_module/protein_encoding/cds"/>
+         </module:Interaction>
+      </module:interaction>
+      <module:port rdf:resource="http://turingatemyhamter.co.uk/example#GFP_module/gfpCDS_port"/>
+      <module:port>
+         <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#GFP_module/gfpProtein_port">
+            <sbol:exposes rdf:resource="http://turingatemyhamter.co.uk/example#GFP_module/GFP_protein"/>
+            <sbol:directionality rdf:resource="http://sbols.org/v2/core#OUT"/>
+         </sbol:Port>
+      </module:port>
+   </module:Module>
+   <module:Module rdf:about="http://turingatemyhamter.co.uk/example#pspaS_activation_module">
+      <sbol:name>pspaS_activation_module</sbol:name>
+      <module:signal>
+         <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#pspaS_activation_module/SpaR_protein">
+            <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#SpaR_protein"/>
+         </module:Signal>
+      </module:signal>
+      <module:signal>
+         <module:Signal rdf:about="http://turingatemyhamter.co.uk/example#pspaS_activation_module/pspaS_promoter">
+            <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#pspaS_promoter"/>
+         </module:Signal>
+      </module:signal>
+      <module:interaction>
+         <module:Interaction rdf:about="http://turingatemyhamter.co.uk/example#pspaS_activation_module/transcriptional_activation">
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#pspaS_activation_module/transcription/promoter"/>
+            <module:participation rdf:resource="http://turingatemyhamter.co.uk/example#pspaS_activation_module/transcription/TF"/>
+         </module:Interaction>
+      </module:interaction>
+      <module:port>
+         <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#pspaS_activation_module/spaRProtein_port">
+            <sbol:exposes rdf:resource="http://turingatemyhamter.co.uk/example#pspaS_activation_module/SpaR_protein"/>
+            <sbol:directionality rdf:resource="http://sbols.org/v2/core#IN"/>
+         </sbol:Port>
+      </module:port>
+      <module:port>
+         <sbol:Port rdf:about="http://turingatemyhamter.co.uk/example#pspaS_activation_module/pspaS_promoter_port">
+            <sbol:exposes rdf:resource="http://turingatemyhamter.co.uk/example#pspaS_activation_module/pspaS_promoter"/>
+            <sbol:directionality rdf:resource="http://sbols.org/v2/core#OUT"/>
+         </sbol:Port>
+      </module:port>
+   </module:Module>
+   <module:Module rdf:about="http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module">
+      <sbol:name>SpaRK two component system</sbol:name>
+      <module:subModule>
+         <module:SubModule rdf:about="http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module/pspaS_activation_module">
+            <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#pspaS_activation_module"/>
+         </module:SubModule>
+      </module:subModule>
+      <module:subModule>
+         <module:SubModule rdf:about="http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module/spaR_activation_module">
+            <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#spaR_activation_module"/>
+         </module:SubModule>
+      </module:subModule>
+      <module:subModule>
+         <module:SubModule rdf:about="http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module/spaK_spaK_production_module">
+            <sbol:instantiated rdf:resource="http://turingatemyhamter.co.uk/example#SpaKSpaR_production_module"/>
+         </module:SubModule>
+      </module:subModule>
+      <module:portMap>
+         <sbol:PortMap rdf:about="http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module/SpaRActivation_SpaR__P_protein:pspaSActivation_SpaR">
+            <sbol:mappedPort rdf:resource="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_protein_port"/>
+            <sbol:mappedTo rdf:resource="http://turingatemyhamter.co.uk/example#pspaS_activation_module/SpaR_protein"/>
+         </sbol:PortMap>
+      </module:portMap>
+      <module:portMap>
+         <sbol:PortMap rdf:about="http://turingatemyhamter.co.uk/example#spaKspaR_two_component_system_module/production_SpaR_protein:SpaRActivation_SpaR_protein">
+            <sbol:mappedPort rdf:resource="http://turingatemyhamter.co.uk/example#SpaK_module/spaKProtein_port"/>
+            <sbol:mappedTo rdf:resource="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaK_protein"/>
+            <sbol:mappedPort rdf:resource="http://turingatemyhamter.co.uk/example#SpaR_module/spaRProtein_port"/>
+            <sbol:mappedTo rdf:resource="http://turingatemyhamter.co.uk/example#spaR_activation_module/SpaR_protein"/>
+         </sbol:PortMap>
+      </module:portMap>
    </module:Module>
 </rdf:RDF>
 
