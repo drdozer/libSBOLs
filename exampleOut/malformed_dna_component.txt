@@ -1,3 +1,0 @@
-The raw DC is: DnaComponent(http://turingatemyhamter.co.uk/example#dc2,List(),None,None,None,List(),None,List(Impl(http://turingatemyhamter.co.uk/example#dc2/sa1,List(),30,20,Reference(http://turingatemyhamter.co.uk/example#dc1),ReverseComplement)))
-Validation should be an error describing bioStart and bioEnd:
-Failure(Errors(Vector(SubError(sequenceAnnotations,Errors(Vector(SubError((bioStart, bioEnd),Errors(Vector(AnError(first value must be less than or equal to second value but fails for `(30,20)`))))))))))
