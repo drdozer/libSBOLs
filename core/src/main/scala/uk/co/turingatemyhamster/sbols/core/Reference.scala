@@ -10,7 +10,7 @@ import Validator._
  *
  * @author Matthew Pocock
  */
-case class Reference[T](identity: jn.URI)
+case class Reference[+T](identity: jn.URI)
 
 object Reference {
 

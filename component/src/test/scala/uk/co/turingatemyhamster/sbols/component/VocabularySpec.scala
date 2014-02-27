@@ -57,6 +57,10 @@ class VocabularySpec extends Specification {
       Vocabulary.sequenceAnnotation.type_uri must not be null
     }
 
+    "have a non-null value for sequenceAnnotation.precedes_uri" in {
+      Vocabulary.sequenceAnnotation.precedes_uri must not be null
+    }
+
     "have a non-null value for sequenceAnnotation.subComponent_uri" in {
       Vocabulary.sequenceAnnotation.subComponent_uri must not be null
     }

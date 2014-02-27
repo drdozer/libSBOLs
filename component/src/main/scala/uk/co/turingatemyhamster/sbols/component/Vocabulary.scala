@@ -57,6 +57,9 @@ class Vocabulary(props: Properties) extends VocabularyBase(props) {
     val bioEnd = "SequenceAnnotation.bioEnd"
     val bioEnd_uri = lookup(bioEnd)
 
+    val precedes = "SequenceAnnotation.precedes"
+    val precedes_uri = lookup(precedes)
+
     val subComponent = "SequenceAnnotation.subComponent"
     val subComponent_uri = lookup(subComponent)
   }

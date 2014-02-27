@@ -56,12 +56,14 @@ trait SequenceAnnotation[SC] extends Identified {
   def bioStart: Option[Int]
   def bioEnd: Option[Int]
 
+  def precedes: Seq[Reference[SequenceAnnotation[SC]]]
   def subComponent: Reference[SC]
 }
 
 object SequenceAnnotation {
   implicit def sequenceAnnotationPickler[SC]: RdfEntityPickler[SequenceAnnotation[SC]] = RdfEntityPickler.all(
     ((_: SequenceAnnotation[SC]).subComponent)  picklePropertyAs Vocabulary.sequenceAnnotation.subComponent_uri,
+    ((_: SequenceAnnotation[SC]).precedes)      picklePropertyAs Vocabulary.sequenceAnnotation.precedes_uri,
     ((_: SequenceAnnotation[SC]).bioEnd)        picklePropertyAs Vocabulary.sequenceAnnotation.bioEnd_uri,
     ((_: SequenceAnnotation[SC]).bioStart)      picklePropertyAs Vocabulary.sequenceAnnotation.bioStart_uri,
     implicitly[RdfEntityPickler[Identified]]
@@ -69,8 +71,9 @@ object SequenceAnnotation {
 
   implicit def sequenceAnnotationValidator[SC]: Validator[SequenceAnnotation[SC]] =
     (((_: SequenceAnnotation[SC]).subComponent) as "subComponent" validateWith (notNull |&&| implicitly[Validator[Reference[SC]]])) |&&|
-      (((_: SequenceAnnotation[SC]).bioStart) as "bioStart" validateWith (notNull |&&| Validator.isSomeOrNone(gteq(1)))) |&&|
-      (((_: SequenceAnnotation[SC]).bioEnd) as "bioEnd" validateWith (notNull |&&| Validator.isSomeOrNone(gteq(1)))) |&&|
+      (((_: SequenceAnnotation[SC]).precedes)  as "precedes" validateWith (notNull |&&| Validator.each(implicitly[Validator[Reference[SequenceAnnotation[SC]]]]))) |&&|
+      (((_: SequenceAnnotation[SC]).bioStart)   as "bioStart" validateWith (notNull |&&| Validator.isSomeOrNone(gteq(1)))) |&&|
+      (((_: SequenceAnnotation[SC]).bioEnd)     as "bioEnd" validateWith (notNull |&&| Validator.isSomeOrNone(gteq(1)))) |&&|
       (((sa: SequenceAnnotation[SC]) => (sa.bioStart, sa.bioEnd)) as "(bioStart, bioEnd)" validateWith lteq_pair) |&&|
       implicitly[Validator[Identified]]
 
@@ -78,6 +81,7 @@ object SequenceAnnotation {
                       annotations: Seq[Annotation] = Seq(),
                       bioStart: Option[Int] = None,
                       bioEnd: Option[Int] = None,
+                      precedes: Seq[Reference[Impl[SC]]] = Seq(),
                       subComponent: Reference[SC]) extends SequenceAnnotation[SC]
 
   object Impl {
@@ -110,6 +114,7 @@ object OrientedAnnotation {
                   bioStart: Option[Int] = None,
                   bioEnd: Option[Int] = None,
                   subComponent: Reference[SC],
+                  precedes: Seq[Reference[Impl[SC]]] = Seq(),
                   orientation: Orientation) extends OrientedAnnotation[SC]
 
   object Impl {
