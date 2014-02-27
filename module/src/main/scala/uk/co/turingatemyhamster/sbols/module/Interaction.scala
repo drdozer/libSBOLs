@@ -14,13 +14,15 @@ case class Interaction(identity: URI,
                        name: Option[String] = None,
                        description: Option[String] = None,
                        displayId: Option[String] = None,
+                       interactionType: Seq[URI] = Seq(),
                        participations: Seq[Participation] = Seq()
                         ) extends Documented
 
 object Interaction {
   implicit def interactionPickler: RdfEntityPickler[Interaction] = RdfEntityPickler.all(
     ofType(Vocabulary.interaction.type_uri),
-    ((_: Interaction).participations) picklePropertyAs Vocabulary.interaction.participation_uri,
+    ((_: Interaction).participations)   picklePropertyAs Vocabulary.interaction.participation_uri,
+    ((_: Interaction).interactionType)  picklePropertyAs Vocabulary.interaction.interactionType_uri,
     implicitly[RdfEntityPickler[Documented]]
   )
 }

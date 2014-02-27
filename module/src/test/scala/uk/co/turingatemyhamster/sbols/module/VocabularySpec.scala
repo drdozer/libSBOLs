@@ -100,6 +100,14 @@ class VocabularySpec extends Specification {
       Vocabulary.interaction.type_uri.toString must not endWith "#"
     }
 
+    "have a non-null value for interaction.interactionType_uri" in {
+      Vocabulary.interaction.interactionType_uri must not be null
+    }
+
+    "have a valid interaction.interactionType_uri" in {
+      Vocabulary.interaction.interactionType_uri.toString must not endWith "#"
+    }
+
     "have a non-null value for interaction.participant_uri" in {
       Vocabulary.interaction.participation_uri must not be null
     }

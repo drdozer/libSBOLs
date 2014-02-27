@@ -60,6 +60,9 @@ class Vocabulary(props: Properties) extends VocabularyBase(props) {
   object interaction {
     val `type` = "Interaction.type"
     val type_uri = lookup(`type`)
+
+    val interactionType = "Interaction.interactionType"
+    val interactionType_uri = lookup(interactionType)
     
     val participation = "Interaction.participation"
     val participation_uri = lookup(participation)
