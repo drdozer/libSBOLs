@@ -106,43 +106,31 @@ object SubtilinReceiverExample {
     sequenceAnnotations = Seq(
       OrientedAnnotation.Impl(
         identity=URI("http://turingatemyhamter.co.uk/example#spaRKOperon/pspaRK"),
-        bioStart = 1,
-        bioEnd = 2,
         subComponent = Reference(pspaRKPromoterComp),
         orientation = Inline
       ),
       OrientedAnnotation.Impl(
         identity=URI("http://turingatemyhamter.co.uk/example#spaRKOperon/spaK_rbs"),
-        bioStart = 3,
-        bioEnd = 4,
         subComponent = Reference(spaK_RBS_Comp),
         orientation = Inline
       ),
         OrientedAnnotation.Impl(
         identity=URI("http://turingatemyhamter.co.uk/example#spaRKOperon/spaK"),
-        bioStart = 5,
-        bioEnd = 6,
         subComponent = Reference(spaKCDSComp),
         orientation = Inline
       ),
       OrientedAnnotation.Impl(
         identity=URI("http://turingatemyhamter.co.uk/example#spaRKOperon/spaR_rbs"),
-        bioStart = 7,
-        bioEnd = 8,
         subComponent = Reference(spaR_RBS_Comp),
         orientation = Inline
       ),
       OrientedAnnotation.Impl(
         identity=URI("http://turingatemyhamter.co.uk/example#spaRKOperon/spaR"),
-        bioStart = 9,
-        bioEnd = 10,
         subComponent = Reference(spaRCDSComp),
         orientation = Inline
       ),
       OrientedAnnotation.Impl(
         identity=URI("http://turingatemyhamter.co.uk/example#spaRKOperon/spaRK_Terminator"),
-        bioStart = 11,
-        bioEnd = 12,
         subComponent = Reference(spaRKTerminatorComp),
         orientation = Inline
       )
@@ -156,29 +144,21 @@ object SubtilinReceiverExample {
     sequenceAnnotations = Seq(
       OrientedAnnotation.Impl(
         identity=URI("http://turingatemyhamter.co.uk/example#spaSOperon/pspaS"),
-        bioStart = 1,
-        bioEnd = 2,
         subComponent = Reference(pspaSPromoterComp),
         orientation = Inline
       ),
       OrientedAnnotation.Impl(
         identity=URI("http://turingatemyhamter.co.uk/example#spaSOperon/gfp_rbs"),
-        bioStart = 3,
-        bioEnd = 4,
         subComponent = Reference(gfp_RBS_Comp),
         orientation = Inline
       ),
       OrientedAnnotation.Impl(
         identity=URI("http://turingatemyhamter.co.uk/example#spaSOperon/gfp"),
-        bioStart = 5,
-        bioEnd = 6,
         subComponent = Reference(gfpCDSComp),
         orientation = Inline
       ),
       OrientedAnnotation.Impl(
         identity=URI("http://turingatemyhamter.co.uk/example#spaSOperon/gfp_terminator"),
-        bioStart = 7,
-        bioEnd = 8,
         subComponent = Reference(gfpTerminatorComp),
         orientation = Inline
       )

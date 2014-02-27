@@ -33,8 +33,8 @@ object ProteinComponentExample {
       sequenceAnnotations = Seq(
         SequenceAnnotation.Impl(
           identity = URI("http://turingatemyhamter.co.uk/example#pc2/sa1"),
-          bioStart = 20,
-          bioEnd = 32,
+          bioStart = Some(20),
+          bioEnd = Some(32),
           subComponent = Reference(pc1.identity)
         )
       )

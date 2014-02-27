@@ -61,6 +61,8 @@ object Validator {
   def isNone[S]: Validator[Option[S]] = is_eq(None)
   def isSome[S](v: Validator[S]): Validator[Option[S]] = v comap ((_: Option[S]).get)
 
+  def isSomeOrNone[S](v: Validator[S]): Validator[Option[S]] = isNone |<>| isSome(v)
+
   def each[S](v: Validator[S]): Validator[Seq[S]] = new Validator[Seq[S]] {
     override def validate(ss: Seq[S]) = (ss map v.validate).sequence
   }

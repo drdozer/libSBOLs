@@ -36,8 +36,8 @@ object GenericSequenceComponentExample {
       sequenceAnnotations = Seq(
         SequenceAnnotation.Impl(
           identity = URI("http://turingatemyhamter.co.uk/example#gc2/sa1"),
-          bioStart = 20,
-          bioEnd = 32,
+          bioStart = Some(20),
+          bioEnd = Some(32),
           subComponent = Reference(gc1.identity)
         )
       )

@@ -53,8 +53,8 @@ object Sequence {
 }
 
 trait SequenceAnnotation[SC] extends Identified {
-  def bioStart: Int
-  def bioEnd: Int
+  def bioStart: Option[Int]
+  def bioEnd: Option[Int]
 
   def subComponent: Reference[SC]
 }
@@ -69,15 +69,15 @@ object SequenceAnnotation {
 
   implicit def sequenceAnnotationValidator[SC]: Validator[SequenceAnnotation[SC]] =
     (((_: SequenceAnnotation[SC]).subComponent) as "subComponent" validateWith (notNull |&&| implicitly[Validator[Reference[SC]]])) |&&|
-      (((_: SequenceAnnotation[SC]).bioStart) as "bioStart" validateWith (notNull |&&| gteq(1))) |&&|
-      (((_: SequenceAnnotation[SC]).bioEnd) as "bioEnd" validateWith (notNull |&&| gteq(1))) |&&|
+      (((_: SequenceAnnotation[SC]).bioStart) as "bioStart" validateWith (notNull |&&| Validator.isSomeOrNone(gteq(1)))) |&&|
+      (((_: SequenceAnnotation[SC]).bioEnd) as "bioEnd" validateWith (notNull |&&| Validator.isSomeOrNone(gteq(1)))) |&&|
       (((sa: SequenceAnnotation[SC]) => (sa.bioStart, sa.bioEnd)) as "(bioStart, bioEnd)" validateWith lteq_pair) |&&|
       implicitly[Validator[Identified]]
 
   case class Impl[SC](identity: jn.URI,
                       annotations: Seq[Annotation] = Seq(),
-                      bioStart: Int,
-                      bioEnd: Int,
+                      bioStart: Option[Int] = None,
+                      bioEnd: Option[Int] = None,
                       subComponent: Reference[SC]) extends SequenceAnnotation[SC]
 
   object Impl {
@@ -107,8 +107,8 @@ object OrientedAnnotation {
 
   case class Impl[SC](identity: jn.URI,
                   annotations: Seq[Annotation] = Seq(),
-                  bioStart: Int,
-                  bioEnd: Int,
+                  bioStart: Option[Int] = None,
+                  bioEnd: Option[Int] = None,
                   subComponent: Reference[SC],
                   orientation: Orientation) extends OrientedAnnotation[SC]
 

@@ -21,8 +21,8 @@ object MalformedDnaComponentExample {
       sequenceAnnotations = Seq(
         OrientedAnnotation.Impl(
           identity = URI("http://turingatemyhamter.co.uk/example#dc2/sa1"),
-          bioStart = 30,
-          bioEnd = 20,
+          bioStart = Some(30),
+          bioEnd = Some(20),
           subComponent = Reference(dc1),
           orientation = ReverseComplement
         )

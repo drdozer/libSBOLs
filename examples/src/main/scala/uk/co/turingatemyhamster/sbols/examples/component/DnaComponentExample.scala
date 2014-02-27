@@ -34,8 +34,8 @@ object DnaComponentExample {
       sequenceAnnotations = Seq(
         OrientedAnnotation.Impl(
           identity = URI("http://turingatemyhamter.co.uk/example#dc2/sa1"),
-          bioStart = 20,
-          bioEnd = 32,
+          bioStart = Some(20),
+          bioEnd = Some(32),
           subComponent = Reference(dc1),
           orientation = ReverseComplement
         )
